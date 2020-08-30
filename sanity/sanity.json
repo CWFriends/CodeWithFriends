@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Code with Friends"
+    "name": "Code with Friends",
+    "basePath": "/admin"
   },
   "api": {
     "projectId": "tyl3yp8b",
