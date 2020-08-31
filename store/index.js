@@ -40,11 +40,10 @@ export const mutations = {
 
 export const actions = {
   async getUserData({ commit, dispatch }, user) {
-    const uid = user.providerData[0].uid
-    const userData = await db.collection('users').doc(uid).get()
+    const userData = await db.collection('users').doc(user.uid).get()
     commit('setUser', userData.data())
   },
-  logIn({ commit, dispatch }, token) {
+  logIn({ commit, dispatch }, { user, token }) {
     this.$axios
       .get('https://api.github.com/user', {
         headers: {
@@ -54,7 +53,7 @@ export const actions = {
       .then((res) => {
         commit('setUser', res.data)
         db.collection('users')
-          .doc(String(res.data.id))
+          .doc(user.uid)
           .set(res.data)
           .catch(() => {
             dispatch('logOut')

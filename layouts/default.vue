@@ -13,7 +13,7 @@
       <v-menu offset-y transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
           <div v-bind="attrs" v-on="on">
-            <v-btn icon v-if="!user.data">
+            <v-btn v-if="!user.data" icon>
               <v-icon>mdi-account-circle</v-icon>
             </v-btn>
             <v-avatar v-else>
@@ -82,8 +82,11 @@ export default {
           return firebase
             .auth()
             .signInWithPopup(provider)
-            .then(({ credential }) => {
-              this.logIn(credential.accessToken)
+            .then(({ user, credential }) => {
+              this.logIn({
+                user,
+                token: credential.accessToken,
+              })
             })
         })
     },
