@@ -1,6 +1,6 @@
 ---
 title: Code of Conduct
-description: test
+description: Learn more about our code of conduct policies
 image: /img/frame-1.png
 ---
-test
+Learn **more** about *our* code of conduct policies.
