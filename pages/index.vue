@@ -7,6 +7,9 @@
           Welcome to the Vuetify + Nuxt.js template
         </v-card-title>
         <v-card-text>
+          <li v-for="post of posts" :key="post.slug">
+            <NuxtLink :to="post.slug">{{ post.title }}</NuxtLink>
+          </li>
           <p>
             Vuetify is a progressive Material Design component framework for
             Vue.js. It was designed to empower developers to create amazing
@@ -84,5 +87,12 @@ export default {
       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
     ],
   }),
+  async asyncData({ $content }) {
+    const posts = await $content('blog').fetch()
+
+    return {
+      posts,
+    }
+  },
 }
 </script>
