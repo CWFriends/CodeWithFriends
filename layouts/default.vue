@@ -46,8 +46,6 @@
 </template>
 
 <script>
-import 'firebase/auth'
-import firebase, { auth } from 'firebase/app'
 import { mapActions, mapState } from 'vuex'
 
 export default {
@@ -61,7 +59,7 @@ export default {
     }),
   },
   mounted() {
-    firebase.auth().onAuthStateChanged((user) => {
+    this.$fireAuth.onAuthStateChanged((user) => {
       if (!user) return
       this.getUserData(user)
     })
@@ -73,22 +71,14 @@ export default {
       logOut: 'logOut',
     }),
     signIn() {
-      const provider = new auth.GithubAuthProvider()
+      const provider = new this.$fireAuthObj.GithubAuthProvider()
 
-      firebase
-        .auth()
-        .setPersistence(auth.Auth.Persistence.LOCAL)
-        .then(() => {
-          return firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then(({ user, credential }) => {
-              this.logIn({
-                user,
-                token: credential.accessToken,
-              })
-            })
+      this.$fireAuth.signInWithPopup(provider).then(({ user, credential }) => {
+        this.logIn({
+          user,
+          token: credential.accessToken,
         })
+      })
     },
   },
 }

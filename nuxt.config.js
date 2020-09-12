@@ -54,26 +54,29 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/axios', '@nuxtjs/firebase'],
+
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyBe2FugVYTRdOTdcJir_Q0__GHD0su3kcY',
+      authDomain: 'code-with-friends.firebaseapp.com',
+      databaseURL: 'https://code-with-friends.firebaseio.com',
+      projectId: 'code-with-friends',
+      storageBucket: 'code-with-friends.appspot.com',
+      messagingSenderId: '699377183793',
+      appId: '1:699377183793:web:d3cfd25e266f2ecccc3910',
+    },
+    services: {
+      auth: true,
+      firestore: true,
+    },
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
-    },
   },
   /*
    ** Build configuration
