@@ -1,10 +1,6 @@
 ---
 title: Terms & Conditions
-description: This is relating to the terms and conditions
-image: /img/frame-1.png
+description: Learn more about our terms & conditions.
+image: ""
 ---
-This is relating to the terms and conditions
-
-* one
-* two
-* three
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias at beatae, deserunt ducimus ea fuga fugiat magni molestiae neque nihil obcaecati, placeat quibusdam sequi sint, suscipit totam ut veritatis voluptatem!
