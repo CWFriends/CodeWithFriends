@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: assets/cms
-public_folder: /img
+public_folder: _nuxt/img
 site_url: https://code-with-friends.netlify.app
 display_url: https://code-with-friends.netlify.app
 logo_url: https://code-with-friends.netlify.app/badge.png
