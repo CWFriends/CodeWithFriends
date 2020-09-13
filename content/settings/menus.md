@@ -2,7 +2,7 @@
 title: test
 intro: test
 header-menu:
-  - page: code-with-friends
+  - page: faq
 footer-menu:
   - page: code-of-conduct
   - page: privacy-policy
