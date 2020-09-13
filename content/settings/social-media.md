@@ -1,15 +1,15 @@
 ---
 social-media-items:
-  - name: YouTube
-    url: https://www.youtube.com/hellomayuko
-    icon: mdi-youtube
-  - name: Instagram
-    url: https://www.instagram.com/hellomayuko/
-    icon: mdi-instagram
+  - name: Discord
+    url: "#/"
+    icon: mdi-discord
   - name: Twitch
     url: https://www.twitch.tv/hellomayuko
     icon: mdi-twitch
   - url: https://twitter.com/hellomayuko
     name: Twitter
     icon: mdi-twitter
+  - name: YouTube
+    url: https://www.youtube.com/hellomayuko
+    icon: mdi-youtube
 ---
