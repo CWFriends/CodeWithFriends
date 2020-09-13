@@ -36,7 +36,22 @@ collections:
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
   - label: "Settings"
     name: "settings"
+    editor:
+      preview: false
     files:
+      - label: "Default Content"
+        name: "default-content"
+        file: "content/settings/default-content.md"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown }
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Position, name: position, widget: string }
+              - { label: Photo, name: photo, widget: image }
       - label: "Menus"
         name: "menus"
         file: "content/settings/menus.md"
@@ -50,3 +65,15 @@ collections:
               - { label: Name, name: name, widget: string }
               - { label: Position, name: position, widget: string }
               - { label: Photo, name: photo, widget: image }
+      - label: "Social Media Links"
+        name: "social-media"
+        file: "content/settings/social-media.md"
+        fields:
+          - label: 'Social Media Items'
+            name: 'social-media-items'
+            hint: 'These social media items will display in the Community dropdown of the header menu'
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Icon, name: icon, widget: string, hint: 'Such as `mdi-twitter`. For all available icons, visit https://materialdesignicons.com/' }
+              - { label: URL, name: url, widget: string }
