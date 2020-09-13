@@ -1,6 +1,6 @@
 ---
 title: Privacy Policy
-description: Information regarding the privacy policy
+description: Learn more about our privacy policy.
 image: /img/frame-1.png
 ---
-Information [regarding](https://hellomayuko.com) the privacy policy
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias at beatae, deserunt ducimus ea fuga fugiat magni molestiae neque nihil obcaecati, placeat quibusdam sequi sint, suscipit totam ut veritatis voluptatem!
