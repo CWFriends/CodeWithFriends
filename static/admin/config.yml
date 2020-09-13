@@ -9,38 +9,77 @@ display_url: https://code-with-friends.netlify.app
 logo_url: https://code-with-friends.netlify.app/badge.png
 
 collections:
+  - label: Event
+    name: event
+    description: 'Setup new events for Code with Friends.'
+    preview_path: 'events/{{slug}}'
+    folder: 'content/events'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string, required: true }
+      - { label: Description, name: description, widget: string, required: false }
+      - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
+      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
+      - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
+      - { label: 'Start Date', name: 'start-date', widget: datetime, required: true }
+      - { label: 'End Date', name: 'end-date', widget: datetime, required: true }
+      - { label: 'External URL', name: url, widget: string, required: false, hint: 'Did this event happen on an external site? If so, no event page will be created and users will navigate there instead.' }
+      - { label: Body, name: body, widget: markdown, required: true }
+      - label: Schedule
+        name: schedule
+        widget: list
+        required: false
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: 'Start Date', name: 'start-date', widget: datetime, required: true }
+          - { label: 'End Date', name: 'end-date', widget: datetime, required: true }
+          - { label: URL, name: url, widget: string, required: false }
   - label: 'News Item'
-    name: 'news'
+    name: news
+    description: 'Create and manage news articles.'
     preview_path: 'news/{{slug}}'
     folder: 'content/news'
     create: true
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.', required: false }
-      - label: 'Publish Date'
-        name: 'date'
-        widget: 'date'
-        format: 'MMM Do YY'
-      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
+      - { label: Title, name: title, widget: string, required: true }
+      - { label: Description, name: description, widget: string, required: false }
+      - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
+      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
+      - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
+      - { label: 'Publish Date', name: date, widget: datetime, required: true }
+      - { label: 'Related Event', name: 'event', widget: relation, collection: 'event', searchFields: ['title', 'description'], valueField: '{{slug}}', displayFields: ['title'], required: false }
+      - { label: Body, name: body, widget: markdown, required: true }
   - label: 'Static Page'
     name: 'static-page'
     preview_path: '{{slug}}'
-    description: 'Pages with text content that can be added to the header or footer menu.'
+    description: 'Pages that can be added to menus or used as home page content.'
     folder: 'content/static-page'
     create: true
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.', required: false }
-      - {label: "Disable Page Generation", name: "disable-page-generation", widget: "boolean", default: false, hint: 'Prevents the page from being generated in the routes.'}
-      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
-  - label: "Settings"
-    name: "settings"
+      - { label: Title, name: title, widget: string, required: true }
+      - { label: Description, name: description, widget: string, required: false }
+      - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
+      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
+      - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
+      - {label: "Disable Page Generation", name: "disable-page-generation", widget: boolean, default: false, hint: 'Prevents the page from being generated in the routes.', required: false}
+      - { label: Body, name: body, widget: markdown, required: true }
+      - label: 'Collapsible Content'
+        name: 'collapsible-content'
+        hint: 'Used to add collapsible content to a page'
+        widget: list
+        required: false
+        fields:
+          - { label: Header, name: header, widget: string }
+          - { label: Content, name: content, widget: markdown }
+  - label: Settings
+    name: settings
+    description: 'Configure global elements.'
     editor:
       preview: false
     files:
@@ -48,12 +87,29 @@ collections:
         name: "default-content"
         file: "content/settings/default-content.md"
         fields:
-          - { label: Title, name: title, widget: string }
-      - label: "Menus"
-        name: "menus"
+          - { label: 'Site Title', name: title, widget: string, required: true }
+          - { label: 'Site Description', name: description, widget: string }
+          - { label: 'Default Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.' }
+          - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
+          - { label: 'Default Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.' }
+          - { label: 'Home Page Content', name: 'home-page', widget: relation, collection: 'static-page', searchFields: ['title', 'description'], valueField: '{{slug}}', displayFields: ['title'] }
+      - label: Menus
+        name: menus
         file: "content/settings/menus.md"
         fields:
-          - { label: Title, name: title, widget: string }
+          - label: 'Header Menu'
+            name: 'header-menu'
+            hint: 'These items will appear in the header before the static menu items.'
+            widget: list
+            required: false
+            fields:
+              - { label: Page, name: page, widget: relation, collection: 'static-page', searchFields: ['title', 'description'], valueField: '{{slug}}', displayFields: ['title'] }
+          - label: 'Footer Menu'
+            name: 'footer-menu'
+            widget: list
+            required: false
+            fields:
+              - { label: Page, name: page, widget: relation, collection: 'static-page', searchFields: [ 'title', 'description' ], valueField: '{{slug}}', displayFields: ['title'] }
       - label: "Social Media Links"
         name: "social-media"
         file: "content/settings/social-media.md"
@@ -62,7 +118,8 @@ collections:
             name: 'social-media-items'
             hint: 'These social media items will display in the Community dropdown of the header menu'
             widget: list
+            required: false
             fields:
               - { label: Name, name: name, widget: string }
-              - { label: Icon, name: icon, widget: string, hint: 'Such as `mdi-twitter`. For all available icons, visit https://materialdesignicons.com/' }
+              - { label: Icon, name: icon, widget: string, hint: 'Such as `mdi-twitter`. For all available icons, visit https://materialdesignicons.com/', required: false }
               - { label: URL, name: url, widget: string }
