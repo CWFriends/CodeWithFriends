@@ -60,6 +60,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
+            <img src="~/assets/cms/frame-1.png" alt="" />
             Nuxt Documentation
           </a>
           <br />
@@ -73,7 +74,6 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
