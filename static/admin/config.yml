@@ -19,7 +19,11 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.' }
+      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.', required: false }
+      - label: 'Publish Date'
+        name: 'date'
+        widget: 'date'
+        format: 'MMM Do YY'
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
   - label: 'Static Page'
     name: 'static-page'
@@ -32,7 +36,8 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.' }
+      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.', required: false }
+      - {label: "Disable Page Generation", name: "disable-page-generation", widget: "boolean", default: false, hint: 'Prevents the page from being generated in the routes.'}
       - { label: 'Body', name: 'body', widget: 'markdown', required: true }
   - label: "Settings"
     name: "settings"
@@ -44,27 +49,11 @@ collections:
         file: "content/settings/default-content.md"
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Intro, name: intro, widget: markdown }
-          - label: Team
-            name: team
-            widget: list
-            fields:
-              - { label: Name, name: name, widget: string }
-              - { label: Position, name: position, widget: string }
-              - { label: Photo, name: photo, widget: image }
       - label: "Menus"
         name: "menus"
         file: "content/settings/menus.md"
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Intro, name: intro, widget: markdown }
-          - label: Team
-            name: team
-            widget: list
-            fields:
-              - { label: Name, name: name, widget: string }
-              - { label: Position, name: position, widget: string }
-              - { label: Photo, name: photo, widget: image }
       - label: "Social Media Links"
         name: "social-media"
         file: "content/settings/social-media.md"
