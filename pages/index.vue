@@ -83,7 +83,7 @@
 <script>
 export default {
   async asyncData({ $content }) {
-    const posts = await $content('blog').fetch()
+    const posts = await $content('news').sortBy('date', 'desc').limit(5).fetch()
 
     return {
       posts,
