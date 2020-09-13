@@ -1,17 +1,53 @@
 <template>
   <v-app-bar fixed app elevate-on-scroll>
-    <v-toolbar-title v-text="title" />
+    <v-avatar tile>
+      <img :src="defaults.logo" style="object-fit: contain" />
+    </v-avatar>
+    <v-toolbar-title v-text="defaults.title" class="mx-2" />
     <v-spacer />
-    <v-btn color="primary" text> FAQ </v-btn>
-    <v-btn color="primary" text> Idea Kits </v-btn>
-    <v-btn color="primary" text> Community </v-btn>
-    <v-btn color="primary" text> Past Events </v-btn>
-    <v-btn color="primary">
-      <v-icon left>mdi-halloween</v-icon> CWF: Halloween
-    </v-btn>
+    <nuxt-link
+      :to="page.slug"
+      v-for="(page, i) in menus.header"
+      :key="i"
+      class="mx-2"
+    >
+      <v-btn color="primary" text>{{ page.title }}</v-btn>
+    </nuxt-link>
+    <v-menu offset-y open-on-hover transition="slide-y-transition" class="mx-2">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn color="primary" text v-bind="attrs" v-on="on"> Community </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in socialMedia"
+          :key="index"
+          :href="item.url"
+          target="_blank"
+        >
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
+          <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+    <nuxt-link to="/news" class="mx-2">
+      <v-btn color="primary" text> News </v-btn>
+    </nuxt-link>
+    <nuxt-link to="/events" class="mx-2">
+      <v-btn color="primary" text> Events </v-btn>
+    </nuxt-link>
+    <nuxt-link
+      :to="events[0].path"
+      v-if="new Date(events[0]['end-date']) > Date.now()"
+    >
+      <v-btn color="primary" class="mx-2">
+        <v-icon left v-text="events[0].icon"></v-icon> {{ events[0].title }}
+      </v-btn>
+    </nuxt-link>
     <v-menu offset-y transition="slide-y-transition">
       <template v-slot:activator="{ on, attrs }">
-        <div v-bind="attrs" v-on="on">
+        <div v-bind="attrs" v-on="on" class="ml-4">
           <v-btn v-if="!user.data" icon>
             <v-icon>mdi-account-circle</v-icon>
           </v-btn>
@@ -37,16 +73,10 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-
 export default {
   name: 'Header',
-  data: () => ({
-    title: 'Code With Friends',
-  }),
   computed: {
-    ...mapState({
-      user: 'user',
-    }),
+    ...mapState(['user', 'menus', 'defaults', 'socialMedia', 'events']),
   },
   mounted() {
     this.$fireAuth.onAuthStateChanged((user) => {

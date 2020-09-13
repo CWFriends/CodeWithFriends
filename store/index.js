@@ -5,7 +5,8 @@ export const state = () => ({
   },
   menus: {},
   defaults: {},
-  socialMedia: {},
+  socialMedia: [],
+  events: [],
 })
 
 export const mutations = {
@@ -22,6 +23,12 @@ export const mutations = {
   },
   setDefaults(state, defaults) {
     state.defaults = defaults
+  },
+  setSocialMedia(state, socialMedia) {
+    state.socialMedia = socialMedia
+  },
+  setEvents(state, events) {
+    state.events = events
   },
 }
 
@@ -57,9 +64,15 @@ export const actions = {
       header: headerPages,
     })
 
-    // Fetch the site default settings
+    // Fetch the site default settings and events
     const defaults = await $content('settings', 'default-content').fetch()
     commit('setDefaults', defaults)
+
+    const socialMedia = await $content('settings', 'social-media').fetch()
+    commit('setSocialMedia', socialMedia['social-media-items'])
+
+    const events = await $content('events').sortBy('start-date', 'desc').fetch()
+    commit('setEvents', events)
   },
   logIn({ commit, dispatch }, { user, token }) {
     this.$axios
