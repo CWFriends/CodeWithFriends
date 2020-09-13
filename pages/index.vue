@@ -82,11 +82,6 @@
 
 <script>
 export default {
-  head: () => ({
-    script: [
-      { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
-    ],
-  }),
   async asyncData({ $content }) {
     const posts = await $content('blog').fetch()
 
@@ -94,5 +89,10 @@ export default {
       posts,
     }
   },
+  head: () => ({
+    script: [
+      { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
+    ],
+  }),
 }
 </script>

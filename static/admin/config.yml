@@ -4,14 +4,42 @@ backend:
 
 media_folder: static/img
 public_folder: /img
+site_url: https://code-with-friends.netlify.app
+display_url: https://code-with-friends.netlify.app
+logo_url: https://code-with-friends.netlify.app/badge.png
 
 collections:
-  - label: "Pages"
-    name: "pages"
+  - label: 'News Item'
+    name: 'news'
+    preview_path: 'news/{{slug}}'
+    folder: 'content/news'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.' }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
+  - label: 'Static Page'
+    name: 'static-page'
+    preview_path: '{{slug}}'
+    description: 'Pages with text content that can be added to the header or footer menu.'
+    folder: 'content/static-page'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: 'image', hint: 'Used for the meta tag image and the masthead at the top. Defaults to global image if not set.' }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
+  - label: "Settings"
+    name: "settings"
     files:
-      - label: "About Page"
-        name: "about"
-        file: "site/content/about.yml"
+      - label: "Menus"
+        name: "menus"
+        file: "content/settings/menus.md"
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro, name: intro, widget: markdown }
@@ -22,27 +50,3 @@ collections:
               - { label: Name, name: name, widget: string }
               - { label: Position, name: position, widget: string }
               - { label: Photo, name: photo, widget: image }
-      - label: "Locations Page"
-        name: "locations"
-        file: "site/content/locations.yml"
-        fields:
-          - { label: Title, name: title, widget: string }
-          - { label: Intro, name: intro, widget: markdown }
-          - label: Locations
-            name: locations
-            widget: list
-            fields:
-              - { label: Name, name: name, widget: string }
-              - { label: Address, name: address, widget: string }
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }

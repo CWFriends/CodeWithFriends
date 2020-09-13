@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://code-with-friends.netlify.app">
-    <img src="badge.png" alt="Logo" width="160" height="160">
+    <img src="/static/badge.png" alt="Logo" width="160" height="160">
   </a>
 </p>
 
@@ -24,7 +24,7 @@ Learn new things! Make cool stuff! Have fun! Do all that, with an online communi
 
 ## About The Project
 
-[This website](https://code-with-friends.netlify.app) is used to support seasonal coding events hosted by [Mayuko](https://www.youtube.com/user/hellomayuko). Through the website, users can view and participate in the latest seasonal coding event, read news updates, submit projects, and learn more about Code with Friends and its previous events.
+[This website](https://code-with-friends.netlify.app) is used to support seasonal coding events hosted by [Mayuko](https://www.hellomayuko.com/). Through the website, users can view and participate in the latest seasonal coding event, read news updates, submit projects, and learn more about Code with Friends and its previous events.
 
 ### Built With
 * [VueJS](https://vuejs.org/) for the frontend framework
