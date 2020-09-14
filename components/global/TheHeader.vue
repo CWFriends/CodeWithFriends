@@ -41,7 +41,7 @@
     </nuxt-link>
     <nuxt-link
       v-if="new Date(events[0]['end-date']) > Date.now()"
-      :to="'/' + events[0].path"
+      :to="events[0].path"
     >
       <v-btn color="primary" class="mx-2">
         <v-icon left v-text="events[0].icon"></v-icon> {{ events[0].title }}
