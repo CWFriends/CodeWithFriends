@@ -30,7 +30,8 @@ export default {
         },
         {
           hid: 'og:description',
-          name: 'og:description',
+          property: 'og:description',
+          name: 'description',
           content: this.$store.state.defaults.description,
         },
         {
@@ -46,12 +47,14 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
+          name: 'image',
           content:
             this.$store.state.url + this.$store.state.defaults['meta-image'],
         },
         {
           hid: 'og:title',
           property: 'og:title',
+          name: 'title',
           content: this.$store.state.defaults.title,
         },
         {
