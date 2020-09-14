@@ -22,7 +22,6 @@ collections:
       - { label: Description, name: description, widget: string, required: false }
       - { label: Icon, name: icon, widget: string, hint: 'Such as `mdi-twitter`. For all available icons, visit https://materialdesignicons.com/', required: false }
       - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
-      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
       - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
       - { label: 'Start Date', name: 'start-date', widget: datetime, required: true }
       - { label: 'End Date', name: 'end-date', widget: datetime, required: true }
@@ -49,7 +48,6 @@ collections:
       - { label: Title, name: title, widget: string, required: true }
       - { label: Description, name: description, widget: string, required: false }
       - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
-      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
       - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
       - { label: 'Publish Date', name: date, widget: datetime, required: true }
       - { label: 'Related Event', name: 'event', widget: relation, collection: 'event', searchFields: ['title', 'description'], valueField: '{{slug}}', displayFields: ['title'], required: false }
@@ -66,7 +64,6 @@ collections:
       - { label: Title, name: title, widget: string, required: true }
       - { label: Description, name: description, widget: string, required: false }
       - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
-      - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
       - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
       - {label: "Disable Page Generation", name: "disable-page-generation", widget: boolean, default: false, hint: 'Prevents the page from being generated in the routes.', required: false}
       - { label: Body, name: body, widget: markdown, required: true }
@@ -92,7 +89,6 @@ collections:
           - { label: 'Site Description', name: description, widget: string }
           - { label: 'Site Logo', name: logo, widget: image }
           - { label: 'Default Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.' }
-          - { label: "Image Size", name: "masthead-size", widget: select, options: [ "Cover", "Tiled" ], default: "Cover", hint: "Defines whether the image should span the size of the masthead or if it is a repeatable pattern", required: false }
           - { label: 'Default Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.' }
           - { label: 'Home Page Content', name: 'home-page', widget: relation, collection: 'static-page', searchFields: ['title', 'description'], valueField: '{{slug}}', displayFields: ['title'] }
       - label: Menus

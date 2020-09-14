@@ -23,11 +23,6 @@ export default {
     link: [
       { rel: 'icon', href: '/icon.ico' },
       { rel: 'mask-icon', href: '/icon.png', color: '#3A5066' },
-      {
-        hid: 'canonical',
-        rel: 'canonical',
-        href: 'https://code-with-friends.netlify.app',
-      },
     ],
   },
   /*

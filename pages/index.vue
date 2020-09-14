@@ -8,22 +8,11 @@
         </v-col>
         <v-col sm="4" cols="12">
           <h2>Recent News</h2>
-          <v-card
-            v-for="(item, index) in news"
-            :key="index"
-            :to="item.path"
-            class="my-6"
-          >
-            <v-img
-              class="align-end"
-              height="150px"
-              :src="item['meta-image']"
-              v-if="item['meta-image']"
-            ></v-img>
-            <v-card-title v-text="item.title"></v-card-title>
-            <v-card-subtitle v-text="getDate(item.date)"></v-card-subtitle>
-            <v-card-text v-text="item.description"></v-card-text>
-          </v-card>
+          <v-row>
+            <v-col cols="12" v-for="(item, index) in news" :key="index">
+              <NewsCard :news-item="item"></NewsCard>
+            </v-col>
+          </v-row>
           <div class="text-right">
             <nuxt-link to="/news">
               <v-btn text>
@@ -39,9 +28,13 @@
 
 <script>
 import Hero from '@/components/Hero'
-import moment from 'moment'
+import NewsCard from '@/components/NewsCard'
 
 export default {
+  components: {
+    Hero,
+    NewsCard,
+  },
   async asyncData({ $content, store }) {
     const page = await $content(
       'static-page',
@@ -55,18 +48,11 @@ export default {
       news,
     }
   },
+
   head: () => ({
     script: [
       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
     ],
   }),
-  components: {
-    Hero,
-  },
-  methods: {
-    getDate(date) {
-      return moment(date).format('MMMM Do, YYYY')
-    },
-  },
 }
 </script>

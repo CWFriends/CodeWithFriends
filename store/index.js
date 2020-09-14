@@ -1,4 +1,5 @@
 export const state = () => ({
+  url: 'https://code-with-friends.netlify.app/',
   user: {
     loggedIn: false,
     data: null,

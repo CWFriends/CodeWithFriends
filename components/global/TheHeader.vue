@@ -1,14 +1,16 @@
 <template>
   <v-app-bar fixed app elevate-on-scroll>
-    <v-avatar tile>
-      <img :src="defaults.logo" style="object-fit: contain" />
-    </v-avatar>
-    <v-toolbar-title v-text="defaults.title" class="mx-2" />
+    <nuxt-link to="/">
+      <v-avatar tile>
+        <img :src="defaults.logo" style="object-fit: contain" />
+      </v-avatar>
+    </nuxt-link>
+    <v-toolbar-title class="mx-2" v-text="defaults.title" />
     <v-spacer />
     <nuxt-link
-      :to="page.slug"
       v-for="(page, i) in menus.header"
       :key="i"
+      :to="'/' + page.slug"
       class="mx-2"
     >
       <v-btn color="primary" text>{{ page.title }}</v-btn>
@@ -38,8 +40,8 @@
       <v-btn color="primary" text> Events </v-btn>
     </nuxt-link>
     <nuxt-link
-      :to="events[0].path"
       v-if="new Date(events[0]['end-date']) > Date.now()"
+      :to="'/' + events[0].path"
     >
       <v-btn color="primary" class="mx-2">
         <v-icon left v-text="events[0].icon"></v-icon> {{ events[0].title }}
@@ -47,7 +49,7 @@
     </nuxt-link>
     <v-menu offset-y transition="slide-y-transition">
       <template v-slot:activator="{ on, attrs }">
-        <div v-bind="attrs" v-on="on" class="ml-4">
+        <div v-bind="attrs" class="ml-4" v-on="on">
           <v-btn v-if="!user.data" icon>
             <v-icon>mdi-account-circle</v-icon>
           </v-btn>
