@@ -50,6 +50,12 @@ export default {
             this.page.description || this.$store.state.defaults.description,
         },
         {
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            this.page.description || this.$store.state.defaults.description,
+        },
+        {
           hid: 'og:url',
           property: 'og:url',
           content: this.$store.state.url + this.slug,

@@ -29,6 +29,11 @@ export default {
           content: this.$store.state.defaults.description,
         },
         {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.$store.state.defaults.description,
+        },
+        {
           hid: 'og:type',
           property: 'og:type',
           content: 'website',
