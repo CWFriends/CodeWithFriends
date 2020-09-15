@@ -30,6 +30,12 @@ export default {
       titleTemplate: '%s | ' + this.$store.state.defaults.title,
       meta: [
         {
+          hid: 'og:title',
+          property: 'og:title',
+          name: 'title',
+          content: this.page.title,
+        },
+        {
           hid: 'description',
           name: 'description',
           content:
@@ -37,26 +43,24 @@ export default {
         },
         {
           hid: 'og:description',
-          name: 'og:description',
+          property: 'og:description',
+          name: 'description',
           content:
             this.page.description || this.$store.state.defaults.description,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          name: 'image',
+          content: (
+            this.$store.state.url +
+            (this.page['meta-img'] || this.$store.state.defaults['meta-image'])
+          ).replace('//img', '/img'),
         },
         {
           hid: 'og:url',
           property: 'og:url',
           content: this.$store.state.url + 'news/' + this.page.slug,
-        },
-        {
-          hid: 'og:image',
-          property: 'og:image',
-          content:
-            this.$store.state.url +
-            (this.page['meta-img'] || this.$store.state.defaults['meta-image']),
-        },
-        {
-          hid: 'og:title',
-          property: 'og:title',
-          content: this.page.title,
         },
       ],
       link: [

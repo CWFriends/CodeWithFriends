@@ -43,29 +43,14 @@ export default {
       titleTemplate: '%s | ' + this.$store.state.defaults.title,
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: this.$store.state.defaults.description,
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: this.$store.state.defaults.description,
-        },
-        {
           hid: 'og:url',
           property: 'og:url',
           content: this.$store.state.url + this.slug,
         },
         {
-          hid: 'og:image',
-          property: 'og:image',
-          content:
-            this.$store.state.url + this.$store.state.defaults['meta-image'],
-        },
-        {
           hid: 'og:title',
           property: 'og:title',
+          name: 'title',
           content: this.title,
         },
       ],

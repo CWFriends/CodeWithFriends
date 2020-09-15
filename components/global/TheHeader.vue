@@ -80,8 +80,8 @@
         </v-list>
       </v-menu>
       <v-app-bar-nav-icon
-        @click.stop="drawer = !drawer"
         class="d-md-none"
+        @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" fixed temporary right>
@@ -168,18 +168,17 @@ export default {
     drawer: false,
     group: null,
   }),
-
-  watch: {
-    group() {
-      this.drawer = false
-    },
-  },
   computed: {
     ...mapState(['user', 'menus', 'defaults', 'socialMedia', 'events']),
     openEvents() {
       return this.events.filter((event) => {
         return new Date(event['end-date']) > Date.now()
       })
+    },
+  },
+  watch: {
+    group() {
+      this.drawer = false
     },
   },
   mounted() {
