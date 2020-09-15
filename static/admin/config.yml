@@ -4,9 +4,9 @@ backend:
 
 media_folder: static/img
 public_folder: img
-site_url: https://code-with-friends.netlify.app
-display_url: https://code-with-friends.netlify.app
-logo_url: https://code-with-friends.netlify.app/badge.png
+site_url: https://codewithfriends.io
+display_url: https://codewithfriends.io
+logo_url: https://codewithfriends.io/ico.png
 
 collections:
   - label: Event

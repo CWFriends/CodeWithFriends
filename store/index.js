@@ -1,5 +1,5 @@
 export const state = () => ({
-  url: 'https://code-with-friends.netlify.app/',
+  url: 'https://codewithfriends.io/',
   user: {
     loggedIn: false,
     data: null,

@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/faa1505a-b30c-4b1a-9aae-af6e5ac5188b/deploy-status)](https://app.netlify.com/sites/code-with-friends/deploys)
 
 <p align="center">
-  <a href="https://code-with-friends.netlify.app">
+  <a href="https://codewithfriends.io">
     <img src="/static/ico.png" alt="Logo" width="160" height="160">
   </a>
 </p>
