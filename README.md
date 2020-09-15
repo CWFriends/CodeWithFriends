@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://code-with-friends.netlify.app">
-    <img src="/static/badge.png" alt="Logo" width="160" height="160">
+    <img src="/static/ico.png" alt="Logo" width="160" height="160">
   </a>
 </p>
 

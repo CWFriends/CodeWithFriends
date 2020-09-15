@@ -16,18 +16,14 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || '',
-      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', href: '/ico.png' },
+      { rel: 'mask-icon', href: '/ico.png', color: '#082437' },
+    ],
   },
   /*
    ** Global CSS
@@ -82,6 +78,21 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+  },
+
+  pwa: {
+    meta: {
+      theme_color: '#082437',
+    },
+    manifest: {
+      name: 'Code with Friends',
+      short_name: 'CWF',
+      background_color: '#082437',
+      theme_color: '#082437',
+    },
+    icon: {
+      fileName: 'ico.png',
+    },
   },
   /*
    ** Build configuration
