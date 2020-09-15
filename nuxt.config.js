@@ -21,8 +21,8 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     link: [
-      { rel: 'icon', href: '/icon.ico' },
-      { rel: 'mask-icon', href: '/icon.png', color: '#3A5066' },
+      { rel: 'icon', href: '/icon.png' },
+      { rel: 'mask-icon', href: '/icon.png', color: '#082437' },
     ],
   },
   /*

@@ -2,6 +2,7 @@
 title: "CWF: Halloween 2020"
 icon: mdi-halloween
 masthead-size: Cover
+meta-image: img/cwf-halloween.png
 start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-10-31T07:00:00.000Z
 schedule:
