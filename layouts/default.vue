@@ -15,7 +15,7 @@ import TheHeader from '@/components/global/TheHeader'
 import TheFooter from '@/components/global/TheFooter'
 
 export default {
-  name: 'DefaultLayout',
+  name: 'Default',
   components: {
     TheHeader,
     TheFooter,
