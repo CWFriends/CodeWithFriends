@@ -1,6 +1,9 @@
 <template>
   <div class="page">
-    <Hero :page="page"></Hero>
+    <HeroImage
+      :page="page"
+      :event-item="openEvents.length > 0 ? openEvents[0] : ''"
+    ></HeroImage>
     <v-container>
       <v-row>
         <v-col sm="8" cols="12">
@@ -9,7 +12,7 @@
         <v-col sm="4" cols="12">
           <h2>Recent News</h2>
           <v-row>
-            <v-col cols="12" v-for="(item, index) in news" :key="index">
+            <v-col v-for="(item, index) in news" :key="index" cols="12">
               <NewsCard :news-item="item"></NewsCard>
             </v-col>
           </v-row>
@@ -27,12 +30,12 @@
 </template>
 
 <script>
-import Hero from '@/components/Hero'
+import HeroImage from '@/components/HeroImage'
 import NewsCard from '@/components/NewsCard'
 
 export default {
   components: {
-    Hero,
+    HeroImage,
     NewsCard,
   },
   async asyncData({ $content, store }) {
@@ -49,6 +52,13 @@ export default {
     }
   },
 
+  computed: {
+    openEvents() {
+      return this.$store.state.events.filter((event) => {
+        return new Date(event['end-date']) > Date.now()
+      })
+    },
+  },
   head: () => ({
     script: [
       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },

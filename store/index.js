@@ -72,7 +72,7 @@ export const actions = {
     const socialMedia = await $content('settings', 'social-media').fetch()
     commit('setSocialMedia', socialMedia['social-media-items'])
 
-    const events = await $content('events').sortBy('start-date', 'desc').fetch()
+    const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
   },
   logIn({ commit, dispatch }, { user, token }) {

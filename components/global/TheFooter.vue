@@ -8,11 +8,11 @@
             :key="i"
             :to="'/' + page.slug"
           >
-            <v-btn color="primary" text small>{{ page.title }}</v-btn>
+            <v-btn color="grey" text small>{{ page.title }}</v-btn>
           </nuxt-link>
         </v-col>
         <v-col cols="12" sm="6" order-sm="1">
-          <span
+          <span class="grey--text text-body-2"
             >&copy; {{ new Date().getFullYear() }}, {{ defaults.title }}</span
           >
         </v-col>

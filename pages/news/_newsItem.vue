@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Hero :page="page" :date="page.date"></Hero>
+    <HeroImage :page="page" :date="page.date"></HeroImage>
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Hero from '@/components/Hero'
+import HeroImage from '@/components/HeroImage'
 
 export default {
   components: {
-    Hero,
+    HeroImage,
   },
   async asyncData({ $content, params }) {
     const page = await $content('news', params.newsItem).fetch()

@@ -1,18 +1,24 @@
 <template>
   <div class="page">
-    <Hero
+    <HeroImage
       :page="page"
       :date="page['start-date']"
       :end-date="page['end-date']"
-    ></Hero>
+    >
+      <v-btn
+        v-if="$store.state.user.loggedIn"
+        color="primary"
+        x-large
+        @click="signUp"
+      >
+        Sign Up <v-icon right>mdi-send</v-icon>
+      </v-btn>
+
+      <SignInButton v-else></SignInButton>
+    </HeroImage>
     <v-container>
       <v-row>
         <v-col sm="8" cols="12">
-          <v-row>
-            <v-col>
-              <v-btn color="primary" large> Sign Up </v-btn>
-            </v-col>
-          </v-row>
           <nuxt-content :document="page"></nuxt-content>
           <v-divider class="my-6"></v-divider>
           <h2>Schedule of Events</h2>
@@ -71,12 +77,14 @@
 </template>
 
 <script>
-import Hero from '@/components/Hero'
+import HeroImage from '@/components/HeroImage'
+import SignInButton from '@/components/SignInButton'
 import moment from 'moment'
 
 export default {
   components: {
-    Hero,
+    HeroImage,
+    SignInButton,
   },
   async asyncData({ $content, params }) {
     const page = await $content('events', params.event).fetch()
@@ -91,6 +99,7 @@ export default {
       const dateString = 'MMM Do, YYYY' + (includeTime ? ' HH:mma' : '')
       return moment(date).format(dateString)
     },
+    signUp() {},
   },
   head() {
     return {

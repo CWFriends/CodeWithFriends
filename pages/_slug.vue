@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Hero :page="page"></Hero>
+    <HeroImage :page="page"></HeroImage>
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import Hero from '@/components/Hero'
+import HeroImage from '@/components/HeroImage'
 
 export default {
   components: {
-    Hero,
+    HeroImage,
   },
   async asyncData({ $content, params }) {
     const page = await $content('static-page', params.slug).fetch()

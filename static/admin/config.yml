@@ -65,7 +65,6 @@ collections:
       - { label: Description, name: description, widget: string, required: false }
       - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
       - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
-      - {label: "Disable Page Generation", name: "disable-page-generation", widget: boolean, default: false, hint: 'Prevents the page from being generated in the routes.', required: false}
       - { label: Body, name: body, widget: markdown, required: true }
       - label: 'Collapsible Content'
         name: 'collapsible-content'

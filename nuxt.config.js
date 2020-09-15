@@ -21,8 +21,8 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     link: [
-      { rel: 'icon', href: '/icon.png' },
-      { rel: 'mask-icon', href: '/icon.png', color: '#082437' },
+      { rel: 'icon', href: '/ico.png' },
+      { rel: 'mask-icon', href: '/ico.png', color: '#082437' },
     ],
   },
   /*
@@ -78,6 +78,21 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+  },
+
+  pwa: {
+    meta: {
+      theme_color: '#082437',
+    },
+    manifest: {
+      name: 'Code with Friends',
+      short_name: 'CWF',
+      background_color: '#082437',
+      theme_color: '#082437',
+    },
+    icon: {
+      fileName: 'ico.png',
+    },
   },
   /*
    ** Build configuration

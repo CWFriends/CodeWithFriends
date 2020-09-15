@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Hero :page="{ title }"></Hero>
+    <HeroImage :page="{ title }"></HeroImage>
     <v-container>
       <v-row align="stretch">
         <v-col
@@ -62,12 +62,12 @@
 </template>
 
 <script>
-import Hero from '@/components/Hero'
+import HeroImage from '@/components/HeroImage'
 import moment from 'moment'
 
 export default {
   components: {
-    Hero,
+    HeroImage,
   },
   async asyncData({ $content, params }) {
     const events = await $content('events').sortBy('start-date', 'desc').fetch()
