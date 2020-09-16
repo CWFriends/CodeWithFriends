@@ -1,14 +1,17 @@
 <template>
-  <v-btn dark @click="signIn">
+  <v-btn dark @click="signIn" :loading="user.loading">
     <v-icon left>mdi-github</v-icon> Sign in with Github
   </v-btn>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'SignInButton',
+  computed: {
+    ...mapState(['user']),
+  },
   methods: {
     ...mapActions({
       logIn: 'logIn',

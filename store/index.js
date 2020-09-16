@@ -1,6 +1,7 @@
 export const state = () => ({
   url: 'https://codewithfriends.io/',
   user: {
+    loading: true,
     loggedIn: false,
     data: null,
   },
@@ -8,6 +9,8 @@ export const state = () => ({
   defaults: {},
   socialMedia: [],
   events: [],
+  userList: [],
+  signups: [],
 })
 
 export const mutations = {
@@ -31,15 +34,28 @@ export const mutations = {
   setEvents(state, events) {
     state.events = events
   },
+  setUserList(state, list) {
+    state.userList = list
+  },
+  stopUserLoading(state) {
+    state.user.loading = false
+  },
+  setSignups(state, list) {
+    state.signups = list
+  },
 }
 
 export const actions = {
+  stopUserLoading({ commit }) {
+    commit('stopUserLoading')
+  },
   async getUserData({ commit, dispatch }, user) {
     const userData = await this.$fireStore
       .collection('users')
       .doc(user.uid)
       .get()
-    commit('setUser', userData.data())
+    commit('setUser', { uid: user.uid, ...userData.data() })
+    dispatch('getUsers')
   },
   async nuxtServerInit({ commit }, { $content }) {
     // Fetch the header and footer menus
@@ -75,6 +91,15 @@ export const actions = {
     const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
   },
+  async getUsers({ commit }) {
+    const userList = []
+    const users = await this.$fireStore.collection('users').get()
+
+    users.forEach((doc) => {
+      userList.push({ ...doc.data(), uid: doc.id })
+    })
+    commit('setUserList', userList)
+  },
   logIn({ commit, dispatch }, { user, token }) {
     this.$axios
       .get('https://api.github.com/user', {
@@ -83,7 +108,9 @@ export const actions = {
         },
       })
       .then((res) => {
-        commit('setUser', res.data)
+        commit('setUser', { uid: user.uid, ...res.data })
+        dispatch('getUsers')
+
         this.$fireStore
           .collection('users')
           .doc(user.uid)
@@ -95,5 +122,23 @@ export const actions = {
   },
   logOut({ commit }) {
     this.$fireAuth.signOut().then(() => commit('removeUser'))
+  },
+  async submitForm({ state }, data) {
+    const signupInfo = {
+      ...data,
+      user: state.user.data.uid,
+    }
+
+    return await this.$fireStore.collection('signups').add(signupInfo)
+  },
+  getSignups({ commit }) {
+    this.$fireStore.collection('signups').onSnapshot((docSnapshot) => {
+      const signupList = []
+
+      docSnapshot.forEach((doc) => {
+        signupList.push({ ...doc.data(), uid: doc.id })
+      })
+      commit('setSignups', signupList)
+    })
   },
 }

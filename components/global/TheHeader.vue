@@ -96,6 +96,7 @@
 
           <v-list-item-content>
             <v-list-item-title>{{ user.data.name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ user.data.email }}</v-list-item-subtitle>
           </v-list-item-content>
           <v-list-item-action>
             <v-btn icon @click="logOut">
@@ -183,15 +184,16 @@ export default {
   },
   mounted() {
     this.$fireAuth.onAuthStateChanged((user) => {
-      if (!user) return
+      if (!user) {
+        this.stopUserLoading()
+        return
+      }
       this.getUserData(user)
+      this.getSignups()
     })
   },
   methods: {
-    ...mapActions({
-      getUserData: 'getUserData',
-      logOut: 'logOut',
-    }),
+    ...mapActions(['logOut', 'getUserData', 'stopUserLoading', 'getSignups']),
   },
 }
 </script>

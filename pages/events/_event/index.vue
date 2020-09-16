@@ -6,19 +6,52 @@
       :end-date="page['end-date']"
     >
       <v-btn
-        v-if="$store.state.user.loggedIn"
+        v-if="
+          user.loggedIn &&
+          new Date(page['end-date']) > Date.now() &&
+          !eventSignups.some((entry) => entry.user === user.data.uid)
+        "
         color="primary"
         x-large
-        @click="signUp"
+        @click="signUpModal = true"
       >
         Sign Up <v-icon right>mdi-send</v-icon>
       </v-btn>
 
-      <SignInButton v-else></SignInButton>
+      <v-btn
+        v-if="eventSignups.some((entry) => entry.user === user.data.uid)"
+        dark
+        disabled
+      >
+        Submit a Project
+      </v-btn>
+
+      <SignInButton v-if="!user.loggedIn"></SignInButton>
     </HeroImage>
+    <AppOverlay :overlay="signUpModal" @close="signUpModal = false">
+      <TheSignUpForm
+        :page="page"
+        @close="signUpModal = false"
+        @signed-up="signUpAlert = true"
+      ></TheSignUpForm>
+    </AppOverlay>
     <v-container>
       <v-row>
         <v-col sm="8" cols="12">
+          <v-alert
+            v-model="signUpAlert"
+            border="left"
+            close-text="Close Alert"
+            color="green"
+            dark
+            dismissible
+            icon="mdi-check"
+          >
+            Thank you for signing up! Be sure to join our
+            <a :href="discordUrl" target="_blank">Discord channel</a> to stay
+            connected with the community, and you will receive a notification
+            from us if you opted into a check-in group.
+          </v-alert>
           <nuxt-content :document="page"></nuxt-content>
           <v-divider class="my-6"></v-divider>
           <h2>Schedule of Events</h2>
@@ -64,7 +97,9 @@
             </nuxt-link>
           </div>
           <h2>Participants</h2>
-          <p>No participants yet!</p>
+          <li v-for="(participant, i) in eventSignups" :key="i">
+            {{ participant.name }}
+          </li>
           <div class="text-center">
             <v-btn text small>
               Show more <v-icon right>mdi-chevron-down</v-icon>
@@ -79,18 +114,36 @@
 <script>
 import HeroImage from '@/components/HeroImage'
 import SignInButton from '@/components/SignInButton'
+import AppOverlay from '@/components/AppOverlay'
+import TheSignUpForm from '@/components/TheSignUpForm'
 import moment from 'moment'
+import { mapState } from 'vuex'
 
 export default {
   components: {
+    AppOverlay,
     HeroImage,
     SignInButton,
+    TheSignUpForm,
   },
   async asyncData({ $content, params }) {
     const page = await $content('events', params.event).fetch()
     return {
       page,
     }
+  },
+  data: () => ({
+    signUpModal: false,
+    signUpAlert: false,
+  }),
+  computed: {
+    ...mapState(['signups', 'socialMedia', 'user']),
+    discordUrl() {
+      return this.socialMedia.find((item) => item.name === 'Discord').url
+    },
+    eventSignups() {
+      return this.signups.filter((signup) => signup.event === this.page.slug)
+    },
   },
   methods: {
     getDate(date) {
@@ -99,7 +152,6 @@ export default {
       const dateString = 'MMM Do, YYYY' + (includeTime ? ' HH:mma' : '')
       return moment(date).format(dateString)
     },
-    signUp() {},
   },
   head() {
     return {

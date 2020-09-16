@@ -30,6 +30,8 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
+    "languages-list": "^1.0.2",
+    "prettier": "^2.0.5",
+    "timezones.json": "^1.5.2"
   }
 }
