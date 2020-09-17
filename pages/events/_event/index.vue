@@ -19,7 +19,10 @@
       </v-btn>
 
       <v-btn
-        v-if="eventSignups.some((entry) => entry.user === user.data.uid)"
+        v-if="
+          user.loggedIn &&
+          eventSignups.some((entry) => entry.user === user.data.uid)
+        "
         dark
         disabled
       >
