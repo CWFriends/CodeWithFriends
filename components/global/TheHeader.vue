@@ -123,7 +123,7 @@
             <v-list-item-title>News</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="events">
+          <v-list-item to="/events">
             <v-list-item-title>Events</v-list-item-title>
           </v-list-item>
 

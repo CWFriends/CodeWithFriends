@@ -26,27 +26,27 @@
         </v-list-item>
         <v-divider></v-divider>
         <v-text-field
+          v-model="discordUsername"
           label="Discord Username"
           prepend-icon="mdi-discord"
-          v-model="discordUsername"
           persistent-hint
           :hint="`Be sure to join our Discord server to stay in touch with the community: ${discordUrl}`"
           class="mb-2"
           :rules="notEmpty"
         ></v-text-field>
         <v-text-field
+          v-if="!user.data.email"
+          v-model="email"
           label="Email"
           prepend-icon="mdi-email"
-          v-model="email"
           :rules="[...emailRules, ...notEmpty]"
           class="mb-2"
-          v-if="!user.data.email"
         ></v-text-field>
         <v-textarea
+          v-model="projectIdea"
           outlined
           name="projectIdea"
           label="Tell us about your project idea!"
-          v-model="projectIdea"
           :rules="notEmpty"
         ></v-textarea>
         <v-combobox
@@ -83,22 +83,22 @@
           :rules="notEmpty"
         ></v-select>
         <v-autocomplete
+          v-model="timezone"
           :items="timezones"
           item-text="text"
           item-value="text"
           label="Timezone"
-          v-model="timezone"
           auto-select-first
           prepend-icon="mdi-clock"
           :rules="notEmpty"
         ></v-autocomplete>
         <v-autocomplete
+          v-model="preferredLanguages"
           :items="languages"
           label="Preferred Language(s)"
           multiple
           small-chips
           deletable-chips
-          v-model="preferredLanguages"
           auto-select-first
           prepend-icon="mdi-translate"
           :rules="notEmpty"
@@ -139,10 +139,8 @@
               <img :src="data.item.avatar_url" />
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title v-html="data.item.name"></v-list-item-title>
-              <v-list-item-subtitle
-                v-html="data.item.email"
-              ></v-list-item-subtitle>
+              <v-list-item-title>{{ data.item.name }}</v-list-item-title>
+              <v-list-item-subtitle>{{ data.item.email }}</v-list-item-subtitle>
             </v-list-item-content>
           </template>
         </v-autocomplete>
@@ -150,8 +148,8 @@
           <v-btn
             color="primary"
             :disabled="!signUpValid"
-            @click="signUp"
             :loading="submittingForm"
+            @click="signUp"
           >
             Sign Up!
             <v-icon right>mdi-send</v-icon>

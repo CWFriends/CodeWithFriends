@@ -5,6 +5,6 @@ description: Learn new things! Make cool stuff! Have fun! Do all that, with an
 logo: /img/badge.png
 image: /img/frame-5.png
 masthead-size: Tiled
-meta-image: /img/frame-1.png
+meta-image: /img/frame-2.png
 home-page: code-with-friends
 ---

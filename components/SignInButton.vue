@@ -1,5 +1,5 @@
 <template>
-  <v-btn dark @click="signIn" :loading="user.loading">
+  <v-btn dark :loading="user.loading" @click="signIn">
     <v-icon left>mdi-github</v-icon> Sign in with Github
   </v-btn>
 </template>
