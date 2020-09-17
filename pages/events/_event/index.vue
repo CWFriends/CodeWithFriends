@@ -55,6 +55,7 @@
             connected with the community, and you will receive a notification
             from us if you opted into a check-in group.
           </v-alert>
+
           <nuxt-content :document="page"></nuxt-content>
           <v-divider class="my-6"></v-divider>
           <h2>Schedule of Events</h2>
@@ -186,7 +187,8 @@ export default {
           name: 'image',
           content: (
             this.$store.state.url +
-            (this.page['meta-img'] || this.$store.state.defaults['meta-image'])
+            (this.page['meta-image'] ||
+              this.$store.state.defaults['meta-image'])
           ).replace('//img', '/img'),
         },
         {

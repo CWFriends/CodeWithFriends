@@ -54,7 +54,8 @@ export default {
           name: 'image',
           content: (
             this.$store.state.url +
-            (this.page['meta-img'] || this.$store.state.defaults['meta-image'])
+            (this.page['meta-image'] ||
+              this.$store.state.defaults['meta-image'])
           ).replace('//img', '/img'),
         },
         {
