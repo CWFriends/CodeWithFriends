@@ -54,7 +54,6 @@
         <v-textarea
           v-model="projectIdea"
           outlined
-          name="projectIdea"
           label="Tell us about your project idea!"
           :rules="notEmpty"
         ></v-textarea>
@@ -142,14 +141,15 @@
             >
               <v-avatar left>
                 <img v-if="data.item.avatar_url" :src="data.item.avatar_url" />
-                <v-icon large v-else>mdi-account-circle</v-icon>
+                <v-icon -xlarge v-else>mdi-account-circle</v-icon>
               </v-avatar>
               {{ data.item.name }}
             </v-chip>
           </template>
           <template v-slot:item="data">
             <v-list-item-avatar>
-              <img :src="data.item.avatar_url" />
+              <img v-if="data.item.avatar_url" :src="data.item.avatar_url" />
+              <v-icon x-large v-else>mdi-account-circle</v-icon>
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>{{ data.item.name }}</v-list-item-title>
@@ -158,12 +158,7 @@
           </template>
         </v-autocomplete>
         <div class="text-right">
-          <v-btn
-            color="primary"
-            :disabled="!signUpValid"
-            :loading="submittingForm"
-            @click="signUp"
-          >
+          <v-btn color="primary" :loading="submittingForm" @click="signUp">
             Sign Up!
             <v-icon right>mdi-send</v-icon>
           </v-btn>
@@ -243,7 +238,7 @@ export default {
   computed: {
     ...mapState(['user', 'userList', 'socialMedia']),
     discordUrl() {
-      return this.socialMedia.find((item) => item.name === 'Discord').url
+      return this.socialMedia.find(({ name }) => name === 'Discord').url
     },
     filteredUserList() {
       return this.userList.filter(
@@ -252,7 +247,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['logOut', 'submitForm']),
+    ...mapActions(['logOut', 'submitSignup']),
     removeUser(item) {
       const index = this.groupMembers.indexOf(item.uid)
       if (index >= 0) this.groupMembers.splice(index, 1)
@@ -274,7 +269,7 @@ export default {
         preferredGroup: this.groupMembers,
       }
 
-      this.submitForm(data).then(() => {
+      this.submitSignup(data).then(() => {
         this.submittingForm = false
         this.$emit('close')
         this.$emit('signed-up')

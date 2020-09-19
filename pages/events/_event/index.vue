@@ -5,29 +5,20 @@
       :date="page['start-date']"
       :end-date="page['end-date']"
     >
-      <v-btn
-        v-if="
-          user.loggedIn &&
-          new Date(page['end-date']) > Date.now() &&
-          !eventSignups.some((entry) => entry.user === user.data.uid)
-        "
-        color="primary"
-        x-large
-        @click="signUpModal = true"
-      >
-        Sign Up <v-icon right>mdi-send</v-icon>
-      </v-btn>
+      <div v-if="user.loggedIn && new Date(page['end-date']) > Date.now()">
+        <v-btn
+          v-if="!signedUp"
+          color="primary"
+          x-large
+          @click="signUpModal = true"
+        >
+          Sign Up <v-icon right>mdi-send</v-icon>
+        </v-btn>
 
-      <v-btn
-        v-if="
-          user.loggedIn &&
-          eventSignups.some((entry) => entry.user === user.data.uid)
-        "
-        dark
-        disabled
-      >
-        Submit a Project
-      </v-btn>
+        <v-btn v-if="signedUp" @click="submissionModal = true" dark x-large>
+          Submit a Project
+        </v-btn>
+      </div>
 
       <SignInButton v-if="!user.loggedIn"></SignInButton>
     </HeroImage>
@@ -38,6 +29,14 @@
         @signed-up="signUpAlert = true"
       ></TheSignUpForm>
     </AppOverlay>
+
+    <AppOverlay :overlay="submissionModal" @close="submissionModal = false">
+      <TheSubmissionForm
+        :page="page"
+        @close="submissionModal = false"
+        @submitted="submissionAlert = true"
+      ></TheSubmissionForm>
+    </AppOverlay>
     <v-container>
       <v-row>
         <v-col md="7" cols="12">
@@ -45,7 +44,7 @@
             v-model="signUpAlert"
             border="left"
             close-text="Close Alert"
-            color="green"
+            color="light-green"
             dark
             dismissible
             icon="mdi-check"
@@ -54,6 +53,22 @@
             <a :href="discordUrl" target="_blank">Discord channel</a> to stay
             connected with the community, and you will receive a notification
             from us if you opted into a check-in group.
+          </v-alert>
+
+          <v-alert
+            v-model="submissionAlert"
+            border="left"
+            close-text="Close Alert"
+            color="light-green"
+            dark
+            dismissible
+            icon="mdi-check"
+          >
+            Thank you for submitting your project and participating in Code with
+            Friends! You can find a list of all the submissions on the
+            <nuxt-link :to="page.path + '/submissions'"
+              >submissions page</nuxt-link
+            >.
           </v-alert>
 
           <nuxt-content :document="page"></nuxt-content>
@@ -106,6 +121,7 @@
               View All Submissions <v-icon right>mdi-chevron-right</v-icon>
             </v-btn>
           </div>
+          <v-divider class="my-6"></v-divider>
           <h2 class="text-md-h4 text-h5 mb-4">
             Participants ({{
               new Intl.NumberFormat('en-US', {
@@ -131,7 +147,8 @@
 import HeroImage from '@/components/HeroImage'
 import SignInButton from '@/components/SignInButton'
 import AppOverlay from '@/components/AppOverlay'
-import TheSignUpForm from '@/components/TheSignUpForm'
+import TheSignUpForm from '@/components/forms/TheSignUpForm'
+import TheSubmissionForm from '@/components/forms/TheSubmissionForm'
 import UserAvatar from '@/components/UserAvatar'
 import { mapState } from 'vuex'
 
@@ -141,6 +158,7 @@ export default {
     HeroImage,
     SignInButton,
     TheSignUpForm,
+    TheSubmissionForm,
     UserAvatar,
   },
   async asyncData({ $content, params }) {
@@ -152,6 +170,8 @@ export default {
   data: () => ({
     signUpModal: false,
     signUpAlert: false,
+    submissionModal: false,
+    submissionAlert: false,
   }),
   computed: {
     ...mapState(['signups', 'socialMedia', 'user', 'userList']),
@@ -160,6 +180,11 @@ export default {
     },
     eventSignups() {
       return this.signups.filter((signup) => signup.event === this.page.slug)
+    },
+    signedUp() {
+      return this.eventSignups.some(
+        (entry) => entry.user === this.user.data.uid
+      )
     },
   },
   methods: {

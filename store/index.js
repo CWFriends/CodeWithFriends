@@ -4,6 +4,7 @@ export const state = () => ({
     loading: true,
     loggedIn: false,
     data: null,
+    repos: [],
   },
   menus: {},
   defaults: {},
@@ -43,19 +44,12 @@ export const mutations = {
   setSignups(state, list) {
     state.signups = list
   },
+  setRepos(state, repos) {
+    state.user.repos = repos
+  },
 }
 
 export const actions = {
-  stopUserLoading({ commit }) {
-    commit('stopUserLoading')
-  },
-  async getUserData({ commit, dispatch }, user) {
-    const userData = await this.$fireStore
-      .collection('users')
-      .doc(user.uid)
-      .get()
-    commit('setUser', { uid: user.uid, ...userData.data() })
-  },
   async nuxtServerInit({ commit, dispatch }, { $content }) {
     // Fetch the header and footer menus
     const menus = await $content('settings', 'menus').fetch()
@@ -90,6 +84,17 @@ export const actions = {
     const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
   },
+  async getUserData({ commit, dispatch }, user) {
+    const userData = await this.$fireStore
+      .collection('users')
+      .doc(user.uid)
+      .get()
+    commit('setUser', { uid: user.uid, ...userData.data() })
+    dispatch('getRepos')
+  },
+  stopUserLoading({ commit }) {
+    commit('stopUserLoading')
+  },
   logIn({ commit, dispatch }, { user, token }) {
     this.$axios
       .get('https://api.github.com/user', {
@@ -99,6 +104,7 @@ export const actions = {
       })
       .then((res) => {
         commit('setUser', { uid: user.uid, ...res.data })
+        dispatch('getRepos')
 
         this.$fireStore
           .collection('users')
@@ -112,13 +118,21 @@ export const actions = {
   logOut({ commit }) {
     this.$fireAuth.signOut().then(() => commit('removeUser'))
   },
-  async submitForm({ state }, data) {
+  async submitSignup({ state }, data) {
     const signupInfo = {
       ...data,
       user: state.user.data.uid,
     }
 
     return await this.$fireStore.collection('signups').add(signupInfo)
+  },
+  async submitProject({ state }, data) {
+    return await this.$fireStore.collection('submissions').add(data)
+  },
+  getRepos({ state, commit }) {
+    this.$axios.get(state.user.data.repos_url).then((res) => {
+      commit('setRepos', res.data)
+    })
   },
   getUsers({ commit }) {
     this.$fireStore.collection('users').onSnapshot((docSnapshot) => {
