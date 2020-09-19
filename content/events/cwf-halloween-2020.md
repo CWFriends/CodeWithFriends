@@ -1,6 +1,6 @@
 ---
-title: "CWF: Halloween 2020"
-icon: mdi-halloween
+title: "CWF: Fall 2020"
+icon: ""
 masthead-size: Cover
 meta-image: img/cwf-halloween.png
 start-date: 2020-10-01T07:00:00.000Z
@@ -9,16 +9,20 @@ schedule:
   - start-date: 2020-09-22T07:00:00.000Z
     end-date: 2020-09-22T07:00:00.000Z
     title: Signups OPEN
-  - start-date: 2020-09-22T07:00:00.000Z
-    end-date: 2020-09-22T07:00:00.000Z
+  - start-date: 2020-09-22T15:30:00.000Z
+    end-date: 2020-09-22T16:30:00.000Z
     title: Orientation Stream
     url: https://www.twitch.tv/hellomayuko
   - start-date: 2020-09-29T07:00:00.000Z
     end-date: 2020-09-29T07:00:00.000Z
     title: Signups Due
-  - start-date: 2020-10-01T07:00:00.000Z
-    end-date: 2020-10-01T07:00:00.000Z
+  - start-date: 2020-10-01T15:30:00.000Z
+    end-date: 2020-10-01T16:30:00.000Z
     title: Opening Ceremony
+  - start-date: 2020-10-02T20:00:00.000Z
+    end-date: 2020-10-03T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-30T07:00:00.000Z
     end-date: 2020-10-30T07:00:00.000Z
     title: Project Submissions Due
@@ -26,26 +30,30 @@ schedule:
     end-date: 2020-10-31T07:00:00.000Z
     title: Closing Ceremony
 ---
-CWF 1.0 in May of 2020 was the first of its kind. It was a smaller scale event, that established the foundation of a chill, non-competitive a coding event. The premise of the event was to create a month-long coding event where folks could support each other in working on their personal projects.
+We're back in October for Code With Friends, which'll start on Thursday, October 1st to Saturday, October 31st.
 
-The theme was quarantine, however anyone could work on anything, using anything they’d like. The projects didn’t need to be finished because the spirit of the event was to learn new things rather than create a polished and finished product.
+Similar to the first CWF, this one is also whatever you want it to be. The event is a great way to start a brand new project or make meaningful progress on an existing one. While providing a non-competitive, supportive, and chilled environment for people to work on their projects, we want to provide some additional support around working on personal projects.
 
-In CWF 2.0, we want to build upon this foundation. While providing a non-competitive, supportive, and chilled environment for people to work on their projects, we want to provide some additional support around working on personal projects.
+We'll have a few things in place to help you work on your project:
 
-Namely, we’ll be adding a few enhancements:
+### Discord
 
-* Idea Kits
-* Check-in Groups
-* Office Hours
+Discord will be where our CWF community lives. All participants are encouraged to join our server as this is where live announcements, check-ins, and office hours will happen. Drop a line in #general-chat and say hello!
 
-#### Idea Kits
+### Twitch Streams
 
-While participants can still work on whatever they’d like to, this time we’ll provide 10 kits: ready-made project ideas and technologies that people can choose to work on if they don’t already have an idea of their own.
+Similar to the first CWF, Mayuko will be hosting co-working streams twice a week on Twitch (see schedule below). Think of this as going to a library or study hall with your friends - we'll all be working on our own personal projects. There'll be lo-fi chillhop background music along with a pomodoro timer to help us focus.
 
-#### Check-In Groups
+### Idea Kits
 
-Instead of having one giant Discord channel for check-ins where status updates get lost and things get noisy, we’ll create groups of 4-6 people. The goal is to allow folks to create connections through the event, support each other, and hold each other accountable in a smaller group setting. We’ll try to group these folks based on their project, technology, and/or their locale. They’ll check in with each other every week on their project progress.
+You can work on whatever project you'd like to. But in case you're looking for a project idea, we have a list of project ideas you can choose from to spur some inspiration.
 
-#### Office Hours
+### Check-In Groups
 
-Last time, we again had one giant Discord channel for technical help. Because of the diversity in technologies and projects, we think it’ll be more valuable for folks to have separate channels to go to ask specific technical questions. We’ll have mentors in each channel who’ll be differentiated (maybe through a role) who can answer questions asynchronously as questions come in to the chat.
+Last time we had one giant Discord channel for project status check-ins. This time, you can opt into a check-in group: a small group of 4-5 people who'll check in with each other on project progress . The goal is create a chance for people to create connections through the event, support each other, and hold each other accountable in a smaller group setting. You're welcome to create a group with people you know through the signup form, or have us choose randomly based on your timezone. You'll check in with each other every week on your project progress.
+
+**Note: Sign up by September 29th to be assigned to a check-in group!**
+
+### Labs
+
+Last time, we had one giant Discord channel for technical help. Because of the diversity in technologies and projects, we'll have separate technology-specific channels on Discord to ask specific technical questions. We’ll have guides in each channel who can any questions you may have. Some guides will also have open Office Hours where they'll be online for 1-2 hours/week to answer any questions live.
