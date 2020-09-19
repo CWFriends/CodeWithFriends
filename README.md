@@ -27,8 +27,8 @@ Learn new things! Make cool stuff! Have fun! Do all that, with an online communi
 [This website](https://code-with-friends.netlify.app) is used to support seasonal coding events hosted by [Mayuko](https://www.hellomayuko.com/). Through the website, users can view and participate in the latest seasonal coding event, read news updates, submit projects, and learn more about Code with Friends and its previous events.
 
 ### Built With
-* [VueJS](https://vuejs.org/) for the frontend framework
 * [NuxtJS](https://nuxtjs.org/) for static site generation
+* [Vuetify](https://vuetifyjs.com/en/) for the frontend framework
 * [Netlify](https://www.netlify.com/) for static hosting
 * [Netlify CMS](https://www.netlifycms.org/) for Content Management
 * [Firebase Authentication](https://firebase.google.com/products/auth) for Github login and data retrieval
@@ -90,3 +90,5 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 * [Nuxt Content](https://content.nuxtjs.org/) for reading markdown files
 * [Nuxt Firebase](https://firebase.nuxtjs.org/) for easy Firebase integration
 * [Vuex](https://vuex.vuejs.org/) for state management
+* [lanuages-list](https://www.npmjs.com/package/languages-list) for all the language options
+* [timezones.json](https://www.npmjs.com/package/timezones.json) for the list of timezones
