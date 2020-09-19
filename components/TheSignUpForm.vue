@@ -8,7 +8,8 @@
       <v-form ref="form" v-model="signUpValid" lazy-validation>
         <v-list-item v-if="user.loggedIn">
           <v-list-item-avatar>
-            <img :src="user.data.avatar_url" />
+            <img v-if="user.data.avatar_url" :src="user.data.avatar_url" />
+            <v-icon large v-else>mdi-account-circle</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -26,13 +27,12 @@
         </v-list-item>
         <v-divider></v-divider>
         <v-text-field
-          v-model="discordUsername"
-          label="Discord Username"
-          prepend-icon="mdi-discord"
-          persistent-hint
-          :hint="`Be sure to join our Discord server to stay in touch with the community: ${discordUrl}`"
-          class="mb-2"
+          v-if="!user.data.name"
+          v-model="name"
+          label="Name"
+          prepend-icon="mdi-account"
           :rules="notEmpty"
+          class="mb-2"
         ></v-text-field>
         <v-text-field
           v-if="!user.data.email"
@@ -42,6 +42,15 @@
           :rules="[...emailRules, ...notEmpty]"
           class="mb-2"
         ></v-text-field>
+        <v-text-field
+          v-model="discordUsername"
+          label="Discord Username"
+          prepend-icon="mdi-discord"
+          persistent-hint
+          :hint="`Be sure to join our Discord server to stay in touch with the community: ${discordUrl}`"
+          class="mb-2"
+          :rules="notEmpty"
+        ></v-text-field>
         <v-textarea
           v-model="projectIdea"
           outlined
@@ -49,6 +58,7 @@
           label="Tell us about your project idea!"
           :rules="notEmpty"
         ></v-textarea>
+
         <v-combobox
           v-model="technologies"
           :items="technologyOptions"
@@ -106,6 +116,8 @@
         <v-checkbox
           v-model="checkinGroup"
           label="Please add me to a check-in group."
+          hint="Checkin groups are used for keeping each other accountable during the month. To learn more, visit the FAQ page: https://codewithfriends.io/faq"
+          persistent-hint
         ></v-checkbox>
         <v-autocomplete
           v-if="checkinGroup"
@@ -129,7 +141,8 @@
               @click:close="removeUser(data.item)"
             >
               <v-avatar left>
-                <v-img :src="data.item.avatar_url"></v-img>
+                <img v-if="data.item.avatar_url" :src="data.item.avatar_url" />
+                <v-icon large v-else>mdi-account-circle</v-icon>
               </v-avatar>
               {{ data.item.name }}
             </v-chip>
@@ -178,6 +191,7 @@ export default {
     },
   },
   data: () => ({
+    name: '',
     email: '',
     timezones,
     timezone: '',
@@ -232,7 +246,9 @@ export default {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
     filteredUserList() {
-      return this.userList.filter((user) => user.uid !== this.user.data.uid)
+      return this.userList.filter(
+        (user) => user.uid !== this.user.data.uid && user.name
+      )
     },
   },
   methods: {
@@ -246,7 +262,7 @@ export default {
       this.submittingForm = true
       const data = {
         event: this.page.slug,
-        name: this.user.data.name,
+        name: this.user.data.name || this.name,
         email: this.user.data.email || this.email,
         discord: this.discordUsername,
         description: this.projectIdea,

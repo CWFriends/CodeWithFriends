@@ -8,14 +8,15 @@
       </nuxt-link>
       <v-spacer />
       <div class="d-none d-md-block">
-        <nuxt-link
+        <v-btn
           v-for="(page, i) in menus.header"
           :key="i"
+          color="primary"
+          text
           :to="'/' + page.slug"
           class="mx-2"
+          >{{ page.title }}</v-btn
         >
-          <v-btn color="primary" text>{{ page.title }}</v-btn>
-        </nuxt-link>
         <v-menu
           offset-y
           open-on-hover
@@ -41,28 +42,28 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <nuxt-link to="/news" class="mx-2">
-          <v-btn color="primary" text> News </v-btn>
-        </nuxt-link>
-        <nuxt-link to="/events" class="mx-2">
-          <v-btn color="primary" text> Events </v-btn>
-        </nuxt-link>
-        <nuxt-link v-if="openEvents.length > 0" :to="openEvents[0].path">
-          <v-btn color="primary" class="mx-2">
-            <v-icon
-              v-if="openEvents[0].icon"
-              left
-              v-text="openEvents[0].icon"
-            ></v-icon>
-            {{ openEvents[0].title }}
-          </v-btn>
-        </nuxt-link>
+        <v-btn color="primary" text to="/news" class="mx-2"> News </v-btn>
+        <v-btn color="primary" text to="/events" class="mx-2"> Events </v-btn>
+
+        <v-btn
+          v-if="openEvents.length > 0"
+          :to="openEvents[0].path"
+          color="primary"
+          class="mx-2"
+        >
+          <v-icon
+            v-if="openEvents[0].icon"
+            left
+            v-text="openEvents[0].icon"
+          ></v-icon>
+          {{ openEvents[0].title }}
+        </v-btn>
       </div>
       <v-menu offset-y transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
           <div v-bind="attrs" class="ml-4 d-none d-md-block" v-on="on">
-            <v-btn v-if="!user.data" icon>
-              <v-icon>mdi-account-circle</v-icon>
+            <v-btn v-if="!user.data || !user.data.avatar_url" icon c>
+              <v-icon x-large>mdi-account-circle</v-icon>
             </v-btn>
             <v-avatar v-else>
               <img :src="user.data.avatar_url" />
@@ -91,7 +92,8 @@
         </v-list-item>
         <v-list-item v-else>
           <v-list-item-avatar>
-            <img :src="user.data.avatar_url" />
+            <img v-if="user.data.avatar_url" :src="user.data.avatar_url" />
+            <v-icon x-large v-else>mdi-account-circle</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -183,17 +185,24 @@ export default {
     },
   },
   mounted() {
+    this.getUsers()
+    this.getSignups()
     this.$fireAuth.onAuthStateChanged((user) => {
       if (!user) {
         this.stopUserLoading()
         return
       }
       this.getUserData(user)
-      this.getSignups()
     })
   },
   methods: {
-    ...mapActions(['logOut', 'getUserData', 'stopUserLoading', 'getSignups']),
+    ...mapActions([
+      'logOut',
+      'getUserData',
+      'stopUserLoading',
+      'getUsers',
+      'getSignups',
+    ]),
   },
 }
 </script>

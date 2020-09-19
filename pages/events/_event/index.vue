@@ -40,7 +40,7 @@
     </AppOverlay>
     <v-container>
       <v-row>
-        <v-col sm="8" cols="12">
+        <v-col md="7" cols="12">
           <v-alert
             v-model="signUpAlert"
             border="left"
@@ -57,57 +57,69 @@
           </v-alert>
 
           <nuxt-content :document="page"></nuxt-content>
-          <v-divider class="my-6"></v-divider>
-          <h2>Schedule of Events</h2>
+        </v-col>
+        <v-col md="5" cols="12">
+          <h2 class="text-md-h4 text-h5">Schedule of Events</h2>
           <v-simple-table>
             <template v-slot:default>
               <thead>
                 <tr>
                   <th>Event</th>
-                  <th>Date</th>
+                  <th style="min-width: 200px">Date</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="item in page.schedule" :key="item.title">
                   <td>
                     <strong>
-                      {{ item.title }}
-                      <a v-if="item.url" :href="item.url" target="_blank">
-                        <v-icon>mdi-open-in-new</v-icon>
-                      </a>
+                      <template v-if="item.url">
+                        <a
+                          :href="item.url"
+                          target="_blank"
+                          style="text-decoration: none"
+                        >
+                          {{ item.title }}
+                          <v-icon small>mdi-open-in-new</v-icon>
+                        </a>
+                      </template>
+                      <template v-else>
+                        {{ item.title }}
+                      </template>
                     </strong>
                   </td>
                   <td>
-                    {{ getDate(item['start-date'])
-                    }}{{
-                      item['start-date'] === item['end-date']
-                        ? ''
-                        : ' - ' + getDate(item['end-date'])
-                    }}
+                    {{ getDate(item['start-date']) }}
+                    <template v-if="item['start-date'] !== item['end-date']">
+                      -<br />{{ getDate(item['end-date']) }}
+                    </template>
                   </td>
                 </tr>
               </tbody>
             </template>
           </v-simple-table>
-        </v-col>
-        <v-col sm="4" cols="12">
-          <h2>Latest Submissions</h2>
+          <v-divider class="my-6"></v-divider>
+          <h2 class="text-md-h4 text-h5 mb-4">Latest Submissions</h2>
+
           <p>No submissions yet!</p>
           <div class="text-right">
-            <nuxt-link :to="page.slug + '/submissions'">
-              <v-btn text>
-                View All Submissions <v-icon right>mdi-chevron-right</v-icon>
-              </v-btn>
-            </nuxt-link>
-          </div>
-          <h2>Participants</h2>
-          <li v-for="(participant, i) in eventSignups" :key="i">
-            {{ participant.name }}
-          </li>
-          <div class="text-center">
-            <v-btn text small>
-              Show more <v-icon right>mdi-chevron-down</v-icon>
+            <v-btn text :to="page.slug + '/submissions'">
+              View All Submissions <v-icon right>mdi-chevron-right</v-icon>
             </v-btn>
+          </div>
+          <h2 class="text-md-h4 text-h5 mb-4">
+            Participants ({{
+              new Intl.NumberFormat('en-US', {
+                maximumSignificantDigits: 3,
+              }).format(eventSignups.length)
+            }})
+          </h2>
+
+          <div class="avatar-list">
+            <UserAvatar
+              v-for="(participant, i) in eventSignups"
+              :key="i"
+              :user="userList.find((user) => user.uid === participant.user)"
+            ></UserAvatar>
           </div>
         </v-col>
       </v-row>
@@ -120,7 +132,7 @@ import HeroImage from '@/components/HeroImage'
 import SignInButton from '@/components/SignInButton'
 import AppOverlay from '@/components/AppOverlay'
 import TheSignUpForm from '@/components/TheSignUpForm'
-import moment from 'moment'
+import UserAvatar from '@/components/UserAvatar'
 import { mapState } from 'vuex'
 
 export default {
@@ -129,6 +141,7 @@ export default {
     HeroImage,
     SignInButton,
     TheSignUpForm,
+    UserAvatar,
   },
   async asyncData({ $content, params }) {
     const page = await $content('events', params.event).fetch()
@@ -141,7 +154,7 @@ export default {
     signUpAlert: false,
   }),
   computed: {
-    ...mapState(['signups', 'socialMedia', 'user']),
+    ...mapState(['signups', 'socialMedia', 'user', 'userList']),
     discordUrl() {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
@@ -151,10 +164,10 @@ export default {
   },
   methods: {
     getDate(date) {
-      const hours = moment(date).format('HH')
-      const includeTime = parseInt(hours) > 0
-      const dateString = 'MMM Do, YYYY' + (includeTime ? ' HH:mma' : '')
-      return moment(date).format(dateString)
+      return new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      }).format(new Date(date))
     },
   },
   head() {
@@ -208,3 +221,12 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.avatar-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 480px;
+  overflow-y: scroll;
+}
+</style>

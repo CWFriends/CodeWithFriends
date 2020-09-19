@@ -63,7 +63,6 @@
 
 <script>
 import HeroImage from '@/components/HeroImage'
-import moment from 'moment'
 
 export default {
   components: {
@@ -81,7 +80,9 @@ export default {
   }),
   methods: {
     getDate(date) {
-      return moment(date).format('MMM Do, YYYY')
+      return new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'long',
+      }).format(new Date(date))
     },
   },
   head() {

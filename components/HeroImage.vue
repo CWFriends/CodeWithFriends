@@ -1,24 +1,24 @@
 <template>
   <v-parallax dark :src="image" height="400">
     <v-row align="center" justify="center">
-      <v-col class="text-center" sm="9" md="6">
+      <v-col class="text-center" sm="10" md="8">
         <template v-if="eventItem.title">
-          <h4>Now open for signups!</h4>
-          <h1 class="display-3 font-weight-thin">{{ eventItem.title }}</h1>
-          <h2 class="my-4">
+          <div class="text-overline">Now open for signups!</div>
+          <h1 class="text-md-h1 text-h2">{{ eventItem.title }}</h1>
+          <div class="text-md-h5 mb-4 text-h6">
             {{ getDate(eventItem['start-date']) }} -
             {{ getDate(eventItem['end-date']) }}
-          </h2>
+          </div>
           <v-btn color="primary" :to="eventItem.path" large>
             Learn More <v-icon right>mdi-chevron-right</v-icon></v-btn
           >
         </template>
         <template v-else>
-          <h1 class="display-3 font-weight-thin">{{ page.title }}</h1>
-          <h2 v-if="page.description || date" class="my-4">
+          <h1 class="text-md-h1 text-h2">{{ page.title }}</h1>
+          <div v-if="page.description || date" class="text-md-h5 mb-4 text-h6">
             {{ date ? getDate(date) : page.description
             }}{{ endDate ? ' - ' + getDate(endDate) : '' }}
-          </h2>
+          </div>
         </template>
 
         <slot></slot>
@@ -27,8 +27,6 @@
   </v-parallax>
 </template>
 <script>
-import moment from 'moment'
-
 export default {
   name: 'Hero',
   props: {
@@ -60,7 +58,9 @@ export default {
   },
   methods: {
     getDate(date) {
-      return moment(date).format('MMMM Do, YYYY')
+      return new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'long',
+      }).format(new Date(date))
     },
   },
 }

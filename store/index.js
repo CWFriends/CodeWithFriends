@@ -55,9 +55,8 @@ export const actions = {
       .doc(user.uid)
       .get()
     commit('setUser', { uid: user.uid, ...userData.data() })
-    dispatch('getUsers')
   },
-  async nuxtServerInit({ commit }, { $content }) {
+  async nuxtServerInit({ commit, dispatch }, { $content }) {
     // Fetch the header and footer menus
     const menus = await $content('settings', 'menus').fetch()
 
@@ -91,15 +90,6 @@ export const actions = {
     const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
   },
-  async getUsers({ commit }) {
-    const userList = []
-    const users = await this.$fireStore.collection('users').get()
-
-    users.forEach((doc) => {
-      userList.push({ ...doc.data(), uid: doc.id })
-    })
-    commit('setUserList', userList)
-  },
   logIn({ commit, dispatch }, { user, token }) {
     this.$axios
       .get('https://api.github.com/user', {
@@ -109,7 +99,6 @@ export const actions = {
       })
       .then((res) => {
         commit('setUser', { uid: user.uid, ...res.data })
-        dispatch('getUsers')
 
         this.$fireStore
           .collection('users')
@@ -130,6 +119,16 @@ export const actions = {
     }
 
     return await this.$fireStore.collection('signups').add(signupInfo)
+  },
+  getUsers({ commit }) {
+    this.$fireStore.collection('users').onSnapshot((docSnapshot) => {
+      const userList = []
+
+      docSnapshot.forEach((doc) => {
+        userList.push({ ...doc.data(), uid: doc.id })
+      })
+      commit('setUserList', userList)
+    })
   },
   getSignups({ commit }) {
     this.$fireStore.collection('signups').onSnapshot((docSnapshot) => {

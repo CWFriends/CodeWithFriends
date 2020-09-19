@@ -6,11 +6,11 @@
     ></HeroImage>
     <v-container>
       <v-row>
-        <v-col sm="8" cols="12">
+        <v-col md="7" cols="12">
           <nuxt-content :document="page"></nuxt-content>
         </v-col>
-        <v-col sm="4" cols="12">
-          <h2>Recent News</h2>
+        <v-col md="5" cols="12">
+          <h2 class="text-md-h4 text-h5">Recent News</h2>
           <v-row>
             <v-col v-for="(item, index) in news" :key="index" cols="12">
               <NewsCard :news-item="item"></NewsCard>

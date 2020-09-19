@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import moment from 'moment'
-
 export default {
   props: {
     newsItem: {
@@ -24,7 +22,9 @@ export default {
   },
   methods: {
     getDate(date) {
-      return moment(date).format('MMMM Do, YYYY')
+      return new Intl.DateTimeFormat('en-US', {
+        dateStyle: 'long',
+      }).format(new Date(date))
     },
   },
 }

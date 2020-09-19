@@ -4,11 +4,14 @@
       light
       style="width: min(700px, 90vw); max-height: 90vh; overflow-y: scroll"
     >
-      <div class="text-right">
-        <v-btn color="red" icon @click="$emit('close')">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-      </div>
+      <v-btn
+        color="red"
+        icon
+        @click="$emit('close')"
+        style="position: absolute; top: 1rem; right: 1rem"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
       <slot></slot>
     </v-card>
   </v-overlay>
