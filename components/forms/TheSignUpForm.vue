@@ -9,7 +9,7 @@
         <v-list-item v-if="user.loggedIn">
           <v-list-item-avatar>
             <img v-if="user.data.avatar_url" :src="user.data.avatar_url" />
-            <v-icon large v-else>mdi-account-circle</v-icon>
+            <v-icon v-else large>mdi-account-circle</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -121,8 +121,12 @@
         <v-autocomplete
           v-if="checkinGroup"
           v-model="groupMembers"
-          :items="filteredUserList"
+          :items="groupSearchResults"
+          :loading="loadingGroupSearch"
+          :search-input.sync="groupSearch"
           chips
+          hide-no-data
+          hide-selected
           label="Preferred Check-in Team"
           item-text="name"
           item-value="uid"
@@ -130,6 +134,7 @@
           hint="Search for other members you are interested in forming a check-in group with. Users must have signed into the website at least once."
           persistent-hint
           auto-select-first
+          prepend-icon="mdi-account-group"
         >
           <template v-slot:selection="data">
             <v-chip
@@ -141,7 +146,7 @@
             >
               <v-avatar left>
                 <img v-if="data.item.avatar_url" :src="data.item.avatar_url" />
-                <v-icon -xlarge v-else>mdi-account-circle</v-icon>
+                <v-icon v-else -xlarge>mdi-account-circle</v-icon>
               </v-avatar>
               {{ data.item.name }}
             </v-chip>
@@ -149,7 +154,7 @@
           <template v-slot:item="data">
             <v-list-item-avatar>
               <img v-if="data.item.avatar_url" :src="data.item.avatar_url" />
-              <v-icon x-large v-else>mdi-account-circle</v-icon>
+              <v-icon v-else x-large>mdi-account-circle</v-icon>
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>{{ data.item.name }}</v-list-item-title>
@@ -157,6 +162,20 @@
             </v-list-item-content>
           </template>
         </v-autocomplete>
+        <v-checkbox v-model="codeOfConduct" :rules="agree">
+          <template v-slot:label>
+            <div>
+              I agree and will adhere to the
+              <a
+                target="_blank"
+                href="/code-of-conduct"
+                title="Code of Conduct"
+                @click="openLink($event.target)"
+                >Code of Conduct</a
+              >.
+            </div>
+          </template>
+        </v-checkbox>
         <div class="text-right">
           <v-btn color="primary" :loading="submittingForm" @click="signUp">
             Sign Up!
@@ -230,24 +249,55 @@ export default {
     ],
     proficiency: '',
     checkinGroup: false,
+    groupSearch: '',
+    groupSearchResults: [],
+    loadingGroupSearch: false,
     groupMembers: [],
     emailRules: [(v) => /.+@.+/.test(v) || 'E-mail must be valid'],
     notEmpty: [(v) => (!!v && v.length > 0) || 'Required Field'],
+    agree: [(v) => v || 'You must agree to the Code of Conduct to proceed.'],
     submittingForm: false,
+    codeOfConduct: false,
   }),
   computed: {
-    ...mapState(['user', 'userList', 'socialMedia']),
+    ...mapState(['user', 'socialMedia']),
     discordUrl() {
       return this.socialMedia.find(({ name }) => name === 'Discord').url
     },
-    filteredUserList() {
-      return this.userList.filter(
-        (user) => user.uid !== this.user.data.uid && user.name
+  },
+  watch: {
+    groupSearch() {
+      // @todo: find a way to perform a substring search on firestore data
+      if (
+        !this.groupSearch ||
+        this.groupSearch.length < 3 ||
+        this.groupSearchResults.length > 0
       )
+        return
+      this.loadingGroupSearch = true
+
+      this.$fireStore
+        .collection('users')
+        .where('name', '>', '')
+        .get()
+        .then((users) => {
+          const userList = []
+          users.forEach((doc) => {
+            userList.push({ ...doc.data(), uid: doc.id })
+          })
+          this.groupSearchResults = userList
+          this.loadingGroupSearch = false
+        })
     },
   },
   methods: {
-    ...mapActions(['logOut', 'submitSignup']),
+    ...mapActions({
+      logOut: 'user/logOut',
+      submitSignup: 'event/submitSignup',
+    }),
+    openLink(url) {
+      window.open(url)
+    },
     removeUser(item) {
       const index = this.groupMembers.indexOf(item.uid)
       if (index >= 0) this.groupMembers.splice(index, 1)

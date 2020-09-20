@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar fixed app elevate-on-scroll>
-      <nuxt-link to="/">
+      <nuxt-link to="/" :title="defaults.title">
         <v-avatar tile>
           <img :src="defaults.logo" style="object-fit: contain" />
         </v-avatar>
@@ -14,6 +14,7 @@
           color="primary"
           text
           :to="'/' + page.slug"
+          :title="page.title"
           class="mx-2"
           >{{ page.title }}</v-btn
         >
@@ -33,6 +34,7 @@
               v-for="(item, index) in socialMedia"
               :key="index"
               :href="item.url"
+              :title="item.name"
               target="_blank"
             >
               <v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -42,12 +44,17 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn color="primary" text to="/news" class="mx-2"> News </v-btn>
-        <v-btn color="primary" text to="/events" class="mx-2"> Events </v-btn>
+        <v-btn color="primary" text to="/news" title="News" class="mx-2">
+          News
+        </v-btn>
+        <v-btn color="primary" text to="/events" title="Events" class="mx-2">
+          Events
+        </v-btn>
 
         <v-btn
           v-if="openEvents.length > 0"
           :to="openEvents[0].path"
+          :title="openEvents[0].title"
           color="primary"
           class="mx-2"
         >
@@ -93,7 +100,7 @@
         <v-list-item v-else>
           <v-list-item-avatar>
             <img v-if="user.data.avatar_url" :src="user.data.avatar_url" />
-            <v-icon x-large v-else>mdi-account-circle</v-icon>
+            <v-icon v-else x-large>mdi-account-circle</v-icon>
           </v-list-item-avatar>
 
           <v-list-item-content>
@@ -117,19 +124,24 @@
             v-for="(page, i) in menus.header"
             :key="i"
             :to="'/' + page.slug"
+            :title="page.title"
           >
             <v-list-item-title>{{ page.title }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/news">
+          <v-list-item to="/news" title="News">
             <v-list-item-title>News</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/events">
+          <v-list-item to="/events" title="News">
             <v-list-item-title>Events</v-list-item-title>
           </v-list-item>
 
-          <v-list-item v-if="openEvents.length > 0" :to="openEvents[0].path">
+          <v-list-item
+            v-if="openEvents.length > 0"
+            :to="openEvents[0].path"
+            :title="openEvents[0].title"
+          >
             <v-btn color="primary" class="mx-auto">
               <v-icon
                 v-if="openEvents[0].icon"
@@ -147,6 +159,7 @@
             v-for="(item, index) in socialMedia"
             :key="index"
             :href="item.url"
+            :title="item.name"
             target="_blank"
             icon
           >
@@ -185,8 +198,6 @@ export default {
     },
   },
   mounted() {
-    this.getUsers()
-    this.getSignups()
     this.$fireAuth.onAuthStateChanged((user) => {
       if (!user) {
         this.stopUserLoading()
@@ -196,13 +207,11 @@ export default {
     })
   },
   methods: {
-    ...mapActions([
-      'logOut',
-      'getUserData',
-      'stopUserLoading',
-      'getUsers',
-      'getSignups',
-    ]),
+    ...mapActions({
+      logOut: 'user/logOut',
+      getUserData: 'user/getUserData',
+      stopUserLoading: 'user/stopUserLoading',
+    }),
   },
 }
 </script>

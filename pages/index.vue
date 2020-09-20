@@ -12,12 +12,12 @@
         <v-col md="5" cols="12">
           <h2 class="text-md-h4 text-h5">Recent News</h2>
           <v-row>
-            <v-col v-for="(item, index) in news" :key="index" cols="12">
+            <v-col v-for="(item, index) in news" :key="index">
               <NewsCard :news-item="item"></NewsCard>
             </v-col>
           </v-row>
           <div class="text-right">
-            <nuxt-link to="/news">
+            <nuxt-link to="/news" title="News">
               <v-btn text>
                 View all News <v-icon right>mdi-chevron-right</v-icon>
               </v-btn>

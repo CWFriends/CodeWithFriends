@@ -15,9 +15,26 @@
           Sign Up <v-icon right>mdi-send</v-icon>
         </v-btn>
 
-        <v-btn v-if="signedUp" @click="submissionModal = true" dark x-large>
+        <v-btn
+          v-if="signedUp && !submitted"
+          dark
+          x-large
+          :disabled="notStarted"
+          @click="submissionModal = true"
+        >
           Submit a Project
+          {{
+            notStarted
+              ? `(Closed until ${getDate(page['start-date'], 'short', false)})`
+              : ''
+          }}
         </v-btn>
+
+        <div>
+          <v-btn v-if="signedUp" dark x-large @click="submissionModal = true">
+            Test Project Submission
+          </v-btn>
+        </div>
       </div>
 
       <SignInButton v-if="!user.loggedIn"></SignInButton>
@@ -50,9 +67,11 @@
             icon="mdi-check"
           >
             Thank you for signing up! Be sure to join our
-            <a :href="discordUrl" target="_blank">Discord channel</a> to stay
-            connected with the community, and you will receive a notification
-            from us if you opted into a check-in group.
+            <a :href="discordUrl" target="_blank" title="Discord"
+              >Discord channel</a
+            >
+            to stay connected with the community, and you will receive a
+            notification from us if you opted into a check-in group.
           </v-alert>
 
           <v-alert
@@ -66,14 +85,15 @@
           >
             Thank you for submitting your project and participating in Code with
             Friends! You can find a list of all the submissions on the
-            <nuxt-link :to="page.path + '/submissions'"
+            <nuxt-link
+              :to="page.path + '/submissions'"
+              :title="page.title + ' Submissions'"
               >submissions page</nuxt-link
             >.
           </v-alert>
 
           <nuxt-content :document="page"></nuxt-content>
-        </v-col>
-        <v-col md="5" cols="12">
+          <v-divider class="my-6"></v-divider>
           <h2 class="text-md-h4 text-h5">Schedule of Events</h2>
           <v-simple-table>
             <template v-slot:default>
@@ -90,6 +110,7 @@
                       <template v-if="item.url">
                         <a
                           :href="item.url"
+                          :title="item.title"
                           target="_blank"
                           style="text-decoration: none"
                         >
@@ -112,30 +133,48 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-divider class="my-6"></v-divider>
-          <h2 class="text-md-h4 text-h5 mb-4">Latest Submissions</h2>
-
-          <p>No submissions yet!</p>
-          <div class="text-right">
-            <v-btn text :to="page.slug + '/submissions'">
-              View All Submissions <v-icon right>mdi-chevron-right</v-icon>
-            </v-btn>
-          </div>
-          <v-divider class="my-6"></v-divider>
+        </v-col>
+        <v-col md="5" cols="12">
           <h2 class="text-md-h4 text-h5 mb-4">
             Participants ({{
               new Intl.NumberFormat('en-US', {
                 maximumSignificantDigits: 3,
-              }).format(eventSignups.length)
+              }).format(event.users.length)
             }})
           </h2>
 
           <div class="avatar-list">
             <UserAvatar
-              v-for="(participant, i) in eventSignups"
+              v-for="(participant, i) in event.users"
               :key="i"
-              :user="userList.find((user) => user.uid === participant.user)"
+              :user="participant"
             ></UserAvatar>
+          </div>
+          <v-divider class="my-6"></v-divider>
+          <h2 class="text-md-h4 text-h5 mb-4">
+            Submissions ({{
+              new Intl.NumberFormat('en-US', {
+                maximumSignificantDigits: 3,
+              }).format(event.submissions.length)
+            }})
+          </h2>
+
+          <v-row>
+            <v-col
+              v-for="(project, index) in event.submissions.slice(0, 3)"
+              :key="index"
+            >
+              <SubmissionCard :project="project"></SubmissionCard>
+            </v-col>
+          </v-row>
+          <div class="text-right">
+            <v-btn
+              text
+              :to="page.slug + '/submissions'"
+              :title="page.title + ' Submissions'"
+            >
+              View All Submissions <v-icon right>mdi-chevron-right</v-icon>
+            </v-btn>
           </div>
         </v-col>
       </v-row>
@@ -149,6 +188,7 @@ import SignInButton from '@/components/SignInButton'
 import AppOverlay from '@/components/AppOverlay'
 import TheSignUpForm from '@/components/forms/TheSignUpForm'
 import TheSubmissionForm from '@/components/forms/TheSubmissionForm'
+import SubmissionCard from '@/components/SubmissionCard'
 import UserAvatar from '@/components/UserAvatar'
 import { mapState } from 'vuex'
 
@@ -160,6 +200,7 @@ export default {
     TheSignUpForm,
     TheSubmissionForm,
     UserAvatar,
+    SubmissionCard,
   },
   async asyncData({ $content, params }) {
     const page = await $content('events', params.event).fetch()
@@ -174,24 +215,30 @@ export default {
     submissionAlert: false,
   }),
   computed: {
-    ...mapState(['signups', 'socialMedia', 'user', 'userList']),
+    ...mapState(['socialMedia', 'user', 'event']),
     discordUrl() {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
-    eventSignups() {
-      return this.signups.filter((signup) => signup.event === this.page.slug)
-    },
     signedUp() {
-      return this.eventSignups.some(
-        (entry) => entry.user === this.user.data.uid
+      return this.event.users.some(({ uid }) => uid === this.user.data.uid)
+    },
+    submitted() {
+      return this.event.submissions.some(
+        ({ user }) => user === this.user.data.uid
       )
     },
+    notStarted() {
+      return new Date(this.page['start-date']) > Date.now()
+    },
+  },
+  mounted() {
+    this.$store.dispatch('event/getEventData', this.page.slug)
   },
   methods: {
-    getDate(date) {
+    getDate(date, dateStyle = 'medium', timeStyle = 'short') {
       return new Intl.DateTimeFormat('en-US', {
-        dateStyle: 'medium',
-        timeStyle: 'short',
+        dateStyle,
+        timeStyle: timeStyle || undefined,
       }).format(new Date(date))
     },
   },

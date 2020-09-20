@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      logIn: 'logIn',
+      logIn: 'user/logIn',
     }),
     signIn() {
       const provider = new this.$fireAuthObj.GithubAuthProvider()

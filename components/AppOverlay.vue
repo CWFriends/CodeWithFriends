@@ -7,8 +7,8 @@
       <v-btn
         color="red"
         icon
-        @click="$emit('close')"
         style="position: absolute; top: 1rem; right: 1rem"
+        @click="$emit('close')"
       >
         <v-icon>mdi-close</v-icon>
       </v-btn>

@@ -1,5 +1,5 @@
 <template>
-  <v-card :to="newsItem.path" height="100%">
+  <v-card :to="newsItem.path" :title="newsItem.title">
     <v-img
       v-if="newsItem['meta-image']"
       class="align-end"

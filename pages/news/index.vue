@@ -11,7 +11,7 @@
           md="4"
           sm="6"
         >
-          <NewsCard :news-item="item"></NewsCard>
+          <NewsCard :news-item="item" style="height: 100%"></NewsCard>
         </v-col>
       </v-row>
     </v-container>
@@ -27,7 +27,7 @@ export default {
     HeroImage,
     NewsCard,
   },
-  async asyncData({ $content, params }) {
+  async asyncData({ $content }) {
     const newsItems = await $content('news').fetch()
     return {
       newsItems,

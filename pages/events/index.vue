@@ -15,6 +15,7 @@
             :href="event.url || ''"
             :to="event.url ? '' : event.path"
             :target="event.url ? '_blank' : '_self'"
+            :title="event.title"
             height="100%"
           >
             <v-img
@@ -68,7 +69,7 @@ export default {
   components: {
     HeroImage,
   },
-  async asyncData({ $content, params }) {
+  async asyncData({ $content }) {
     const events = await $content('events').sortBy('start-date', 'desc').fetch()
     return {
       events,

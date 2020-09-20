@@ -9,7 +9,12 @@
             {{ getDate(eventItem['start-date']) }} -
             {{ getDate(eventItem['end-date']) }}
           </div>
-          <v-btn color="primary" :to="eventItem.path" large>
+          <v-btn
+            color="primary"
+            :to="eventItem.path"
+            :title="eventItem.title"
+            large
+          >
             Learn More <v-icon right>mdi-chevron-right</v-icon></v-btn
           >
         </template>
