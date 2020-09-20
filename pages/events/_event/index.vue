@@ -161,7 +161,7 @@
 
           <v-row>
             <v-col
-              v-for="(project, index) in event.submissions.slice(0, 3)"
+              v-for="(project, index) in submissions.slice(0, 3)"
               :key="index"
             >
               <SubmissionCard :project="project"></SubmissionCard>
@@ -229,6 +229,12 @@ export default {
     },
     notStarted() {
       return new Date(this.page['start-date']) > Date.now()
+    },
+    submissions() {
+      return this.event.submissions
+        .map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value)
     },
   },
   mounted() {
