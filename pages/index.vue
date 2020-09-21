@@ -18,7 +18,7 @@
           </v-row>
           <div class="text-right">
             <nuxt-link to="/news" title="News">
-              <v-btn text>
+              <v-btn text color="primary">
                 View all News <v-icon right>mdi-chevron-right</v-icon>
               </v-btn>
             </nuxt-link>

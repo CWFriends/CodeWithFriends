@@ -178,7 +178,7 @@
           </template>
         </v-checkbox>
         <div class="text-right">
-          <v-btn color="primary" :loading="submittingForm" @click="signUp">
+          <v-btn color="accent" :loading="submittingForm" @click="signUp">
             Sign Up!
             <v-icon right>mdi-send</v-icon>
           </v-btn>

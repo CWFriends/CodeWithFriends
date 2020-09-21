@@ -8,7 +8,7 @@
       <div v-if="user.loggedIn && new Date(page['end-date']) > Date.now()">
         <v-btn
           v-if="!signedUp"
-          color="primary"
+          color="accent"
           x-large
           @click="signUpModal = true"
         >
@@ -17,7 +17,7 @@
 
         <v-btn
           v-if="signedUp && !submitted"
-          dark
+          color="accent"
           x-large
           :disabled="notStarted"
           @click="submissionModal = true"
@@ -173,6 +173,7 @@
               text
               :to="'/events/' + page.slug + '/submissions'"
               :title="page.title + ' Submissions'"
+              color="primary"
             >
               View All Submissions <v-icon right>mdi-chevron-right</v-icon>
             </v-btn>

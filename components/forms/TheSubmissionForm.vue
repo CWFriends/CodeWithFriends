@@ -151,7 +151,7 @@
           </template>
         </v-autocomplete>
         <div class="text-right">
-          <v-btn color="primary" :loading="submittingForm" @click="submit">
+          <v-btn color="accent" :loading="submittingForm" @click="submit">
             Submit Your Project!
           </v-btn>
         </div>

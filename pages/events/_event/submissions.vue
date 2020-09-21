@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <HeroImage :page="{ ...page, description: 'Project Submissions' }">
-      <v-btn color="primary" :to="'/events/' + page.slug" :title="page.title">
+      <v-btn color="accent" :to="'/events/' + page.slug" :title="page.title">
         <v-icon left>mdi-chevron-left</v-icon>
         Back to Event
       </v-btn>

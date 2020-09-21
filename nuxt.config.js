@@ -78,6 +78,15 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: false,
+      themes: {
+        light: {
+          primary: '#355068',
+          accent: '#E67849',
+        },
+      },
+    },
   },
 
   pwa: {

@@ -55,7 +55,7 @@
           v-if="openEvents.length > 0"
           :to="openEvents[0].path"
           :title="openEvents[0].title"
-          color="primary"
+          color="accent"
           class="mx-2"
         >
           <v-icon
@@ -142,7 +142,7 @@
             :to="openEvents[0].path"
             :title="openEvents[0].title"
           >
-            <v-btn color="primary" class="mx-auto">
+            <v-btn color="accent" class="mx-auto">
               <v-icon
                 v-if="openEvents[0].icon"
                 left

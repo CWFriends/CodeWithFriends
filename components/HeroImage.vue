@@ -10,7 +10,7 @@
             {{ getDate(eventItem['end-date']) }}
           </div>
           <v-btn
-            color="primary"
+            color="accent"
             :to="eventItem.path"
             :title="eventItem.title"
             large

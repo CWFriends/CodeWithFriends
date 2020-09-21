@@ -9,7 +9,7 @@
             :to="'/' + page.slug"
             :title="page.title"
           >
-            <v-btn color="grey" text small>{{ page.title }}</v-btn>
+            <v-btn color="primary" text small>{{ page.title }}</v-btn>
           </nuxt-link>
         </v-col>
         <v-col cols="12" sm="6" order-sm="1">
