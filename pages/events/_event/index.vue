@@ -163,6 +163,7 @@
             <v-col
               v-for="(project, index) in submissions.slice(0, 3)"
               :key="index"
+              cols="12"
             >
               <SubmissionCard :project="project"></SubmissionCard>
             </v-col>
