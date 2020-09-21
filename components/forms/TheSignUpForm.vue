@@ -318,6 +318,7 @@ export default {
         languages: this.preferredLanguages,
         checkinGroup: this.checkinGroup,
         preferredGroup: this.groupMembers,
+        user: this.user.data.uid,
       }
 
       this.submitSignup(data).then(() => {

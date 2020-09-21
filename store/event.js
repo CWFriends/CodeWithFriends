@@ -29,13 +29,11 @@ export const actions = {
     await dispatch('getSignups')
     await dispatch('getSubmissions')
   },
-  async submitSignup({ state }, data) {
-    const signupInfo = {
-      ...data,
-      user: state.user.data.uid,
-    }
-
-    return await this.$fireStore.collection('signups').add(signupInfo)
+  async submitSignup(ctx, data) {
+    const doc = await this.$fireStore.collection('signups').add(data)
+    return this.$fireFunc.httpsCallable('addSignup')({
+      id: doc.id,
+    })
   },
   async submitProject({ state }, data) {
     if (data.image) {
@@ -44,14 +42,17 @@ export const actions = {
         .child(data.event + '/' + data.repoId + data.image.name)
         .put(data.image)
         .then((snapshot) => snapshot.ref.getDownloadURL())
-        .then(function (downloadURL) {
+        .then((downloadURL) => {
           data.image = downloadURL
         })
     } else {
       data.image = ''
     }
 
-    return await this.$fireStore.collection('submissions').add(data)
+    const doc = await this.$fireStore.collection('submissions').add(data)
+    return this.$fireFunc.httpsCallable('addSubmission')({
+      id: doc.id,
+    })
   },
   async getUsers({ commit }, signupList) {
     await this.$fireStore
