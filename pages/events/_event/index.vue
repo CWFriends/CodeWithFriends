@@ -171,7 +171,7 @@
           <div class="text-right">
             <v-btn
               text
-              :to="page.slug + '/submissions'"
+              :to="'/events/' + page.slug + '/submissions'"
               :title="page.title + ' Submissions'"
             >
               View All Submissions <v-icon right>mdi-chevron-right</v-icon>

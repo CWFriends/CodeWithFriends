@@ -128,11 +128,11 @@
           chips
           hide-no-data
           hide-selected
-          label="Preferred Check-in Team"
+          label="I'd like to be in a group with..."
           item-text="name"
           item-value="uid"
           multiple
-          hint="Search for other members you are interested in forming a check-in group with. Users must have signed into the website at least once."
+          hint="Search for other members you are interested in forming a check-in group with. Users must have signed into the website at least once. If you leave this blank, we'll form a check-in group for you that works best for your time zone."
           persistent-hint
           auto-select-first
           prepend-icon="mdi-account-group"
