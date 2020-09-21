@@ -262,6 +262,7 @@ export default {
         teamMembers: this.teamMembers,
         user: this.user.data.uid,
         image: this.image,
+        timestamp: new Date(),
       }
 
       this.submitProject(data).then(() => {

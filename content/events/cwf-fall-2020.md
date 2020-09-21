@@ -4,7 +4,7 @@ icon: ""
 masthead-size: Cover
 meta-image: img/cwf-halloween.png
 start-date: 2020-10-01T07:00:00.000Z
-end-date: 2020-10-31T07:00:00.000Z
+end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T07:00:00.000Z
     end-date: 2020-09-22T07:00:00.000Z

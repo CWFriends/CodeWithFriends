@@ -319,6 +319,7 @@ export default {
         checkinGroup: this.checkinGroup,
         preferredGroup: this.groupMembers,
         user: this.user.data.uid,
+        timestamp: new Date(),
       }
 
       this.submitSignup(data).then(() => {

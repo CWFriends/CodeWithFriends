@@ -14,6 +14,7 @@ exports.addSignup = functions.https.onCall(async (data) => {
   signupData.technologies = signupData.technologies.join(', ')
   signupData.languages = signupData.languages.join(', ')
   signupData.preferredGroup = signupData.preferredGroup.join(', ')
+  signupData.timestamp = `=${signupData.timestamp.seconds}/86400+date(1970,1,1)`
 
   const doc = new GoogleSpreadsheet(
     '1CI5I1JblyENn1dgDFaLRphD4rwmHzW8oJw8rPhicbpo'
@@ -38,6 +39,7 @@ exports.addSubmission = functions.https.onCall(async (data) => {
   const submissionData = submissionRef.data()
   submissionData.technologies = submissionData.technologies.join(', ')
   submissionData.teamMembers = submissionData.teamMembers.join(', ')
+  submissionData.timestamp = `=${submissionData.timestamp.seconds}/86400+date(1970,1,1)`
 
   const doc = new GoogleSpreadsheet(
     '1CI5I1JblyENn1dgDFaLRphD4rwmHzW8oJw8rPhicbpo'

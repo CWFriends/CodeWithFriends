@@ -31,8 +31,7 @@ Learn new things! Make cool stuff! Have fun! Do all that, with an online communi
 * [Vuetify](https://vuetifyjs.com/en/) for the frontend framework
 * [Netlify](https://www.netlify.com/) for static hosting
 * [Netlify CMS](https://www.netlifycms.org/) for Content Management
-* [Firebase Authentication](https://firebase.google.com/products/auth) for Github login and data retrieval
-* [Firebase Firestore](https://firebase.google.com/products/firestore) for project submissions and signups using a serverless database
+* [Firebase](https://firebase.google.com/) for authentication, serverless functions, media storage and databases
 
 ## Getting Started
 
@@ -92,3 +91,4 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 * [Vuex](https://vuex.vuejs.org/) for state management
 * [lanuages-list](https://www.npmjs.com/package/languages-list) for all the language options
 * [timezones.json](https://www.npmjs.com/package/timezones.json) for the list of timezones
+* [google-spreadsheet](https://www.npmjs.com/package/google-spreadsheet) for integregating Google Sheets with project signups and submissions
