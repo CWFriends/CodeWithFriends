@@ -3,13 +3,13 @@ social-media-items:
   - name: Discord
     url: https://discord.gg/HTQdNWp
     icon: mdi-discord
-  - name: Twitch
+  - name: Mayuko's Twitch
     url: https://www.twitch.tv/hellomayuko
     icon: mdi-twitch
-  - name: YouTube
+  - name: Mayuko's YouTube
     url: https://www.youtube.com/hellomayuko
     icon: mdi-youtube
   - url: https://twitter.com/hellomayuko
-    name: Twitter
+    name: Mayuko's Twitter
     icon: mdi-twitter
 ---
