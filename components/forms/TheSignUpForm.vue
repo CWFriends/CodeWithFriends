@@ -46,6 +46,7 @@
           v-model="discordUsername"
           label="Discord Username"
           prepend-icon="mdi-discord"
+          placeholder="mayuko#1234"
           persistent-hint
           :hint="`Be sure to join our Discord server to stay in touch with the community: ${discordUrl}`"
           class="mb-2"
