@@ -84,6 +84,7 @@
         <v-textarea
           v-model="description"
           outlined
+          counter
           label="Project Description"
           :rules="[...notEmpty, ...descRule]"
         ></v-textarea>
