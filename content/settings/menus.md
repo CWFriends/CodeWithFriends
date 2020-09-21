@@ -5,6 +5,4 @@ header-menu:
   - page: faq
 footer-menu:
   - page: code-of-conduct
-  - page: privacy-policy
-  - page: terms-conditions
 ---
