@@ -1,7 +1,7 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
-masthead-size: Cover
+image: img/group-2.png
 meta-image: img/cwf-halloween.png
 start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
@@ -29,6 +29,7 @@ schedule:
   - start-date: 2020-10-31T07:00:00.000Z
     end-date: 2020-10-31T07:00:00.000Z
     title: Closing Ceremony
+masthead-size: Cover
 ---
 We're back in October for Code With Friends, which'll start on Thursday, October 1st to Saturday, October 31st.
 
