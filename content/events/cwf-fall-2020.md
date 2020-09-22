@@ -1,8 +1,10 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
+image: img/group-2.png
 meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
+start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z
@@ -11,7 +13,7 @@ schedule:
   - start-date: 2020-09-22T15:30:00.000Z
     end-date: 2020-09-22T16:30:00.000Z
     title: Orientation Stream
-    url: https://www.twitch.tv/hellomayuko
+    url: https://www.twitch.tv/videos/748760921
   - start-date: 2020-09-29T07:00:00.000Z
     end-date: 2020-09-29T07:00:00.000Z
     title: Signups Due
@@ -29,8 +31,6 @@ schedule:
     end-date: 2020-10-31T07:00:00.000Z
     title: Closing Ceremony
 masthead-size: Cover
-image: img/group-2.png
-start-date: 2020-10-01T07:00:00.000Z
 ---
 We're back in October for Code With Friends, which'll start on Thursday, October 1st to Saturday, October 31st.
 
