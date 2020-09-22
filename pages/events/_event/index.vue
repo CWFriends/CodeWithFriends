@@ -10,8 +10,8 @@
           v-if="!signedUp"
           color="accent"
           x-large
-          @click="signUpModal = true"
           :disabled="new Date(page['signup-date']) > Date.now()"
+          @click="signUpModal = true"
         >
           <template v-if="new Date(page['signup-date']) > Date.now()">
             Signups Open on {{ getDate(page['signup-date'], 'long') }}!

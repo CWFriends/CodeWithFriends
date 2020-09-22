@@ -55,6 +55,8 @@ export const actions = {
     })
   },
   async getUsers({ commit }, signupList) {
+    if (signupList.length === 0) return
+
     await this.$fireStore
       .collection('users')
       .where(this.$fireStoreObj.FieldPath.documentId(), 'in', signupList)
