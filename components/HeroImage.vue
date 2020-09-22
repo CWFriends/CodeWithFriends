@@ -1,5 +1,5 @@
 <template>
-  <v-parallax dark :src="image" height="400">
+  <v-parallax dark :src="'/' + image" height="400">
     <v-row align="center" justify="center">
       <v-col class="text-center" sm="10" md="8">
         <template v-if="eventItem.title">
