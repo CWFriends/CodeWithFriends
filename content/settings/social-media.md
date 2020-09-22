@@ -1,7 +1,7 @@
 ---
 social-media-items:
   - name: Discord
-    url: https://discord.gg/HTQdNWp
+    url: https://discord.gg/z4dJKUd
     icon: mdi-discord
   - name: Mayuko's Twitch
     url: https://www.twitch.tv/hellomayuko
