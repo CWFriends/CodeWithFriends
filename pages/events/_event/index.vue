@@ -220,7 +220,7 @@ export default {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
     signedUp() {
-      return this.event.users.some(({ uid }) => uid === this.user.data.uid)
+      return this.event.signups.some(({ user }) => user === this.user.data.uid)
     },
     submitted() {
       return this.event.submissions.some(
