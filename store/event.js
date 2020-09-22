@@ -59,13 +59,13 @@ export const actions = {
 
     await this.$fireStore
       .collection('users')
-      .where(this.$fireStoreObj.FieldPath.documentId(), 'in', signupList)
       .get()
       .then((docs) => {
         const userList = []
 
         docs.forEach((doc) => {
-          userList.push({ ...doc.data(), uid: doc.id })
+          if (signupList.includes(doc.id))
+            userList.push({ ...doc.data(), uid: doc.id })
         })
         commit('setUsers', userList)
       })
