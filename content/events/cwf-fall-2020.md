@@ -1,10 +1,8 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
-image: img/group-2.png
 meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
-start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z
@@ -31,6 +29,8 @@ schedule:
     end-date: 2020-10-31T07:00:00.000Z
     title: Closing Ceremony
 masthead-size: Cover
+image: img/group-2.png
+start-date: 2020-10-01T07:00:00.000Z
 ---
 We're back in October for Code With Friends, which'll start on Thursday, October 1st to Saturday, October 31st.
 
@@ -58,4 +58,4 @@ Last time we had one giant Discord channel for project status check-ins. This ti
 
 ### Labs
 
-Last time, we had one giant Discord channel for technical help. Because of the diversity in technologies and projects, we'll have separate technology-specific channels on Discord to ask specific technical questions. We’ll have guides in each channel who can any questions you may have. Some guides will also have open Office Hours where they'll be online for 1-2 hours/week to answer any questions live.
+Last time, we had one giant Discord channel for technical help. Because of the diversity in technologies and projects, we'll have separate technology-specific channels on Discord to ask specific technical questions. We’ll have guides in each channel who can answer any questions you may have. Some guides will also have open Office Hours where they'll be online for 1-2 hours/week to answer any questions live.
