@@ -11,8 +11,12 @@
           color="accent"
           x-large
           @click="signUpModal = true"
+          :disabled="new Date(page['signup-date']) > Date.now()"
         >
-          Sign Up <v-icon right>mdi-send</v-icon>
+          <template v-if="new Date(page['signup-date']) > Date.now()">
+            Signups Open on {{ getDate(page['signup-date'], 'long') }}!
+          </template>
+          <template v-else> Sign Up <v-icon right>mdi-send</v-icon> </template>
         </v-btn>
 
         <v-btn
@@ -29,12 +33,6 @@
               : ''
           }}
         </v-btn>
-
-        <div>
-          <v-btn v-if="signedUp" dark x-large @click="submissionModal = true">
-            Test Project Submission
-          </v-btn>
-        </div>
       </div>
 
       <SignInButton v-if="!user.loggedIn"></SignInButton>

@@ -3,6 +3,7 @@ title: "CWF: Fall 2020"
 icon: ""
 image: img/group-2.png
 meta-image: img/cwf-halloween.png
+signup-date: 2020-09-22T16:30:00.000Z
 start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:

@@ -23,6 +23,7 @@ collections:
       - { label: Icon, name: icon, widget: string, hint: 'Such as `mdi-twitter`. For all available icons, visit https://materialdesignicons.com/', required: false }
       - { label: 'Masthead Image', name: image, widget: image, hint: 'Defaults to global masthead if not set.', required: false }
       - { label: 'Meta Image', name: 'meta-image', widget: image, hint: 'Image used for sharing on social media. Defaults to global meta image if not set.', required: false }
+      - { label: 'Signup Date', name: 'signup-date', widget: datetime, required: true, hint: 'When should signups open to the public?' }
       - { label: 'Start Date', name: 'start-date', widget: datetime, required: true }
       - { label: 'End Date', name: 'end-date', widget: datetime, required: true }
       - { label: 'External URL', name: url, widget: string, required: false, hint: 'Did this event happen on an external site? If so, no event page will be created and users will navigate there instead.' }
