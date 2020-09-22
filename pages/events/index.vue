@@ -35,7 +35,10 @@
                 text-color="white"
                 color="primary"
               >
-                Signups Open!
+                <template v-if="new Date(event['signup-date']) > Date.now()">
+                  Signups Begin {{ getDate(event['signup-date'], 'medium') }}
+                </template>
+                <template v-else> Signups Open! </template>
               </v-chip>
               <v-chip
                 v-if="
@@ -80,9 +83,9 @@ export default {
     slug: 'events',
   }),
   methods: {
-    getDate(date) {
+    getDate(date, dateStyle = 'long') {
       return new Intl.DateTimeFormat('en-US', {
-        dateStyle: 'long',
+        dateStyle,
       }).format(new Date(date))
     },
   },
