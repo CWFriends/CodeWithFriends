@@ -12,13 +12,6 @@ collapsible-content:
       tenants of this event is to learn new things!
   - header: Is it free?
     content: Code With Friends is 100% free!
-  - header: I found a bug or have a feature request for the website! How can I
-      report it?
-    content: The website is open source and hosted [on
-      Github](https://github.com/CWFriends/CodeWithFriends), so you are welcome
-      to [report an issue](https://github.com/CWFriends/CodeWithFriends/issues)
-      or clone the site locally and create pull requests for any bugs you may
-      find.
   - header: Where do I begin?
     content: |-
       1. Bookmark the Code With Friends website: https://codewithfriends.io
@@ -40,21 +33,28 @@ collapsible-content:
 
 
       Note that the due date for all submissions is **October 30th, 2020.**
-  - header: Who can we contact for Project Help? 
-    content: We have some amazing guides that will be available periodically on the
-      discord server. Feel free to ask your question in the appropriate
-      technology chat.
-  - header: Who can we contact for Website/Account Help?
-    content: "If you are having difficulty with your account or with
-      codewithfriends.io, you can contact @staff in the #feedback channel on
-      Discord, or email cwf@hellomayuko.com"
-  - header: Can I continue working on my project after the deadline?
-    content: While submissions are due **October 30th, 2020** with Code With
-      Friends, your project is yours and you can continue working on it for as
-      long as you like.
   - header: I made a mistake when signing up, can I change my information?
     content: At this time, users are unable to go back and update their signup
       information. When you submit your project at the end of the event, you
       will have the opportunity to make any final adjustments.
+  - header: Who can we contact for Project Help? 
+    content: We have some amazing guides that will be available periodically on the
+      discord server. Feel free to ask your question in the appropriate
+      technology chat.
+  - header: Can I continue working on my project after the deadline?
+    content: While submissions are due **October 30th, 2020** with Code With
+      Friends, your project is yours and you can continue working on it for as
+      long as you like.
+  - header: Who can we contact for Website/Account Help?
+    content: "If you are having difficulty with your account or with
+      codewithfriends.io, you can contact @staff in the #feedback channel on
+      Discord, or email cwf@hellomayuko.com"
+  - header: I found a bug or have a feature request for the website! How can I
+      report it?
+    content: The website is open source and hosted [on
+      Github](https://github.com/CWFriends/CodeWithFriends), so you are welcome
+      to [report an issue](https://github.com/CWFriends/CodeWithFriends/issues)
+      or clone the site locally and create pull requests for any bugs you may
+      find.
 ---
 Below, you can find some answers to the most commonly asked questions. If you can't find what you are looking for, you can also ask the community on [Discord](#/) or send me a [tweet](#/)!
