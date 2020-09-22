@@ -9,8 +9,8 @@
       <v-col class="text-center" sm="10" md="8">
         <template v-if="eventItem.title">
           <div
-            class="text-overline"
             v-if="new Date(eventItem['signup-date']) > Date.now()"
+            class="text-overline"
           >
             Signups open {{ getDate(eventItem['signup-date']) }}
           </div>
