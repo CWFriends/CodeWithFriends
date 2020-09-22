@@ -57,4 +57,4 @@ collapsible-content:
       or clone the site locally and create pull requests for any bugs you may
       find.
 ---
-Below, you can find some answers to the most commonly asked questions. If you can't find what you are looking for, you can also ask the community on [Discord](#/) or send me a [tweet](#/)!
+Below, you can find some answers to the most commonly asked questions. If you can't find what you are looking for, you can also ask the community on [Discord](https://discord.gg/z4dJKUd).
