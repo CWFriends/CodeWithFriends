@@ -21,12 +21,18 @@ export const mutations = {
 }
 
 export const actions = {
-  async getEventData({ commit, dispatch, state }, event) {
+  async getEventData(
+    { commit, dispatch, state, rootState, rootCommit },
+    event
+  ) {
     if (event === state.event) return
     commit('setEvent', event)
     commit('setUsers', [])
     commit('setSignups', [])
     commit('setSubmissions', [])
+
+    if (rootState.users.length === 0)
+      await dispatch('getUsers', null, { root: true })
     await dispatch('getSignups')
     await dispatch('getSubmissions')
   },
@@ -58,13 +64,12 @@ export const actions = {
   getUsers({ commit, rootState }, signupList) {
     if (signupList.length === 0) return
 
-    commit(
-      'setUsers',
-      rootState.users.reduce(
-        (acc, user) => (signupList.includes(user.uid) ? [...acc, user] : acc),
-        []
-      )
+    const users = rootState.users.reduce(
+      (acc, user) => (signupList.includes(user.uid) ? [...acc, user] : acc),
+      []
     )
+
+    commit('setUsers', users)
   },
   async getSignups({ state, dispatch, commit }) {
     await this.$fireStore

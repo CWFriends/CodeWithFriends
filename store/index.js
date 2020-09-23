@@ -59,18 +59,16 @@ export const actions = {
 
     const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
+  },
+  async getUsers({ commit }) {
+    await this.$fireStore.collection('users').onSnapshot((docSnapshot) => {
+      const userList = []
 
-    await $fireStore
-      .collection('users')
-      .get()
-      .then((docs) => {
-        const userList = []
-
-        docs.forEach((doc) => {
-          userList.push({ ...doc.data(), uid: doc.id })
-        })
-
-        commit('setUsers', userList)
+      docSnapshot.forEach((doc) => {
+        userList.push({ ...doc.data(), uid: doc.id })
       })
+
+      commit('setUsers', userList)
+    })
   },
 }
