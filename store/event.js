@@ -21,7 +21,8 @@ export const mutations = {
 }
 
 export const actions = {
-  async getEventData({ commit, dispatch }, event) {
+  async getEventData({ commit, dispatch, state }, event) {
+    if (event === state.event) return
     commit('setEvent', event)
     commit('setUsers', [])
     commit('setSignups', [])
