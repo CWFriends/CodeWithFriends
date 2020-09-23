@@ -122,11 +122,8 @@
         <v-autocomplete
           v-if="checkinGroup"
           v-model="groupMembers"
-          :items="groupSearchResults"
-          :loading="loadingGroupSearch"
-          :search-input.sync="groupSearch"
+          :items="filteredUsers"
           chips
-          hide-no-data
           hide-selected
           label="I'd like to be in a group with..."
           item-text="name"
@@ -250,9 +247,6 @@ export default {
     ],
     proficiency: '',
     checkinGroup: false,
-    groupSearch: '',
-    groupSearchResults: [],
-    loadingGroupSearch: false,
     groupMembers: [],
     emailRules: [(v) => /.+@.+/.test(v) || 'E-mail must be valid'],
     notEmpty: [(v) => (!!v && v.length > 0) || 'Required Field'],
@@ -261,34 +255,12 @@ export default {
     codeOfConduct: false,
   }),
   computed: {
-    ...mapState(['user', 'socialMedia']),
+    ...mapState(['user', 'users', 'socialMedia']),
+    filteredUsers() {
+      return this.users.filter((user) => user.name > '')
+    },
     discordUrl() {
       return this.socialMedia.find(({ name }) => name === 'Discord').url
-    },
-  },
-  watch: {
-    groupSearch() {
-      // @todo: find a way to perform a substring search on firestore data
-      if (
-        !this.groupSearch ||
-        this.groupSearch.length < 3 ||
-        this.groupSearchResults.length > 0
-      )
-        return
-      this.loadingGroupSearch = true
-
-      this.$fireStore
-        .collection('users')
-        .where('name', '>', '')
-        .get()
-        .then((users) => {
-          const userList = []
-          users.forEach((doc) => {
-            userList.push({ ...doc.data(), uid: doc.id })
-          })
-          this.groupSearchResults = userList
-          this.loadingGroupSearch = false
-        })
     },
   },
   methods: {
