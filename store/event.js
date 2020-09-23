@@ -54,21 +54,16 @@ export const actions = {
       id: doc.id,
     })
   },
-  async getUsers({ commit }, signupList) {
+  getUsers({ commit, rootState }, signupList) {
     if (signupList.length === 0) return
 
-    await this.$fireStore
-      .collection('users')
-      .get()
-      .then((docs) => {
-        const userList = []
-
-        docs.forEach((doc) => {
-          if (signupList.includes(doc.id))
-            userList.push({ ...doc.data(), uid: doc.id })
-        })
-        commit('setUsers', userList)
-      })
+    commit(
+      'setUsers',
+      rootState.users.reduce(
+        (acc, user) => (signupList.includes(user.uid) ? [...acc, user] : acc),
+        []
+      )
+    )
   },
   async getSignups({ state, dispatch, commit }) {
     await this.$fireStore

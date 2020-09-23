@@ -4,6 +4,7 @@ export const state = () => ({
   menus: {},
   defaults: {},
   socialMedia: [],
+  users: [],
 })
 
 export const mutations = {
@@ -19,10 +20,13 @@ export const mutations = {
   setEvents(state, events) {
     state.events = events
   },
+  setUsers(state, users) {
+    state.users = users
+  },
 }
 
 export const actions = {
-  async nuxtServerInit({ commit, dispatch }, { $content }) {
+  async nuxtServerInit({ commit, dispatch }, { $content, $fireStore }) {
     // Fetch the header and footer menus
     const menus = await $content('settings', 'menus').fetch()
 
@@ -55,5 +59,18 @@ export const actions = {
 
     const events = await $content('events').sortBy('start-date').fetch()
     commit('setEvents', events)
+
+    await $fireStore
+      .collection('users')
+      .get()
+      .then((docs) => {
+        const userList = []
+
+        docs.forEach((doc) => {
+          userList.push({ ...doc.data(), uid: doc.id })
+        })
+
+        commit('setUsers', userList)
+      })
   },
 }
