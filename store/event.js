@@ -80,12 +80,9 @@ export const actions = {
     await this.$fireStore
       .collection('events')
       .doc(data.event)
-      .set(
-        {
-          submissionsCount: this.$fireStoreObj.FieldValue.increment(1),
-        },
-        { merge: true }
-      )
+      .update({
+        submissionsCount: this.$fireStoreObj.FieldValue.increment(1),
+      })
 
     const submission = await this.$fireStore.collection('submissions').add(data)
 

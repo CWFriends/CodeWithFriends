@@ -70,6 +70,8 @@ export default {
       firestore: true,
       storage: true,
       functions: true,
+      performance: true,
+      analytics: true,
     },
   },
   /*
