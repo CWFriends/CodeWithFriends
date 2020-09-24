@@ -218,7 +218,7 @@ export default {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
     signedUp() {
-      return this.event.data?.users.includes(this.user.data.uid)
+      return this.event.data?.users?.includes(this.user.data.uid)
     },
     submitted() {
       return this.user.submissions.some(({ event }) => event === this.page.slug)
