@@ -64,6 +64,7 @@ export default {
       storageBucket: 'code-with-friends.appspot.com',
       messagingSenderId: '699377183793',
       appId: '1:699377183793:web:d3cfd25e266f2ecccc3910',
+      measurementId: 'G-E9RHEHXTV9',
     },
     services: {
       auth: true,

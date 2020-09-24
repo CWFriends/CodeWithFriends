@@ -99,8 +99,13 @@ export const actions = {
     this.$fireAuth.signOut().then(() => commit('removeUser'))
   },
   getRepos({ state, commit }) {
-    this.$axios.get(state.data.repos_url).then((res) => {
-      commit('setRepos', res.data)
-    })
+    this.$axios
+      .get(state.data.repos_url)
+      .then((res) => {
+        commit('setRepos', res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   },
 }
