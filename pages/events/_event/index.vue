@@ -23,7 +23,7 @@
           v-if="signedUp && !submitted"
           color="accent"
           x-large
-          :disabled="!notStarted"
+          :disabled="notStarted"
           @click="submissionModal = true"
         >
           Submit a Project
