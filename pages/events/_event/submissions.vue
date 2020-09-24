@@ -47,7 +47,10 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('event/getEventData', this.page.slug)
+    this.$store.dispatch('event/getEventData', {
+      event: this.page.slug,
+      submissions: true,
+    })
   },
   head() {
     return {

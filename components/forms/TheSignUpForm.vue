@@ -122,8 +122,11 @@
         <v-autocomplete
           v-if="checkinGroup"
           v-model="groupMembers"
-          :items="filteredUsers"
+          :items="groupSearchResults"
+          :loading="loadingGroupSearch"
+          :search-input.sync="groupSearch"
           chips
+          hide-no-data
           hide-selected
           label="I'd like to be in a group with..."
           item-text="name"
@@ -248,6 +251,9 @@ export default {
     proficiency: '',
     checkinGroup: false,
     groupMembers: [],
+    groupSearch: '',
+    groupSearchResults: [],
+    loadingGroupSearch: false,
     emailRules: [(v) => /.+@.+/.test(v) || 'E-mail must be valid'],
     notEmpty: [(v) => (!!v && v.length > 0) || 'Required Field'],
     agree: [(v) => v || 'You must agree to the Code of Conduct to proceed.'],
@@ -255,12 +261,33 @@ export default {
     codeOfConduct: false,
   }),
   computed: {
-    ...mapState(['user', 'users', 'socialMedia']),
-    filteredUsers() {
-      return this.users.filter((user) => user.name > '')
-    },
+    ...mapState(['user', 'socialMedia']),
     discordUrl() {
       return this.socialMedia.find(({ name }) => name === 'Discord').url
+    },
+  },
+  watch: {
+    groupSearch() {
+      if (
+        !this.groupSearch ||
+        this.groupSearch.length < 3 ||
+        this.groupSearchResults.length > 0
+      )
+        return
+      this.loadingGroupSearch = true
+
+      this.$fireStore
+        .collection('users')
+        .where('name', '>', '')
+        .get()
+        .then((users) => {
+          const userList = []
+          users.forEach((doc) => {
+            userList.push({ ...doc.data(), uid: doc.id })
+          })
+          this.groupSearchResults = userList
+          this.loadingGroupSearch = false
+        })
     },
   },
   methods: {

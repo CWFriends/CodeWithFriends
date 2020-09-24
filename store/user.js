@@ -3,6 +3,8 @@ export const state = () => ({
   loggedIn: false,
   data: null,
   repos: [],
+  submissions: [],
+  signups: [],
 })
 
 export const mutations = {
@@ -20,6 +22,12 @@ export const mutations = {
   setRepos(state, repos) {
     state.repos = repos
   },
+  setSubmissions(state, submissions) {
+    state.submissions = submissions
+  },
+  setSignups(state, signups) {
+    state.signups = signups
+  },
 }
 
 export const actions = {
@@ -30,6 +38,8 @@ export const actions = {
       .get()
     commit('setUser', { uid: user.uid, ...userData.data() })
     dispatch('getRepos')
+    dispatch('getSubmissions')
+    dispatch('getSignups')
   },
   stopUserLoading({ commit }) {
     commit('stopUserLoading')
@@ -43,7 +53,10 @@ export const actions = {
       })
       .then((res) => {
         commit('setUser', { uid: user.uid, ...res.data })
+        dispatch('event/updateEventUsers', null, { root: true })
         dispatch('getRepos')
+        dispatch('getSubmissions')
+        dispatch('getSignups')
 
         this.$fireStore
           .collection('users')
@@ -52,6 +65,34 @@ export const actions = {
           .catch(() => {
             dispatch('logOut')
           })
+      })
+  },
+  async getSubmissions({ commit, state }) {
+    await this.$fireStore
+      .collection('submissions')
+      .where('user', '==', state.data.uid)
+      .onSnapshot((doc) => {
+        const submissionsList = []
+
+        doc.forEach((submission) => {
+          submissionsList.push(submission.data())
+        })
+
+        commit('setSubmissions', submissionsList)
+      })
+  },
+  async getSignups({ commit, state }) {
+    await this.$fireStore
+      .collection('signups')
+      .where('user', '==', state.data.uid)
+      .onSnapshot((doc) => {
+        const signupsList = []
+
+        doc.forEach((signup) => {
+          signupsList.push(signup.data())
+        })
+
+        commit('setSignups', signupsList)
       })
   },
   logOut({ commit }) {

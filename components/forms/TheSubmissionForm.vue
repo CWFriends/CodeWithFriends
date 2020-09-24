@@ -114,7 +114,7 @@
         </v-combobox>
         <v-autocomplete
           v-model="teamMembers"
-          :items="filteredUserList"
+          :items="event.usersData"
           chips
           label="Team Members"
           item-text="name"
@@ -209,17 +209,7 @@ export default {
   computed: {
     ...mapState(['user', 'event']),
     signupDetails() {
-      return this.event.signups.find(({ user }) => user === this.user.data.uid)
-    },
-    filteredUserList() {
-      return this.event.users
-        .filter(({ uid }) => uid !== this.user.data.uid)
-        .map((user) => ({
-          avatar_url: user.avatar_url,
-          name: this.event.signups.find((signup) => signup.user === user.uid)
-            .name,
-          uid: user.uid,
-        }))
+      return this.user.signups.find(({ event }) => event === this.event.event)
     },
   },
   mounted() {

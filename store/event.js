@@ -1,7 +1,7 @@
 export const state = () => ({
   event: '',
-  users: [],
-  signups: [],
+  data: {},
+  submissionsPreview: [],
   submissions: [],
 })
 
@@ -9,11 +9,11 @@ export const mutations = {
   setEvent(state, event) {
     state.event = event
   },
-  setUsers(state, users) {
-    state.users = users
+  setData(state, data) {
+    state.data = data
   },
-  setSignups(state, signups) {
-    state.signups = signups
+  setSubmissionPreview(state, submissions) {
+    state.submissionsPreview = submissions
   },
   setSubmissions(state, submissions) {
     state.submissions = submissions
@@ -21,32 +21,53 @@ export const mutations = {
 }
 
 export const actions = {
-  async getEventData(
-    { commit, dispatch, state, rootState, rootCommit },
-    event
-  ) {
+  async getEventData({ commit, dispatch, state }, { event, submissions }) {
     if (event === state.event) return
     commit('setEvent', event)
-    commit('setUsers', [])
-    commit('setSignups', [])
-    commit('setSubmissions', [])
+    commit('setData', {})
+    commit('setSubmissionPreview', [])
 
-    if (rootState.users.length === 0)
-      await dispatch('getUsers', null, { root: true })
-    await dispatch('getSignups')
-    await dispatch('getSubmissions')
+    await dispatch('getEventDetails')
+    await dispatch('getSubmissionsPreview')
+
+    if (submissions) {
+      await dispatch('getSubmissions')
+    }
   },
-  async submitSignup(ctx, data) {
-    const doc = await this.$fireStore.collection('signups').add(data)
+  async submitSignup({ rootState }, data) {
+    const eventRef = this.$fireStore.collection('events').doc(data.event)
+
+    await this.$fireStore.runTransaction(async (t) => {
+      const event = (await t.get(eventRef)).data()
+
+      const users = event?.users || []
+      const usersData = event?.usersData || []
+
+      await t.set(eventRef, {
+        signupsCount: this.$fireStoreObj.FieldValue.increment(1),
+        users: [...users, data.user],
+        usersData: [
+          ...usersData,
+          {
+            uid: data.user,
+            avatar_url: rootState.user.data.avatar_url,
+            name: rootState.user.data.name,
+            html_url: rootState.user.data.html_url,
+          },
+        ],
+      })
+    })
+
+    const signup = await this.$fireStore.collection('signups').add(data)
     return this.$fireFunc.httpsCallable('addSignup')({
-      id: doc.id,
+      id: signup.id,
     })
   },
-  async submitProject({ state }, data) {
+  async submitProject({ state, commit }, data) {
     if (data.image) {
       await this.$fireStorage
         .ref()
-        .child(data.event + '/' + data.repoId + data.image.name)
+        .child(data.event + '/' + data.repoId + data.user + data.image.name)
         .put(data.image)
         .then((snapshot) => snapshot.ref.getDownloadURL())
         .then((downloadURL) => {
@@ -56,48 +77,81 @@ export const actions = {
       data.image = ''
     }
 
-    const doc = await this.$fireStore.collection('submissions').add(data)
+    await this.$fireStore
+      .collection('events')
+      .doc(data.event)
+      .set(
+        {
+          submissionsCount: this.$fireStoreObj.FieldValue.increment(1),
+        },
+        { merge: true }
+      )
+
+    const submission = await this.$fireStore.collection('submissions').add(data)
+
     return this.$fireFunc.httpsCallable('addSubmission')({
-      id: doc.id,
+      id: submission.id,
     })
   },
-  getUsers({ commit, rootState }, signupList) {
-    if (signupList.length === 0) return
 
-    const users = rootState.users.reduce(
-      (acc, user) => (signupList.includes(user.uid) ? [...acc, user] : acc),
-      []
-    )
-
-    commit('setUsers', users)
-  },
-  async getSignups({ state, dispatch, commit }) {
+  async getEventDetails({ state, commit }) {
     await this.$fireStore
-      .collection('signups')
+      .collection('events')
+      .doc(state.event)
+      .onSnapshot((doc) => {
+        commit('setData', doc.data())
+      })
+  },
+  async getSubmissionsPreview({ state, commit }) {
+    await this.$fireStore
+      .collection('submissions')
       .where('event', '==', state.event)
-      .onSnapshot((docSnapshot) => {
-        const userList = []
-        const signupList = []
+      .limit(3)
+      .onSnapshot((submissions) => {
+        const submissionsList = []
 
-        docSnapshot.forEach((doc) => {
-          userList.push(doc.data().user)
-          signupList.push(doc.data())
+        submissions.forEach((doc) => {
+          submissionsList.push({ ...doc.data(), uid: doc.id })
         })
-        commit('setSignups', signupList)
-        dispatch('getUsers', userList)
+
+        commit('setSubmissionPreview', submissionsList)
       })
   },
   async getSubmissions({ state, commit }) {
     await this.$fireStore
       .collection('submissions')
       .where('event', '==', state.event)
-      .onSnapshot((docSnapshot) => {
+      .onSnapshot((submissions) => {
         const submissionsList = []
 
-        docSnapshot.forEach((doc) => {
+        submissions.forEach((doc) => {
           submissionsList.push({ ...doc.data(), uid: doc.id })
         })
+
         commit('setSubmissions', submissionsList)
       })
+  },
+  async updateEventUsers(ctx) {
+    const eventData = await this.$fireStore
+      .collection('events')
+      .where('users', 'array-contains', ctx.rootState.user.data.uid)
+      .get()
+
+    eventData.forEach((doc) => {
+      const usersData = doc.data().usersData
+      const userIndex = usersData.findIndex(
+        ({ uid }) => uid === ctx.rootState.user.data.uid
+      )
+      usersData[userIndex] = {
+        uid: ctx.rootState.user.data.uid,
+        avatar_url: ctx.rootState.user.data.avatar_url,
+        name: ctx.rootState.user.data.name,
+        html_url: ctx.rootState.user.data.html_url,
+      }
+
+      this.$fireStore.collection('events').doc(doc.id).update({
+        usersData,
+      })
+    })
   },
 }

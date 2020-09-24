@@ -23,7 +23,7 @@
           v-if="signedUp && !submitted"
           color="accent"
           x-large
-          :disabled="notStarted"
+          :disabled="!notStarted"
           @click="submissionModal = true"
         >
           Submit a Project
@@ -134,39 +134,31 @@
         </v-col>
         <v-col md="5" cols="12">
           <h2 class="text-md-h4 text-h5 mb-4">
-            Participants ({{
-              new Intl.NumberFormat('en-US', {
-                maximumSignificantDigits: 3,
-              }).format(event.users.length)
-            }})
+            Participants ({{ numberFormat(signupsCount) }})
           </h2>
 
           <div class="avatar-list">
             <UserAvatar
-              v-for="(participant, i) in event.users"
+              v-for="(participant, i) in event.data.usersData"
               :key="i"
               :user="participant"
             ></UserAvatar>
           </div>
           <v-divider class="my-6"></v-divider>
           <h2 class="text-md-h4 text-h5 mb-4">
-            Submissions ({{
-              new Intl.NumberFormat('en-US', {
-                maximumSignificantDigits: 3,
-              }).format(event.submissions.length)
-            }})
+            Submissions ({{ numberFormat(submissionsCount) }})
           </h2>
 
           <v-row>
             <v-col
-              v-for="(project, index) in submissions.slice(0, 3)"
+              v-for="(project, index) in event.submissionsPreview"
               :key="index"
               cols="12"
             >
               <SubmissionCard :project="project"></SubmissionCard>
             </v-col>
           </v-row>
-          <div class="text-right">
+          <div v-if="submissionsCount > 3" class="text-right">
             <v-btn
               text
               :to="'/events/' + page.slug + '/submissions'"
@@ -216,29 +208,29 @@ export default {
   }),
   computed: {
     ...mapState(['socialMedia', 'user', 'event']),
+    submissionsCount() {
+      return this.event.data?.submissionsCount || 0
+    },
+    signupsCount() {
+      return this.event.data?.signupsCount || 0
+    },
     discordUrl() {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
     signedUp() {
-      return this.event.signups.some(({ user }) => user === this.user.data.uid)
+      return this.event.data?.users.includes(this.user.data.uid)
     },
     submitted() {
-      return this.event.submissions.some(
-        ({ user }) => user === this.user.data.uid
-      )
+      return this.user.submissions.some(({ event }) => event === this.page.slug)
     },
     notStarted() {
       return new Date(this.page['start-date']) > Date.now()
     },
-    submissions() {
-      return this.event.submissions
-        .map((a) => ({ sort: Math.random(), value: a }))
-        .sort((a, b) => a.sort - b.sort)
-        .map((a) => a.value)
-    },
   },
   mounted() {
-    this.$store.dispatch('event/getEventData', this.page.slug)
+    this.$store.dispatch('event/getEventData', {
+      event: this.page.slug,
+    })
   },
   methods: {
     getDate(date, dateStyle = 'medium', timeStyle = 'short') {
@@ -246,6 +238,11 @@ export default {
         dateStyle,
         timeStyle: timeStyle || undefined,
       }).format(new Date(date))
+    },
+    numberFormat(num) {
+      return new Intl.NumberFormat('en-US', {
+        maximumSignificantDigits: 3,
+      }).format(num)
     },
   },
   head() {
