@@ -77,7 +77,7 @@ export default {
   computed: {
     teamMembers() {
       const users = [this.project.user, ...this.project.teamMembers]
-      return this.$store.state.event.users.filter(({ uid }) =>
+      return this.$store.state.event.data.usersData.filter(({ uid }) =>
         users.includes(uid)
       )
     },
