@@ -4,7 +4,7 @@ description: Find the answers to the most commonly asked questions for Code with
 masthead-size: Cover
 disable-page-generation: false
 collapsible-content:
-  - header: Is there a limit to the amount of people that can sign up? 
+  - header: Is there a limit to the amount of people that can sign up?
     content: There is currently no limit to the amount of people that can sign up to
       be a part of Code with Friends.
   - header: Is there a recommended level of preparation/experience for participating?
@@ -25,7 +25,7 @@ collapsible-content:
 
          Fridays 1PM-5PM PDT
       7. Have fun coding!
-  - header: What project should I work on and when do I need to submit my project? 
+  - header: What project should I work on and when do I need to submit my project?
     content: >-
       The best place to start is to Google what kind of project you’d like to
       work on. We also have an “Idea Kits” page listing some ideas. You can
@@ -37,7 +37,7 @@ collapsible-content:
     content: At this time, users are unable to go back and update their signup
       information. When you submit your project at the end of the event, you
       will have the opportunity to make any final adjustments.
-  - header: Who can we contact for Project Help? 
+  - header: Who can we contact for Project Help?
     content: We have some amazing guides that will be available periodically on the
       discord server. Feel free to ask your question in the appropriate
       technology chat.
