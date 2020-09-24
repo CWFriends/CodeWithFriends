@@ -44,7 +44,7 @@ export const actions = {
       const usersData = event?.usersData || []
 
       await t.set(eventRef, {
-        signupsCount: this.$fireStoreObj.FieldValue.increment(1),
+        signupsCount: users.length + 1,
         users: [...users, data.user],
         usersData: [
           ...usersData,
