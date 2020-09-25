@@ -57,14 +57,14 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyBe2FugVYTRdOTdcJir_Q0__GHD0su3kcY',
+      apiKey: 'AIzaSyAyqHj6pZOwGO2CzovkbuJBx0UzwFWxUUo',
       authDomain: 'code-with-friends.firebaseapp.com',
       databaseURL: 'https://code-with-friends.firebaseio.com',
       projectId: 'code-with-friends',
       storageBucket: 'code-with-friends.appspot.com',
       messagingSenderId: '699377183793',
-      appId: '1:699377183793:web:d3cfd25e266f2ecccc3910',
-      measurementId: 'G-E9RHEHXTV9',
+      appId: '1:699377183793:web:ee04f5874143db79cc3910',
+      measurementId: 'G-GVEGPBTFDS',
     },
     services: {
       auth: true,
