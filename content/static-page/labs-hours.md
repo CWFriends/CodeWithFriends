@@ -154,4 +154,7 @@ collapsible-content:
       | Friday    | 6:00 AM - 9:00AM   | JP    |
       |           | 11:00 AM - 2:00 PM | JP    |
 ---
-All times are in PST.
+### What are Check-In Groups?
+We'll create groups of 5 people who'll check in with each other on project progress. The goal is create a chance for people to create connections through the event, support each other, and hold each other accountable in a smaller group setting. You're welcome to create a group with people you know through the signup form, or have us choose randomly based on your timezone. You'll check in with each other every week on your project progress.
+
+Below you can find who your guides are and their live lab times. All times are in PST.
