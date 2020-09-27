@@ -59,26 +59,26 @@ labs:
       - Backend
       - Machine Learning
     schedule:
-      - start-date: 2020-09-28T13:00:00.000Z
-        end-date: 2020-09-28T16:00:00.000Z
-      - start-date: 2020-09-29T13:00:00.000Z
-        end-date: 2020-09-29T16:00:00.000Z
-      - start-date: 2020-09-30T13:00:00.000Z
-        end-date: 2020-09-30T16:00:00.000Z
-      - start-date: 2020-10-01T13:00:00.000Z
-        end-date: 2020-10-01T16:00:00.000Z
-      - start-date: 2020-10-02T13:00:00.000Z
-        end-date: 2020-10-02T16:00:00.000Z
-      - start-date: 2020-09-28T18:00:00.000Z
-        end-date: 2020-09-28T21:00:00.000Z
-      - start-date: 2020-09-29T18:00:00.000Z
-        end-date: 2020-09-29T21:00:00.000Z
-      - start-date: 2020-09-30T18:00:00.000Z
-        end-date: 2020-09-30T21:00:00.000Z
-      - start-date: 2020-10-01T18:00:00.000Z
-        end-date: 2020-10-01T21:00:00.000Z
-      - start-date: 2020-10-02T18:00:00.000Z
-        end-date: 2020-10-02T21:00:00.000Z
+      - start-date: 2020-09-21T13:00:00.000Z
+        end-date: 2020-09-21T16:00:00.000Z
+      - start-date: 2020-09-22T13:00:00.000Z
+        end-date: 2020-09-22T16:00:00.000Z
+      - start-date: 2020-09-23T13:00:00.000Z
+        end-date: 2020-09-23T16:00:00.000Z
+      - start-date: 2020-09-24T13:00:00.000Z
+        end-date: 2020-09-24T16:00:00.000Z
+      - start-date: 2020-09-25T13:00:00.000Z
+        end-date: 2020-09-25T16:00:00.000Z
+      - start-date: 2020-09-21T18:00:00.000Z
+        end-date: 2020-09-21T21:00:00.000Z
+      - start-date: 2020-09-22T18:00:00.000Z
+        end-date: 2020-09-22T21:00:00.000Z
+      - start-date: 2020-09-23T18:00:00.000Z
+        end-date: 2020-09-23T21:00:00.000Z
+      - start-date: 2020-09-24T18:00:00.000Z
+        end-date: 2020-09-24T21:00:00.000Z
+      - start-date: 2020-09-25T18:00:00.000Z
+        end-date: 2020-09-25T21:00:00.000Z
 masthead-size: Cover
 image: img/group-2.png
 start-date: 2020-10-01T07:00:00.000Z
