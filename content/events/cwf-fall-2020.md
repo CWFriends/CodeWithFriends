@@ -79,6 +79,113 @@ labs:
         end-date: 2020-09-24T21:00:00.000Z
       - start-date: 2020-09-25T18:00:00.000Z
         end-date: 2020-09-25T21:00:00.000Z
+  - name: StoicLoofah
+    type:
+      - Frontend
+      - Backend
+    schedule:
+      - start-date: 2020-09-21T23:00:00.000Z
+        end-date: 2020-09-22T01:00:00.000Z
+      - start-date: 2020-09-22T23:00:00.000Z
+        end-date: 2020-09-23T01:00:00.000Z
+      - start-date: 2020-09-23T23:00:00.000Z
+        end-date: 2020-09-24T01:00:00.000Z
+      - start-date: 2020-09-24T23:00:00.000Z
+        end-date: 2020-09-25T01:00:00.000Z
+  - name: justinwlin
+    type:
+      - Frontend
+      - Backend
+    schedule:
+      - start-date: 2020-09-25T22:00:00.000Z
+        end-date: 2020-09-26T00:00:00.000Z
+  - name: Davidlism
+    type:
+      - Backend
+      - Game Dev
+    schedule:
+      - start-date: 2020-09-25T22:00:00.000Z
+        end-date: 2020-09-26T00:00:00.000Z
+  - name: Rian.js
+    type:
+      - Frontend
+    schedule:
+      - start-date: 2020-09-20T16:00:00.000Z
+        end-date: 2020-09-20T20:00:00.000Z
+      - start-date: 2020-09-21T16:00:00.000Z
+        end-date: 2020-09-21T20:00:00.000Z
+      - start-date: 2020-09-22T16:00:00.000Z
+        end-date: 2020-09-22T20:00:00.000Z
+      - start-date: 2020-09-23T16:00:00.000Z
+        end-date: 2020-09-23T20:00:00.000Z
+  - name: snowie
+    type:
+      - Frontend
+    schedule:
+      - start-date: 2020-09-21T16:00:00.000Z
+        end-date: 2020-09-21T21:00:00.000Z
+      - start-date: 2020-09-22T16:00:00.000Z
+        end-date: 2020-09-22T21:00:00.000Z
+      - start-date: 2020-09-23T16:00:00.000Z
+        end-date: 2020-09-23T21:00:00.000Z
+      - start-date: 2020-09-24T16:00:00.000Z
+        end-date: 2020-09-24T21:00:00.000Z
+      - start-date: 2020-09-25T16:00:00.000Z
+        end-date: 2020-09-25T21:00:00.000Z
+  - name: WilliamT
+    type:
+      - Frontend
+    schedule:
+      - start-date: 2020-09-20T16:00:00.000Z
+        end-date: 2020-09-20T19:00:00.000Z
+      - start-date: 2020-09-26T00:00:00.000Z
+        end-date: 2020-09-26T01:00:00.000Z
+  - name: mayuko
+    type:
+      - iOS Dev
+    schedule:
+      - start-date: 2020-09-25T20:00:00.000Z
+        end-date: 2020-09-26T00:00:00.000Z
+      - start-date: 2020-09-20T16:00:00.000Z
+        end-date: 2020-09-20T19:00:00.000Z
+  - name: Han
+    type:
+      - iOS Dev
+    schedule:
+      - start-date: 2020-09-20T16:30:00.000Z
+        end-date: 2020-09-20T19:00:00.000Z
+  - name: Gabe
+    type:
+      - Game Dev
+    schedule:
+      - start-date: 2020-09-21T15:00:00.000Z
+        end-date: 2020-09-21T23:00:00.000Z
+      - start-date: 2020-09-22T15:00:00.000Z
+        end-date: 2020-09-22T23:00:00.000Z
+      - start-date: 2020-09-23T15:00:00.000Z
+        end-date: 2020-09-23T23:00:00.000Z
+      - start-date: 2020-09-24T15:00:00.000Z
+        end-date: 2020-09-24T23:00:00.000Z
+      - start-date: 2020-09-25T15:00:00.000Z
+        end-date: 2020-09-25T23:00:00.000Z
+      - start-date: 2020-09-26T15:00:00.000Z
+        end-date: 2020-09-26T18:00:00.000Z
+  - name: Vimiew
+    type:
+      - Game Dev
+    schedule:
+      - start-date: 2020-09-21T12:30:00.000Z
+        end-date: 2020-09-21T20:00:00.000Z
+      - start-date: 2020-09-22T12:30:00.000Z
+        end-date: 2020-09-22T20:00:00.000Z
+      - start-date: 2020-09-23T12:30:00.000Z
+        end-date: 2020-09-23T20:00:00.000Z
+      - start-date: 2020-09-24T12:30:00.000Z
+        end-date: 2020-09-24T20:00:00.000Z
+      - start-date: 2020-09-25T12:30:00.000Z
+        end-date: 2020-09-25T20:00:00.000Z
+      - start-date: 2020-09-20T17:00:00.000Z
+        end-date: 2020-09-20T21:00:00.000Z
 masthead-size: Cover
 image: img/group-2.png
 start-date: 2020-10-01T07:00:00.000Z
