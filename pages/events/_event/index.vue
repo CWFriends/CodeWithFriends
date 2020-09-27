@@ -57,8 +57,8 @@
         <v-col>
           <v-tabs v-model="tabs">
             <v-tab>Details</v-tab>
-            <v-tab>Schedule</v-tab>
-            <v-tab>Lab Hours</v-tab>
+            <v-tab v-if="hasEvents">Schedule</v-tab>
+            <v-tab v-if="hasLabs">Lab Hours</v-tab>
           </v-tabs></v-col
         >
       </v-row>
@@ -142,10 +142,10 @@
             </v-col>
           </v-row>
         </v-tab-item>
-        <v-tab-item>
+        <v-tab-item v-if="hasEvents">
           <EventSchedule :page="page"></EventSchedule>
         </v-tab-item>
-        <v-tab-item>
+        <v-tab-item v-if="hasLabs">
           <EventLabs :page="page"></EventLabs>
         </v-tab-item>
       </v-tabs-items>
@@ -209,6 +209,12 @@ export default {
     },
     notStarted() {
       return new Date(this.page['start-date']) > Date.now()
+    },
+    hasEvents() {
+      return this.page.schedule?.length > 0
+    },
+    hasLabs() {
+      return this.page.labs?.length > 0
     },
   },
   mounted() {
