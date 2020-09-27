@@ -12,8 +12,8 @@ schedule:
     end-date: 2020-09-22T16:30:00.000Z
     title: Orientation Stream
     url: https://www.twitch.tv/videos/748760921
-  - start-date: 2020-09-29T07:00:00.000Z
-    end-date: 2020-09-29T07:00:00.000Z
+  - start-date: 2020-09-30T06:59:00.000Z
+    end-date: 2020-09-30T06:59:00.000Z
     title: Signups Due
   - start-date: 2020-10-01T15:30:00.000Z
     end-date: 2020-10-01T16:30:00.000Z
@@ -22,19 +22,41 @@ schedule:
     end-date: 2020-10-03T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
-  - start-date: 2020-10-30T07:00:00.000Z
-    end-date: 2020-10-30T07:00:00.000Z
+  - start-date: 2020-10-30T20:00:00.000Z
+    end-date: 2020-10-31T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-09T20:00:00.000Z
+    end-date: 2020-10-10T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-16T20:00:00.000Z
+    end-date: 2020-10-17T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-23T20:00:00.000Z
+    end-date: 2020-10-24T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-31T06:59:00.000Z
+    end-date: 2020-10-31T06:59:00.000Z
     title: Project Submissions Due
   - start-date: 2020-10-31T07:00:00.000Z
     end-date: 2020-10-31T07:00:00.000Z
     title: Closing Ceremony
+labs:
+  - name: Luis
+    type: ["Frontend", "Backend"]
+    schedule:
+      - start-date: 2020-09-22T16:30:00.000Z
+        end-date: 2020-09-22T18:30:00.000Z
 masthead-size: Cover
 image: img/group-2.png
 start-date: 2020-10-01T07:00:00.000Z
 ---
-We're back in October for Code With Friends, which'll start on Thursday, October 1st to Saturday, October 31st.
+We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
 
-Similar to the first CWF, this one is also whatever you want it to be. The event is a great way to start a brand new project or make meaningful progress on an existing one. While providing a non-competitive, supportive, and chilled environment for people to work on their projects, we want to provide some additional support around working on personal projects.
+Similar to the first CWF, this one is also whatever you want it to be. The event is a great way to start a brand-new project or make meaningful progress on an existing one. While providing a non-competitive, supportive, and chilled environment for people to work on their projects, we want to provide some additional support around working on personal projects.
 
 We'll have a few things in place to help you work on your project:
 
@@ -48,7 +70,7 @@ Similar to the first CWF, Mayuko will be hosting co-working streams twice a week
 
 ### Idea Kits
 
-You can work on whatever project you'd like to. But in case you're looking for a project idea, we have a list of project ideas you can choose from to spur some inspiration.
+You can work on whatever project you'd like to. In case you're looking for a project idea, we have a list of project ideas you can choose from to spur some inspiration.
 
 ### Check-In Groups
 

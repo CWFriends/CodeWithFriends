@@ -50,7 +50,7 @@
           persistent-hint
           :hint="`Be sure to join our Discord server to stay in touch with the community: ${discordUrl}`"
           class="mb-2"
-          :rules="notEmpty"
+          :rules="[...notEmpty, ...discordRules]"
         ></v-text-field>
         <v-textarea
           v-model="projectIdea"
@@ -65,6 +65,7 @@
           :search-input.sync="technologySearch"
           hide-selected
           label="What technologies will you use?"
+          hint="Type in your tech stack and press `enter` to add it to the list. Items in the dropdown are just suggestions."
           multiple
           persistent-hint
           small-chips
@@ -254,6 +255,11 @@ export default {
     groupSearch: '',
     groupSearchResults: [],
     loadingGroupSearch: false,
+    discordRules: [
+      (v) =>
+        /.+#.+/.test(v) ||
+        'Be sure to use the full Discord username, including the hash number.',
+    ],
     emailRules: [(v) => /.+@.+/.test(v) || 'E-mail must be valid'],
     notEmpty: [(v) => (!!v && v.length > 0) || 'Required Field'],
     agree: [(v) => v || 'You must agree to the Code of Conduct to proceed.'],

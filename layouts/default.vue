@@ -18,6 +18,11 @@ export default {
     TheHeader,
     TheFooter,
   },
+  mounted() {
+    console.info(
+      'Interested in helping build the Code with Friends website? Check out our open source repo at https://github.com/CWFriends/CodeWithFriends and submit a pull request or add an issue for a feature or bug!'
+    )
+  },
   head() {
     return {
       title: this.$store.state.defaults.title,

@@ -105,7 +105,7 @@ export const actions = {
         commit('setRepos', res.data)
       })
       .catch((err) => {
-        console.error(err)
+        throw err
       })
   },
 }

@@ -54,122 +54,101 @@
     </AppOverlay>
     <v-container>
       <v-row>
-        <v-col md="7" cols="12">
-          <v-alert
-            v-model="signUpAlert"
-            border="left"
-            close-text="Close Alert"
-            color="light-green"
-            dark
-            dismissible
-            icon="mdi-check"
-          >
-            Thank you for signing up! Be sure to join our
-            <a :href="discordUrl" target="_blank" title="Discord"
-              >Discord channel</a
-            >
-            to stay connected with the community, and you will receive a
-            notification from us if you opted into a check-in group.
-          </v-alert>
-
-          <v-alert
-            v-model="submissionAlert"
-            border="left"
-            close-text="Close Alert"
-            color="light-green"
-            dark
-            dismissible
-            icon="mdi-check"
-          >
-            Thank you for submitting your project and participating in Code with
-            Friends! You can find a list of all the submissions on the
-            <nuxt-link
-              :to="page.path + '/submissions'"
-              :title="page.title + ' Submissions'"
-              >submissions page</nuxt-link
-            >.
-          </v-alert>
-
-          <nuxt-content :document="page"></nuxt-content>
-          <v-divider class="my-6"></v-divider>
-          <h2 class="text-md-h4 text-h5">Schedule of Events</h2>
-          <v-simple-table>
-            <template v-slot:default>
-              <thead>
-                <tr>
-                  <th>Event</th>
-                  <th style="min-width: 200px">Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="item in page.schedule" :key="item.title">
-                  <td>
-                    <strong>
-                      <template v-if="item.url">
-                        <a
-                          :href="item.url"
-                          :title="item.title"
-                          target="_blank"
-                          style="text-decoration: none"
-                        >
-                          {{ item.title }}
-                          <v-icon small>mdi-open-in-new</v-icon>
-                        </a>
-                      </template>
-                      <template v-else>
-                        {{ item.title }}
-                      </template>
-                    </strong>
-                  </td>
-                  <td>
-                    {{ getDate(item['start-date']) }}
-                    <template v-if="item['start-date'] !== item['end-date']">
-                      -<br />{{ getDate(item['end-date']) }}
-                    </template>
-                  </td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-        </v-col>
-        <v-col md="5" cols="12">
-          <h2 class="text-md-h4 text-h5 mb-4">
-            Participants ({{ numberFormat(signupsCount) }})
-          </h2>
-
-          <div class="avatar-list">
-            <UserAvatar
-              v-for="(participant, i) in event.data.usersData"
-              :key="i"
-              :user="participant"
-            ></UserAvatar>
-          </div>
-          <v-divider class="my-6"></v-divider>
-          <h2 class="text-md-h4 text-h5 mb-4">
-            Submissions ({{ numberFormat(submissionsCount) }})
-          </h2>
-
+        <v-col>
+          <v-tabs v-model="tabs">
+            <v-tab>Details</v-tab>
+            <v-tab>Schedule</v-tab>
+            <v-tab>Lab Hours</v-tab>
+          </v-tabs></v-col
+        >
+      </v-row>
+      <v-tabs-items v-model="tabs">
+        <v-tab-item>
           <v-row>
-            <v-col
-              v-for="(project, index) in event.submissionsPreview"
-              :key="index"
-              cols="12"
-            >
-              <SubmissionCard :project="project"></SubmissionCard>
+            <v-col md="7" cols="12">
+              <v-alert
+                v-model="signUpAlert"
+                border="left"
+                close-text="Close Alert"
+                color="light-green"
+                dark
+                dismissible
+                icon="mdi-check"
+              >
+                Thank you for signing up! Be sure to join our
+                <a :href="discordUrl" target="_blank" title="Discord"
+                  >Discord channel</a
+                >
+                to stay connected with the community, and you will receive a
+                notification from us if you opted into a check-in group.
+              </v-alert>
+
+              <v-alert
+                v-model="submissionAlert"
+                border="left"
+                close-text="Close Alert"
+                color="light-green"
+                dark
+                dismissible
+                icon="mdi-check"
+              >
+                Thank you for submitting your project and participating in Code
+                with Friends! You can find a list of all the submissions on the
+                <nuxt-link
+                  :to="page.path + '/submissions'"
+                  :title="page.title + ' Submissions'"
+                  >submissions page</nuxt-link
+                >.
+              </v-alert>
+
+              <nuxt-content :document="page"></nuxt-content>
+            </v-col>
+            <v-col md="5" cols="12">
+              <h2 class="text-md-h4 text-h5 mb-4">
+                Participants ({{ numberFormat(signupsCount) }})
+              </h2>
+
+              <div class="avatar-list">
+                <UserAvatar
+                  v-for="(participant, i) in event.data.usersData"
+                  :key="i"
+                  :user="participant"
+                ></UserAvatar>
+              </div>
+              <v-divider class="my-6"></v-divider>
+              <h2 class="text-md-h4 text-h5 mb-4">
+                Submissions ({{ numberFormat(submissionsCount) }})
+              </h2>
+
+              <v-row>
+                <v-col
+                  v-for="(project, index) in event.submissionsPreview"
+                  :key="index"
+                  cols="12"
+                >
+                  <SubmissionCard :project="project"></SubmissionCard>
+                </v-col>
+              </v-row>
+              <div v-if="submissionsCount > 3" class="text-right">
+                <v-btn
+                  text
+                  :to="'/events/' + page.slug + '/submissions'"
+                  :title="page.title + ' Submissions'"
+                  color="primary"
+                >
+                  View All Submissions <v-icon right>mdi-chevron-right</v-icon>
+                </v-btn>
+              </div>
             </v-col>
           </v-row>
-          <div v-if="submissionsCount > 3" class="text-right">
-            <v-btn
-              text
-              :to="'/events/' + page.slug + '/submissions'"
-              :title="page.title + ' Submissions'"
-              color="primary"
-            >
-              View All Submissions <v-icon right>mdi-chevron-right</v-icon>
-            </v-btn>
-          </div>
-        </v-col>
-      </v-row>
+        </v-tab-item>
+        <v-tab-item>
+          <EventSchedule :page="page"></EventSchedule>
+        </v-tab-item>
+        <v-tab-item>
+          <EventLabs :page="page"></EventLabs>
+        </v-tab-item>
+      </v-tabs-items>
     </v-container>
   </div>
 </template>
@@ -182,6 +161,8 @@ import TheSignUpForm from '@/components/forms/TheSignUpForm'
 import TheSubmissionForm from '@/components/forms/TheSubmissionForm'
 import SubmissionCard from '@/components/SubmissionCard'
 import UserAvatar from '@/components/UserAvatar'
+import EventSchedule from '@/components/events/EventSchedule'
+import EventLabs from '@/components/events/EventLabs'
 import { mapState } from 'vuex'
 
 export default {
@@ -193,6 +174,8 @@ export default {
     TheSubmissionForm,
     UserAvatar,
     SubmissionCard,
+    EventSchedule,
+    EventLabs,
   },
   async asyncData({ $content, params }) {
     const page = await $content('events', params.event).fetch()
@@ -201,6 +184,7 @@ export default {
     }
   },
   data: () => ({
+    tabs: null,
     signUpModal: false,
     signUpAlert: false,
     submissionModal: false,
@@ -297,7 +281,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .avatar-list {
   display: flex;
   flex-wrap: wrap;

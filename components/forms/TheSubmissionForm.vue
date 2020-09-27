@@ -150,6 +150,17 @@
             </v-list-item-content>
           </template>
         </v-autocomplete>
+        <v-divider class="my-4"></v-divider>
+        <p>
+          By submitting a project, you can get a sticker of the CWF logo! If
+          you'd like one sent to you, fill out your mailing address below.
+        </p>
+        <v-textarea
+          v-model="address"
+          class="my-4"
+          outlined
+          label="Shipping Address"
+        ></v-textarea>
         <div class="text-right">
           <v-btn color="accent" :loading="submittingForm" @click="submit">
             Submit Your Project!
@@ -179,6 +190,7 @@ export default {
     repo: '',
     demoUrl: '',
     description: '',
+    address: '',
     technologies: [],
     technologyOptions: [
       'AI',
@@ -254,6 +266,7 @@ export default {
         user: this.user.data.uid,
         image: this.image,
         timestamp: new Date(),
+        address: this.address,
       }
 
       this.submitProject(data).then(() => {
