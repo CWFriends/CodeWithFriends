@@ -1,21 +1,27 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="5" md="4" lg="3" xl="2">
-        <v-card>
-          <v-list>
-            <v-list-item-group v-model="selectedType">
-              <v-list-item v-for="(item, i) in types" :key="i">
-                <v-list-item-icon>
-                  <v-icon v-text="item.icon"></v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.name"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-card>
+      <v-col cols="12">
+        <v-sheet class="mx-auto">
+          <v-slide-group show-arrows v-model="selectedType" mandatory>
+            <v-slide-item
+              v-for="(type, i) in types"
+              :key="i"
+              v-slot:default="{ active, toggle }"
+            >
+              <v-btn
+                class="mx-2"
+                :input-value="active"
+                active-class="accent white--text"
+                text
+                @click="toggle"
+              >
+                <v-icon v-text="type.icon" left></v-icon>
+                {{ type.name }}
+              </v-btn>
+            </v-slide-item>
+          </v-slide-group>
+        </v-sheet>
       </v-col>
       <v-col>
         <v-sheet height="600">
