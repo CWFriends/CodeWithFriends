@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12">
         <v-sheet class="mx-auto">
-          <v-slide-group show-arrows v-model="selectedType" mandatory>
+          <v-slide-group v-model="selectedType" show-arrows mandatory>
             <v-slide-item
               v-for="(type, i) in types"
               :key="i"
@@ -16,7 +16,7 @@
                 text
                 @click="toggle"
               >
-                <v-icon v-text="type.icon" left></v-icon>
+                <v-icon left v-text="type.icon"></v-icon>
                 {{ type.name }}
               </v-btn>
             </v-slide-item>
@@ -27,8 +27,8 @@
         <v-sheet height="600">
           <v-calendar
             ref="calendar"
-            type="week"
             v-model="calendar"
+            type="week"
             :events="events"
             :event-color="getColor"
             :event-more="false"
@@ -114,6 +114,11 @@ export default {
       )
     },
   },
+  mounted() {
+    this.ready = true
+    this.scrollToTime()
+    this.updateTime()
+  },
   methods: {
     getCurrentTime() {
       return this.cal
@@ -132,11 +137,6 @@ export default {
     getColor(event) {
       return event.color
     },
-  },
-  mounted() {
-    this.ready = true
-    this.scrollToTime()
-    this.updateTime()
   },
 }
 </script>
