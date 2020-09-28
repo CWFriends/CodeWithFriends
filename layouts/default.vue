@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style>
-hr {
+hr:not([class]) {
   margin: 2rem 0;
 }
 ul {
