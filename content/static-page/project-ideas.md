@@ -12,7 +12,7 @@ These “idea kits” will give you a starting point if you don’t have any ide
 * How-to: [guide for Python, Java, C++, or JavaScript](https://www.writebots.com/how-to-make-a-discord-bot/)
 * YouTube: [Code Your Own Discord Bot - Basics + 10 Discord Bot Ideas](https://www.youtube.com/watch?v=j_sD9udZnCk)
 
----
+- - -
 
 ## YouTube listener with Alarm Clock or Count Down
 
@@ -23,13 +23,13 @@ These “idea kits” will give you a starting point if you don’t have any ide
 * How-to: [tutorial to build a Pomodoro Timer](https://www.freecodecamp.org/news/how-i-built-my-pomodoro-clock-app-and-the-lessons-i-learned-along-the-way-51288983f5ee/)
 * YouTube (tutorial): Pomodoro Timer app in [Swift](https://www.youtube.com/watch?v=VHApYW3jPjA) (pt 1) + Countdown Timer in [Android Studio](https://www.youtube.com/watch?v=MDuGwI6P-X8&list=PLrnPJCHvNZuB8wxqXCwKw2_NkyEmFwcSd&index=1) + in [React](https://www.youtube.com/watch?v=9EVmiQCfkuQ), [iOS](https://www.youtube.com/watch?v=VHApYW3jPjA), [JavaScript](https://www.youtube.com/watch?v=vAEG6OVCass)
 
----
+- - -
 
 ## File Conversion App
 
 How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-file-conversion-software)
 
----
+- - -
 
 ## Turn-based Video Game
 
@@ -39,7 +39,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Ideas: [list of turn-based strategy video games](https://en.wikipedia.org/wiki/List_of_turn-based_strategy_video_games)
 * How-to: [Advance Wars-like game](https://www.raywenderlich.com/2925-how-to-make-a-turn-based-strategy-game-part-1) (pt 1)
 
----
+- - -
 
 ## Recipe Recorder
 
@@ -48,7 +48,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Starting Point: guide for to-do app [for Android](https://hub.packtpub.com/how-to-develop-a-simple-to-do-list-app-tutorial/) and [for iPhone](https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029)
 * YouTube (tutorial): [recipe app with React](https://www.youtube.com/watch?v=U9T6YkEDkMo)
 
----
+- - -
 
 ## Story Generator
 
@@ -57,7 +57,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Idea: [random story generator in python](https://medium.com/@murbanlavalira/how-to-make-a-random-story-generator-in-python-3373f285d149)
 * YouTube: [random story generator in python](https://www.youtube.com/watch?v=nxrAEDE1aE0)
 
----
+- - -
 
 ## Halloween Candy Dispenser with an Arduino
 
@@ -66,7 +66,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Ideas: [guide to creating an automatic Halloween candy dispenser](https://www.instructables.com/id/Automatic-Halloween-Candy-Dispenser/)
 * YouTube (tutorial): [automatic Halloween candy dispenser](https://www.youtube.com/watch?v=KxcxH3_G3Es)
 
----
+- - -
 
 ## Mood Recording App
 
@@ -74,7 +74,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 
 * Starting Point: guide for notes app [for Android](https://technobyte.org/create-notes-app-android-full-code-tutorial-simple-explanation/) and [for iPhone](https://medium.com/thecodinghype/creating-a-simple-note-taking-app-for-ios-in-swift-66dcbfe05a30)
 
----
+- - -
 
 ## Weight Lifting Tracker
 
@@ -83,7 +83,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Starting Point: guide for notes app [for Android](https://technobyte.org/create-notes-app-android-full-code-tutorial-simple-explanation/) and [for iPhone](https://medium.com/thecodinghype/creating-a-simple-note-taking-app-for-ios-in-swift-66dcbfe05a30)
 * YouTube (ideas): [habit tracking apps (describes features of different apps currently in the market)](https://www.youtube.com/watch?v=491oCCVMa04)
 
----
+- - -
 
 ## Did You Feed the Dog?
 
@@ -92,7 +92,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Starting Point: guide for to-do app [for Android](https://hub.packtpub.com/how-to-develop-a-simple-to-do-list-app-tutorial/) and [for iPhone](https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029)
 * YouTube (tutorial): for to-do app with [React](https://www.youtube.com/watch?v=pCA4qpQDZD8) or [Django](https://www.youtube.com/watch?v=ovql0Ui3n_I)  or [Swift](https://www.youtube.com/watch?v=-BZdQmHV4MQ) + [GUI with Python](https://www.youtube.com/watch?v=jE-SpRI3K5g)
 
----
+- - -
 
 ## Drink Water Reminder
 
@@ -101,7 +101,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Starting Point: guide for to-do app [for Android](https://hub.packtpub.com/how-to-develop-a-simple-to-do-list-app-tutorial/) and [for iPhone](https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029)
 * YouTube (tutorial): for to-do app with [React](https://www.youtube.com/watch?v=pCA4qpQDZD8) or [Django](https://www.youtube.com/watch?v=ovql0Ui3n_I) or [Swift](https://www.youtube.com/watch?v=-BZdQmHV4MQ) + [GUI with Python](https://www.youtube.com/watch?v=jE-SpRI3K5g)
 
----
+- - -
 
 ## Grocery Food App
 
@@ -110,8 +110,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 * Starting Point: guide for to-do app [for Android](https://hub.packtpub.com/how-to-develop-a-simple-to-do-list-app-tutorial/) and [for iPhone](https://medium.com/better-programming/replicating-the-ios-reminders-app-part1-44211a7b7029)
 * YouTube (tutorial): [shopping list app](https://www.youtube.com/watch?v=j_sD9udZnCk) using Firebase/Firebase and Android (series) + [groceries app UI](https://www.youtube.com/watch?v=zDfSLd2f1lQ) with SwiftUI
 
----
-
+- - -
 
 ## Trivia Night App
 
@@ -133,18 +132,14 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 ***Data Analysis***
 
 * R
-
-  Python
-
-  Octave
+* Python
+* Octave
 
 ***App Development***
 
 * Android Studio
-
-  Google Firebase
-
-  Xcode (only for Macs)
+* Google Firebase
+* Xcode (only for Macs)
 
 ***Prototyping***
 
@@ -159,8 +154,7 @@ How-to (conceptual): [overview](https://www.quora.com/How-can-I-create-my-own-fi
 ***Computer Aided Design***
 
 * AutoCAD
-
-  SketchUp
+* SketchUp
 
 ***Circuit Simulation***
 
