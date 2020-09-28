@@ -1,7 +1,7 @@
 ---
 title: Signups Open!
 description: Signups for Code with Friends Fall 2020 is OPEN!
-date: 2020-09-26T22:25:54.774Z
+date: 2020-09-22T22:25:54.774Z
 event: cwf-fall-2020
 ---
 # Signups for Code with Friends, Fall 2020 is open!
