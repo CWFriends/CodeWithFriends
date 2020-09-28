@@ -7,6 +7,7 @@
     >
       <div v-if="user.loggedIn && new Date(page['end-date']) > Date.now()">
         <v-btn
+          v-if="!signedUp"
           color="accent"
           x-large
           :disabled="new Date(page['signup-date']) > Date.now()"
