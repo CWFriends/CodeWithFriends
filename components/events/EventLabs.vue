@@ -1,53 +1,47 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="selectedType" show-arrows mandatory>
-            <v-slide-item
-              v-for="(type, i) in types"
-              :key="i"
-              v-slot:default="{ active, toggle }"
-            >
-              <v-btn
-                class="mx-2"
-                :input-value="active"
-                active-class="accent white--text"
-                text
-                @click="toggle"
-              >
-                <v-icon left v-text="type.icon"></v-icon>
-                {{ type.name }}
-              </v-btn>
-            </v-slide-item>
-          </v-slide-group>
-        </v-sheet>
-      </v-col>
-      <v-col>
-        <v-sheet height="600">
-          <v-calendar
-            ref="calendar"
-            v-model="calendar"
-            type="week"
-            :events="events"
-            :event-color="getColor"
-            :event-more="false"
-            :start="new Date(page['signup-date'])"
-            interval-height="72"
+  <div>
+    <v-sheet class="mx-auto mb-6 mt-2">
+      <v-slide-group v-model="selectedType" show-arrows mandatory>
+        <v-slide-item
+          v-for="(type, i) in types"
+          :key="i"
+          v-slot:default="{ active, toggle }"
+        >
+          <v-btn
+            class="mx-2"
+            :input-value="active"
+            active-class="accent white--text"
+            text
+            @click="toggle"
           >
-            <template #day-label-header> <div></div> </template>
-            <template #day-body="{ date, week }">
-              <div
-                class="v-current-time"
-                :class="{ first: date === week[0].date }"
-                :style="{ top: nowY }"
-              ></div>
-            </template>
-          </v-calendar>
-        </v-sheet>
-      </v-col>
-    </v-row>
-  </v-container>
+            <v-icon left v-text="type.icon"></v-icon>
+            {{ type.name }}
+          </v-btn>
+        </v-slide-item>
+      </v-slide-group>
+    </v-sheet>
+    <v-sheet height="600">
+      <v-calendar
+        ref="calendar"
+        v-model="calendar"
+        type="week"
+        :events="events"
+        :event-color="getColor"
+        :event-more="false"
+        :start="new Date(page['signup-date'])"
+        interval-height="72"
+      >
+        <template #day-label-header> <div></div> </template>
+        <template #day-body="{ date, week }">
+          <div
+            class="v-current-time"
+            :class="{ first: date === week[0].date }"
+            :style="{ top: nowY }"
+          ></div>
+        </template>
+      </v-calendar>
+    </v-sheet>
+  </div>
 </template>
 
 <script>
