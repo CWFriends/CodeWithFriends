@@ -143,6 +143,7 @@ export const actions = {
         uid: ctx.rootState.user.data.uid,
         avatar_url: ctx.rootState.user.data.avatar_url,
         name: ctx.rootState.user.data.name,
+        login: ctx.rootState.user.data.login,
         html_url: ctx.rootState.user.data.html_url,
       }
 

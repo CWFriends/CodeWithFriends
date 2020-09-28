@@ -2,7 +2,7 @@
   <a
     :href="user.html_url"
     target="_blank"
-    :title="(user.name || user.login) + ' Github'"
+    :title="user.name || user.login || ''"
   >
     <v-avatar class="ma-1" :size="size">
       <v-icon v-if="!user.avatar_url" x-large>mdi-account-circle</v-icon>
