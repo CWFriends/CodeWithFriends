@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/firebase": "^6.1.1",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "algoliasearch": "^4.5.1",
     "firebase": "^7.20.0",
     "nuxt": "^2.14.0",
     "vuex": "^3.5.1"

@@ -60,7 +60,7 @@ export const actions = {
           Authorization: 'token ' + token,
         },
       })
-      .then((res) => {
+      .then(async (res) => {
         localStorage.setItem('user', JSON.stringify(res.data))
         commit('setUser', { uid: user.uid, ...res.data })
         dispatch('event/updateEventUsers', null, { root: true })
@@ -68,13 +68,17 @@ export const actions = {
         dispatch('getSubmissions')
         dispatch('getSignups')
 
-        this.$fireStore
+        await this.$fireStore
           .collection('users')
           .doc(user.uid)
           .set(res.data)
           .catch(() => {
             dispatch('logOut')
           })
+
+        await this.$fireFunc.httpsCallable('updateAlgolia')({
+          id: user.uid,
+        })
       })
   },
   async getSubmissions({ commit, state }) {

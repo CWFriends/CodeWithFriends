@@ -194,6 +194,7 @@ import timezones from 'timezones.json'
 import languages from 'languages-list'
 import { mapState, mapActions } from 'vuex'
 import SignInButton from '@/components/SignInButton'
+import algoliasearch from 'algoliasearch'
 
 export default {
   name: 'SignUpForm',
@@ -274,26 +275,22 @@ export default {
   },
   watch: {
     groupSearch() {
-      if (
-        !this.groupSearch ||
-        this.groupSearch.length < 3 ||
-        this.groupSearchResults.length > 0
-      )
+      if (!this.groupSearch || this.groupSearch.length < 3) {
         return
+      }
+
       this.loadingGroupSearch = true
 
-      this.$fireStore
-        .collection('users')
-        .where('name', '>', '')
-        .get()
-        .then((users) => {
-          const userList = []
-          users.forEach((doc) => {
-            userList.push({ ...doc.data(), uid: doc.id })
-          })
-          this.groupSearchResults = userList
-          this.loadingGroupSearch = false
-        })
+      const client = algoliasearch(
+        'VTUTHQJF4C',
+        '4ebfa3985038a5305d7f5089f63adb74'
+      )
+      const index = client.initIndex('CWF')
+
+      index.search(this.groupSearch).then((responses) => {
+        this.loadingGroupSearch = false
+        this.groupSearchResults = responses.hits
+      })
     },
   },
   methods: {

@@ -2,6 +2,12 @@ const functions = require('firebase-functions')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 const admin = require('firebase-admin')
 const creds = require('./service-account.json')
+const algoliasearch = require('algoliasearch')
+
+const ALGOLIA_ID = functions.config().algolia.app_id
+const ALGOLIA_ADMIN_KEY = functions.config().algolia.admin_key
+
+const algolia = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY)
 
 admin.initializeApp()
 
@@ -50,4 +56,18 @@ exports.addSubmission = functions.https.onCall(async (data) => {
   const sheet = doc.sheetsByIndex[1]
 
   await sheet.addRows([submissionData])
+})
+
+exports.updateAlgolia = functions.https.onCall(async (data) => {
+  const userRef = await admin
+    .firestore()
+    .collection('submissions')
+    .doc(data.id)
+    .get()
+
+  const userData = userRef.data()
+  userData.objectID = data.id
+
+  const index = algolia.initIndex('CWF')
+  return index.saveObject(user)
 })
