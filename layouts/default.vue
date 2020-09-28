@@ -81,3 +81,12 @@ export default {
   },
 }
 </script>
+
+<style>
+hr {
+  margin: 2rem 0;
+}
+ul {
+  margin-bottom: 1rem;
+}
+</style>
