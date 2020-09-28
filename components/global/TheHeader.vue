@@ -3,7 +3,11 @@
     <v-app-bar fixed app elevate-on-scroll>
       <nuxt-link to="/" :title="defaults.title">
         <v-avatar tile>
-          <img :src="defaults.logo" style="object-fit: contain" />
+          <img
+            :src="defaults.logo"
+            style="object-fit: contain"
+            :alt="defaults.title"
+          />
         </v-avatar>
       </nuxt-link>
       <v-spacer />
@@ -89,6 +93,7 @@
         </v-list>
       </v-menu>
       <v-app-bar-nav-icon
+        aria-label="Menu Toggle"
         class="d-md-none"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>

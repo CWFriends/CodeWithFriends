@@ -76,7 +76,11 @@
                 icon="mdi-check"
               >
                 Thank you for signing up! Be sure to join our
-                <a :href="discordUrl" target="_blank" title="Discord"
+                <a
+                  :href="discordUrl"
+                  target="_blank"
+                  title="Discord"
+                  rel="noopener noreferrer"
                   >Discord channel</a
                 >
                 to stay connected with the community, and you will receive a
