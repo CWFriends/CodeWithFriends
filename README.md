@@ -32,6 +32,7 @@ Learn new things! Make cool stuff! Have fun! Do all that, with an online communi
 * [Netlify](https://www.netlify.com/) for static hosting
 * [Netlify CMS](https://www.netlifycms.org/) for Content Management
 * [Firebase](https://firebase.google.com/) for authentication, serverless functions, media storage and databases
+* [Algolia](https://www.algolia.com/) for searching users for check-in groups
 
 ## Getting Started
 
