@@ -36,6 +36,7 @@
               :href="item.url"
               :title="item.name"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <v-list-item-title>{{ item.name }}</v-list-item-title>
               <v-list-item-icon>
@@ -161,6 +162,7 @@
             :href="item.url"
             :title="item.name"
             target="_blank"
+            rel="noopener noreferrer"
             icon
           >
             <v-icon v-text="item.icon"></v-icon>
