@@ -186,6 +186,45 @@ labs:
         end-date: 2020-09-25T20:00:00.000Z
       - start-date: 2020-09-20T17:00:00.000Z
         end-date: 2020-09-20T21:00:00.000Z
+  - name: tomo
+    type:
+      - Android Dev
+    schedule:
+      - start-date: 2020-09-22T01:00:00.000Z
+        end-date: 2020-09-22T06:00:00.000Z
+      - start-date: 2020-09-23T01:00:00.000Z
+        end-date: 2020-09-23T06:00:00.000Z
+      - start-date: 2020-09-24T01:00:00.000Z
+        end-date: 2020-09-24T06:00:00.000Z
+      - start-date: 2020-09-25T01:00:00.000Z
+        end-date: 2020-09-25T06:00:00.000Z
+      - start-date: 2020-09-27T02:00:00.000Z
+        end-date: 2020-09-27T06:00:00.000Z
+      - start-date: 2020-09-21T02:00:00.000Z
+        end-date: 2020-09-21T06:00:00.000Z
+  - name: PricklyPear
+    type:
+      - iOS Dev
+    schedule:
+      - start-date: 2020-09-22T00:00:00.000Z
+        end-date: 2020-09-22T01:00:00.000Z
+      - start-date: 2020-09-26T00:00:00.000Z
+        end-date: 2020-09-26T01:00:00.000Z
+  - name: aarnphm
+    type:
+      - Backend
+      - Machine Learning
+    schedule:
+      - start-date: 2020-09-20T15:00:00.000Z
+        end-date: 2020-09-21T03:00:00.000Z
+      - start-date: 2020-09-21T15:00:00.000Z
+        end-date: 2020-09-22T03:00:00.000Z
+      - start-date: 2020-09-23T15:00:00.000Z
+        end-date: 2020-09-24T03:00:00.000Z
+      - start-date: 2020-09-25T15:00:00.000Z
+        end-date: 2020-09-26T03:00:00.000Z
+      - start-date: 2020-09-26T15:00:00.000Z
+        end-date: 2020-09-27T03:00:00.000Z
 masthead-size: Cover
 image: img/group-2.png
 start-date: 2020-10-01T07:00:00.000Z
