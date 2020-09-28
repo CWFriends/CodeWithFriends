@@ -32,11 +32,20 @@ export const mutations = {
 
 export const actions = {
   async getUserData({ commit, dispatch }, user) {
-    const userData = await this.$fireStore
-      .collection('users')
-      .doc(user.uid)
-      .get()
-    commit('setUser', { uid: user.uid, ...userData.data() })
+    const userCache = localStorage.getItem('user')
+
+    if (userCache) {
+      const userData = JSON.parse(userCache)
+      commit('setUser', { uid: user.uid, ...userData })
+    } else {
+      const userData = await this.$fireStore
+        .collection('users')
+        .doc(user.uid)
+        .get()
+      commit('setUser', { uid: user.uid, ...userData.data() })
+      localStorage.setItem('user', JSON.stringify(userData.data()))
+    }
+
     dispatch('getRepos')
     dispatch('getSubmissions')
     dispatch('getSignups')
@@ -52,6 +61,7 @@ export const actions = {
         },
       })
       .then((res) => {
+        localStorage.setItem('user', JSON.stringify(res.data))
         commit('setUser', { uid: user.uid, ...res.data })
         dispatch('event/updateEventUsers', null, { root: true })
         dispatch('getRepos')
