@@ -59,15 +59,11 @@ exports.addSubmission = functions.https.onCall(async (data) => {
 })
 
 exports.updateAlgolia = functions.https.onCall(async (data) => {
-  const userRef = await admin
-    .firestore()
-    .collection('submissions')
-    .doc(data.id)
-    .get()
+  const userRef = await admin.firestore().collection('users').doc(data.id).get()
 
   const userData = userRef.data()
   userData.objectID = data.id
 
   const index = algolia.initIndex('CWF')
-  return index.saveObject(user)
+  return index.saveObject(userData)
 })
