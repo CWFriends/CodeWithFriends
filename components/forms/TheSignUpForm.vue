@@ -131,7 +131,8 @@
           hide-selected
           label="I'd like to be in a group with..."
           item-text="name"
-          item-value="uid"
+          item-value="objectID"
+          :filter="userFilter"
           multiple
           hint="Search for other members you are interested in forming a check-in group with. Users must have signed into the website at least once. If you leave this blank, we'll form a check-in group for you that works best for your time zone."
           persistent-hint
@@ -254,6 +255,7 @@ export default {
     checkinGroup: false,
     groupMembers: [],
     groupSearch: '',
+    prevGroupSearch: null,
     groupSearchResults: [],
     loadingGroupSearch: false,
     discordRules: [
@@ -279,7 +281,17 @@ export default {
         return
       }
 
+      if (this.groupSearch.includes(this.prevGroupSearch)) {
+        this.groupSearchResults = this.groupSearchResults.filter((item) =>
+          this.userFilter(item, this.groupSearch)
+        )
+
+        this.prevGroupSearch = this.groupSearch
+        return
+      }
+
       this.loadingGroupSearch = true
+      this.prevGroupSearch = this.groupSearch
 
       const client = algoliasearch(
         'VTUTHQJF4C',
@@ -302,8 +314,20 @@ export default {
       window.open(url)
     },
     removeUser(item) {
-      const index = this.groupMembers.indexOf(item.uid)
+      const index = this.groupMembers.indexOf(item.objectID)
       if (index >= 0) this.groupMembers.splice(index, 1)
+    },
+    userFilter(item, queryText) {
+      const email = item.email?.toLowerCase()
+      const name = item.name?.toLowerCase()
+      const login = item.login.toLowerCase()
+      const search = queryText.toLowerCase()
+
+      return (
+        (email && email.includes(search)) ||
+        (name && name.includes(search)) ||
+        login.includes(search)
+      )
     },
     signUp() {
       if (!this.$refs.form.validate()) return
