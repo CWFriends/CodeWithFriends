@@ -1,8 +1,10 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
+image: img/group-2.png
 meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
+start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z
@@ -18,6 +20,7 @@ schedule:
   - start-date: 2020-10-01T15:30:00.000Z
     end-date: 2020-10-01T16:30:00.000Z
     title: Opening Ceremony
+    url: https://www.twitch.tv/videos/757458657
   - start-date: 2020-10-02T20:00:00.000Z
     end-date: 2020-10-03T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
@@ -226,8 +229,6 @@ labs:
       - start-date: 2020-09-26T15:00:00.000Z
         end-date: 2020-09-27T03:00:00.000Z
 masthead-size: Cover
-image: img/group-2.png
-start-date: 2020-10-01T07:00:00.000Z
 ---
 We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
 
