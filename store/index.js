@@ -22,7 +22,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({ commit, dispatch }, { $content, $fireStore }) {
+  async nuxtServerInit({ commit, dispatch }, { $content }) {
     // Fetch the header and footer menus
     const menus = await $content('settings', 'menus').fetch()
 
