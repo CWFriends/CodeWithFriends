@@ -112,9 +112,9 @@
                 Participants ({{ numberFormat(signupsCount) }})
               </h2>
 
-              <div class="avatar-list">
+              <div v-if="usersData" class="avatar-list">
                 <UserAvatar
-                  v-for="(participant, i) in event.data.usersData"
+                  v-for="(participant, i) in usersData"
                   :key="i"
                   :user="participant"
                 ></UserAvatar>
@@ -219,6 +219,9 @@ export default {
     },
     hasLabs() {
       return this.page.labs?.length > 0
+    },
+    usersData() {
+      return this.event?.data?.usersData
     },
   },
   mounted() {
