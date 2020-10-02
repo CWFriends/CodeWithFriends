@@ -77,12 +77,23 @@ export const actions = {
       data.image = ''
     }
 
-    await this.$fireStore
+    const submissionRef = await this.$fireStore
       .collection('events')
       .doc(data.event)
-      .update({
-        submissionsCount: this.$fireStoreObj.FieldValue.increment(1),
-      })
+
+    await this.$fireStore.runTransaction(async (t) => {
+      const submission = (await t.get(submissionRef)).data()
+
+      await t.set(
+        submissionRef,
+        {
+          submissionsCount: (submission.submissionsCount || 0) + 1,
+        },
+        {
+          merge: true,
+        }
+      )
+    })
 
     const submission = await this.$fireStore.collection('submissions').add(data)
 
