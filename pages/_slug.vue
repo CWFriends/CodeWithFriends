@@ -14,7 +14,7 @@
                 <h3>{{ item.header }}</h3>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                {{ item.content }}
+                <div v-html="html(item.content)"></div>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -26,6 +26,7 @@
 
 <script>
 import HeroImage from '@/components/HeroImage'
+import { markdown } from 'markdown'
 
 export default {
   components: {
@@ -37,6 +38,11 @@ export default {
       page,
       slug: params.slug,
     }
+  },
+  methods: {
+    html(text) {
+      return markdown.toHTML(text)
+    },
   },
   head() {
     return {
@@ -89,3 +95,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.v-expansion-panel-content p:last-child {
+  margin-bottom: 0;
+}
+</style>

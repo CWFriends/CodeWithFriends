@@ -5,12 +5,9 @@ masthead-size: Cover
 disable-page-generation: false
 collapsible-content:
   - header: Is Code With Friends beginner friendly?
-    content: >-
-      Anyone with any level of experience can participate. One of the main
-      tenants of this event is to learn new things!
-
-
-      \[Codecademy](www.codecademy.com) is a great starting point for the super basics on a handful of languages for anyone starting from scratch!
+    content: Anyone with any level of experience can participate. One of the main tenants of this event is to learn new things!
+      
+      [Codecademy](www.codecademy.com) is a great starting point for the super basics on a handful of languages for anyone starting from scratch!
   - header: Is it free?
     content: Code With Friends is 100% free!
   - content: If you have submitted a project to the platform and filled in the
@@ -18,7 +15,7 @@ collapsible-content:
       sticker.
     header: Will I get CWF Fall 2020 Stickers?
   - header: Is GitHub easy to use?
-    content: Github may be daunting some ways, but here is a \[YouTube video of
+    content: Github may be daunting some ways, but here is a [YouTube video of
       Github training](https://www.youtube.com/watch?v=0fKg7e37bQE) that can
       definitely show you how to use the website.
   - header: Where do I begin?
