@@ -43,19 +43,25 @@ export const actions = {
       const users = event?.users || []
       const usersData = event?.usersData || []
 
-      await t.set(eventRef, {
-        signupsCount: users.length + 1,
-        users: [...users, data.user],
-        usersData: [
-          ...usersData,
-          {
-            uid: data.user,
-            avatar_url: rootState.user.data.avatar_url,
-            name: rootState.user.data.name,
-            html_url: rootState.user.data.html_url,
-          },
-        ],
-      })
+      await t.set(
+        eventRef,
+        {
+          signupsCount: users.length + 1,
+          users: [...users, data.user],
+          usersData: [
+            ...usersData,
+            {
+              uid: data.user,
+              avatar_url: rootState.user.data.avatar_url,
+              name: rootState.user.data.name,
+              html_url: rootState.user.data.html_url,
+            },
+          ],
+        },
+        {
+          merge: true,
+        }
+      )
     })
 
     const signup = await this.$fireStore.collection('signups').add(data)

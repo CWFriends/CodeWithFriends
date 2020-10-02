@@ -23,13 +23,17 @@
           v-if="signedUp && !submitted"
           color="accent"
           x-large
-          :disabled="notStarted"
+          :disabled="submissionsClosed"
           @click="submissionModal = true"
         >
           Submit a Project
           {{
-            notStarted
-              ? `(Closed until ${getDate(page['start-date'], 'short', false)})`
+            submissionsClosed
+              ? `(Closed until ${getDate(
+                  page['submissions-date'],
+                  'short',
+                  false
+                )})`
               : ''
           }}
         </v-btn>
@@ -211,8 +215,8 @@ export default {
     submitted() {
       return this.user.submissions.some(({ event }) => event === this.page.slug)
     },
-    notStarted() {
-      return new Date(this.page['start-date']) > Date.now()
+    submissionsClosed() {
+      return new Date(this.page['submissions-date']) > Date.now()
     },
     hasEvents() {
       return this.page.schedule?.length > 0
