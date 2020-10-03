@@ -26,20 +26,36 @@ schedule:
     end-date: 2020-10-03T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
-  - start-date: 2020-10-30T20:00:00.000Z
-    end-date: 2020-10-31T00:00:00.000Z
-    title: Mayuko's Co-working Twitch Stream (every Friday)
+  - start-date: 2020-10-04T16:00:00.000Z
+    end-date: 2020-10-04T19:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
     url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-09T20:00:00.000Z
     end-date: 2020-10-10T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-11T16:00:35.509Z
+    end-date: 2020-10-11T19:00:35.628Z
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
+    url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-16T20:00:00.000Z
     end-date: 2020-10-17T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-18T16:00:35.942Z
+    end-date: 2020-10-18T19:00:00.000Z
+    url: https://twitch.tv/hellomayuko
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
   - start-date: 2020-10-23T20:00:00.000Z
     end-date: 2020-10-24T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-25T16:00:00.000Z
+    end-date: 2020-10-25T19:00:00.000Z
+    url: https://twitch.tv/hellomayuko
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
+  - start-date: 2020-10-30T20:00:00.000Z
+    end-date: 2020-10-31T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-31T06:59:00.000Z
