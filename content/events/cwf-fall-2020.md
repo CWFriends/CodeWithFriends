@@ -245,6 +245,26 @@ labs:
         end-date: 2020-09-26T03:00:00.000Z
       - start-date: 2020-09-26T15:00:00.000Z
         end-date: 2020-09-27T03:00:00.000Z
+  - name: cmarsh (Colin)
+    type:
+      - Android Dev
+    schedule:
+      - start-date: 2020-10-05T06:00:00.000Z
+        end-date: 2020-10-05T07:30:00.000Z
+      - start-date: 2020-10-08T06:00:00.000Z
+        end-date: 2020-10-08T07:30:00.000Z
+      - start-date: 2020-10-12T06:00:00.000Z
+        end-date: 2020-10-12T07:30:00.000Z
+      - start-date: 2020-10-15T06:00:00.000Z
+        end-date: 2020-10-15T07:30:00.000Z
+      - start-date: 2020-10-19T06:00:00.000Z
+        end-date: 2020-10-19T07:30:00.000Z
+      - start-date: 2020-10-22T06:00:00.000Z
+        end-date: 2020-10-22T07:30:00.000Z
+      - start-date: 2020-10-26T06:00:00.000Z
+        end-date: 2020-10-26T07:30:00.000Z
+      - start-date: 2020-10-29T06:00:00.000Z
+        end-date: 2020-10-29T07:30:00.000Z
 masthead-size: Cover
 ---
 We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
