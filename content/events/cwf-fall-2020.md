@@ -156,8 +156,6 @@ labs:
     schedule:
       - start-date: 2020-09-20T16:00:00.000Z
         end-date: 2020-09-20T19:00:00.000Z
-      - start-date: 2020-09-26T00:00:00.000Z
-        end-date: 2020-09-26T01:00:00.000Z
   - name: mayuko
     type:
       - iOS Dev
