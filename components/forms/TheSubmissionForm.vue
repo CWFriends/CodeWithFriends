@@ -157,10 +157,26 @@
         </p>
         <v-textarea
           v-model="address"
-          class="my-4"
+          class="mt-4"
           outlined
           label="Shipping Address"
         ></v-textarea>
+        <v-alert
+          border="top"
+          color="light-green"
+          dark
+          icon="mdi-clipboard-pulse-outline"
+        >
+          <strong>We would love to hear your feedback!</strong> Please fill out
+          our
+          <a
+            ref="noreferrer noopener"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform"
+            target="_blank"
+            >feedback form</a
+          >
+          after you have completed your submission, we would appreciate it!
+        </v-alert>
         <div class="text-right">
           <v-btn color="accent" :loading="submittingForm" @click="submit">
             Submit Your Project!

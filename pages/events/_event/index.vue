@@ -106,7 +106,17 @@
                   :to="page.path + '/submissions'"
                   :title="page.title + ' Submissions'"
                   >submissions page</nuxt-link
-                >.
+                >. <br /><br />
+                <strong>We would love to hear your feedback!</strong> Please
+                fill out our
+                <a
+                  ref="noreferrer noopener"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform"
+                  target="_blank"
+                  >feedback form</a
+                >
+                after you have completed your submission, we would appreciate
+                it!
               </v-alert>
 
               <nuxt-content :document="page"></nuxt-content>
