@@ -1,11 +1,9 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
-image: img/group-2.png
 meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
-submissions-date: 2020-10-15T16:30:00.000Z
-start-date: 2020-10-01T07:00:00.000Z
+submissions-date: 2020-10-23T16:30:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z
@@ -26,20 +24,36 @@ schedule:
     end-date: 2020-10-03T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
-  - start-date: 2020-10-30T20:00:00.000Z
-    end-date: 2020-10-31T00:00:00.000Z
-    title: Mayuko's Co-working Twitch Stream (every Friday)
+  - start-date: 2020-10-04T16:00:00.000Z
+    end-date: 2020-10-04T19:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
     url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-09T20:00:00.000Z
     end-date: 2020-10-10T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-11T16:00:35.509Z
+    end-date: 2020-10-11T19:00:35.628Z
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
+    url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-16T20:00:00.000Z
     end-date: 2020-10-17T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-18T16:00:35.942Z
+    end-date: 2020-10-18T19:00:00.000Z
+    url: https://twitch.tv/hellomayuko
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
   - start-date: 2020-10-23T20:00:00.000Z
     end-date: 2020-10-24T00:00:00.000Z
+    title: Mayuko's Co-working Twitch Stream (every Friday)
+    url: https://twitch.tv/hellomayuko
+  - start-date: 2020-10-25T16:00:00.000Z
+    end-date: 2020-10-25T19:00:00.000Z
+    url: https://twitch.tv/hellomayuko
+    title: Mayuko's Co-working Twitch Stream (every Sunday)
+  - start-date: 2020-10-30T20:00:00.000Z
+    end-date: 2020-10-31T00:00:00.000Z
     title: Mayuko's Co-working Twitch Stream (every Friday)
     url: https://twitch.tv/hellomayuko
   - start-date: 2020-10-31T06:59:00.000Z
@@ -142,8 +156,6 @@ labs:
     schedule:
       - start-date: 2020-09-20T16:00:00.000Z
         end-date: 2020-09-20T19:00:00.000Z
-      - start-date: 2020-09-26T00:00:00.000Z
-        end-date: 2020-09-26T01:00:00.000Z
   - name: mayuko
     type:
       - iOS Dev
@@ -229,7 +241,29 @@ labs:
         end-date: 2020-09-26T03:00:00.000Z
       - start-date: 2020-09-26T15:00:00.000Z
         end-date: 2020-09-27T03:00:00.000Z
+  - name: cmarsh (Colin)
+    type:
+      - Android Dev
+    schedule:
+      - start-date: 2020-10-05T06:00:00.000Z
+        end-date: 2020-10-05T07:30:00.000Z
+      - start-date: 2020-10-08T06:00:00.000Z
+        end-date: 2020-10-08T07:30:00.000Z
+      - start-date: 2020-10-12T06:00:00.000Z
+        end-date: 2020-10-12T07:30:00.000Z
+      - start-date: 2020-10-15T06:00:00.000Z
+        end-date: 2020-10-15T07:30:00.000Z
+      - start-date: 2020-10-19T06:00:00.000Z
+        end-date: 2020-10-19T07:30:00.000Z
+      - start-date: 2020-10-22T06:00:00.000Z
+        end-date: 2020-10-22T07:30:00.000Z
+      - start-date: 2020-10-26T06:00:00.000Z
+        end-date: 2020-10-26T07:30:00.000Z
+      - start-date: 2020-10-29T06:00:00.000Z
+        end-date: 2020-10-29T07:30:00.000Z
 masthead-size: Cover
+image: img/group-2.png
+start-date: 2020-10-01T07:00:00.000Z
 ---
 We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
 
