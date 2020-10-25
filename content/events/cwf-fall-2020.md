@@ -1,9 +1,11 @@
 ---
 title: "CWF: Fall 2020"
 icon: ""
+image: img/group-2.png
 meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
 submissions-date: 2020-10-23T16:30:00.000Z
+start-date: 2020-10-01T07:00:00.000Z
 end-date: 2020-11-01T06:59:00.000Z
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z
@@ -59,8 +61,8 @@ schedule:
   - start-date: 2020-10-31T06:59:00.000Z
     end-date: 2020-10-31T06:59:00.000Z
     title: Project Submissions Due
-  - start-date: 2020-10-31T07:00:00.000Z
-    end-date: 2020-10-31T07:00:00.000Z
+  - start-date: 2020-11-01T17:00:00.000Z
+    end-date: 2020-11-01T18:00:00.000Z
     title: Closing Ceremony
 labs:
   - name: Luis
@@ -262,9 +264,6 @@ labs:
       - start-date: 2020-10-29T06:00:00.000Z
         end-date: 2020-10-29T07:30:00.000Z
 masthead-size: Cover
-image: img/group-2.png
-start-date: 2020-10-01T07:00:00.000Z
-feedback: https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform
 ---
 We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
 
