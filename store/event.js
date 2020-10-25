@@ -22,15 +22,19 @@ export const mutations = {
 
 export const actions = {
   async getEventData({ commit, dispatch, state }, { event, submissions }) {
-    if (event === state.event) return
-    commit('setEvent', event)
-    commit('setData', {})
-    commit('setSubmissionPreview', [])
+    if (event !== state.event) {
+      commit('setEvent', event)
+      commit('setData', {})
+      commit('setSubmissionPreview', [])
 
-    await dispatch('getEventDetails')
-    await dispatch('getSubmissionsPreview')
+      await dispatch('getEventDetails')
+      await dispatch('getSubmissionsPreview')
+    }
 
-    if (submissions) {
+    if (
+      submissions &&
+      (state.submissions.length === 0 || event !== state.event)
+    ) {
       await dispatch('getSubmissions')
     }
   },
