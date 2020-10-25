@@ -21,22 +21,30 @@
         :event-color="getColor"
         :event-more="false"
         :start="new Date(page['signup-date'])"
-        @click:event="openEventUrl"
       >
         <template v-slot:event="event">
-          <strong
-            >{{ event.formatTime(event.eventParsed.start, true) }}
-            <v-icon
-              v-if="event.event.url"
-              color="white"
-              x-small
-              style="padding-bottom: 2px"
-            >
-              mdi-open-in-new
-            </v-icon></strong
+          <a
+            v-if="event.event.url"
+            :href="event.event.url"
+            target="_blank"
+            :title="event.event.name"
           >
+            <strong
+              >{{ event.formatTime(event.eventParsed.start, true) }}
+              <v-icon color="white" x-small style="padding-bottom: 2px">
+                mdi-open-in-new
+              </v-icon></strong
+            >
 
-          {{ event.event.name }}
+            {{ event.event.name }}
+          </a>
+          <template v-else>
+            <strong
+              >{{ event.formatTime(event.eventParsed.start, true) }}
+            </strong>
+
+            {{ event.event.name }}
+          </template>
         </template>
       </v-calendar>
     </v-sheet>
@@ -83,11 +91,6 @@ export default {
     getColor(event) {
       return event.color
     },
-    openEventUrl(e) {
-      if (e.event.url) {
-        window.open(e.event.url)
-      }
-    },
   },
 }
 </script>
@@ -98,6 +101,11 @@ export default {
   max-height: 44px;
   height: auto !important;
   padding: 2px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .v-calendar.v-calendar-events .v-calendar-weekly__day {

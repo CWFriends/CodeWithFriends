@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import HeroImage from '@/components/HeroImage'
-import SubmissionCard from '@/components/SubmissionCard'
+import HeroImage from '~/components/HeroImage'
+import SubmissionCard from '~/components/SubmissionCard'
 
 export default {
   components: {

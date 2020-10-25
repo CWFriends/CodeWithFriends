@@ -167,14 +167,13 @@
         </v-autocomplete>
         <v-checkbox v-model="codeOfConduct" :rules="agree">
           <template v-slot:label>
-            <div>
+            <div @click.stop>
               I agree and will adhere to the
-              <a
+              <nuxt-link
                 target="_blank"
-                href="/code-of-conduct"
+                to="/code-of-conduct"
                 title="Code of Conduct"
-                @click="openLink($event.target)"
-                >Code of Conduct</a
+                >Code of Conduct</nuxt-link
               >.
             </div>
           </template>
@@ -310,9 +309,6 @@ export default {
       logOut: 'user/logOut',
       submitSignup: 'event/submitSignup',
     }),
-    openLink(url) {
-      window.open(url)
-    },
     removeUser(item) {
       const index = this.groupMembers.indexOf(item.objectID)
       if (index >= 0) this.groupMembers.splice(index, 1)
