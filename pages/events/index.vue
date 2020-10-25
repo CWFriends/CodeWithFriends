@@ -11,6 +11,12 @@
           md="4"
           sm="6"
         >
+          <nuxt-link
+            v-if="!event.url"
+            :to="event.path + '/submissions'"
+            class="d-none"
+            >Submissions</nuxt-link
+          >
           <v-card
             :href="event.url || ''"
             :to="event.url ? '' : event.path"

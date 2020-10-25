@@ -162,6 +162,7 @@
           label="Shipping Address"
         ></v-textarea>
         <v-alert
+          v-if="page.feedback"
           border="top"
           color="light-green"
           dark
@@ -169,10 +170,7 @@
         >
           <strong>We would love to hear your feedback!</strong> Please fill out
           our
-          <a
-            ref="noreferrer noopener"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform"
-            target="_blank"
+          <a ref="noreferrer noopener" :href="page.feedback" target="_blank"
             >feedback form</a
           >
           after you have completed your submission, we would appreciate it!

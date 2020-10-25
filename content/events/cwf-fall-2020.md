@@ -264,6 +264,7 @@ labs:
 masthead-size: Cover
 image: img/group-2.png
 start-date: 2020-10-01T07:00:00.000Z
+feedback: https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform
 ---
 We're back in October for Code With Friends, which will start on Thursday, October 1st to Saturday, October 31st.
 

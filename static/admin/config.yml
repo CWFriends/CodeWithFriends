@@ -28,6 +28,8 @@ collections:
       - { label: 'Start Date', name: 'start-date', widget: datetime, required: true }
       - { label: 'End Date', name: 'end-date', widget: datetime, required: true }
       - { label: 'External URL', name: url, widget: string, required: false, hint: 'Did this event happen on an external site? If so, no event page will be created and users will navigate there instead.' }
+      - { label: 'Feedback Form URL', name: feedback, widget: string, required: false, hint: 'A link to the feedback form that users fill out after submitting their project.' }
+
       - { label: Body, name: body, widget: markdown, required: false }
       - label: Schedule
         name: schedule
