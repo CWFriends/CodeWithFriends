@@ -114,7 +114,7 @@
         </v-combobox>
         <v-autocomplete
           v-model="teamMembers"
-          :items="event.usersData"
+          :items="event.data.usersData"
           chips
           label="Team Members"
           item-text="name"
