@@ -52,22 +52,33 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyAyqHj6pZOwGO2CzovkbuJBx0UzwFWxUUo',
-      authDomain: 'code-with-friends.firebaseapp.com',
-      databaseURL: 'https://code-with-friends.firebaseio.com',
-      projectId: 'code-with-friends',
-      storageBucket: 'code-with-friends.appspot.com',
-      messagingSenderId: '699377183793',
-      appId: '1:699377183793:web:ee04f5874143db79cc3910',
-      measurementId: 'G-GVEGPBTFDS',
+      production: {
+        apiKey: 'AIzaSyAyqHj6pZOwGO2CzovkbuJBx0UzwFWxUUo',
+        authDomain: 'code-with-friends.firebaseapp.com',
+        databaseURL: 'https://code-with-friends.firebaseio.com',
+        projectId: 'code-with-friends',
+        storageBucket: 'code-with-friends.appspot.com',
+        messagingSenderId: '699377183793',
+        appId: '1:699377183793:web:ee04f5874143db79cc3910',
+        measurementId: 'G-GVEGPBTFDS',
+      },
+      development: {
+        apiKey: 'AIzaSyBtafxKJemjcOOIg8o5hJ1YkZ-dNyYTMEw',
+        authDomain: 'code-with-friends-dev.firebaseapp.com',
+        databaseURL: 'https://code-with-friends-dev.firebaseio.com',
+        projectId: 'code-with-friends-dev',
+        storageBucket: 'code-with-friends-dev.appspot.com',
+        messagingSenderId: '534136463987',
+        appId: '1:534136463987:web:0afd439c8dabac4c528006',
+      },
     },
     services: {
       auth: true,
       firestore: true,
       storage: true,
       functions: true,
-      performance: true,
-      analytics: true,
+      performance: process.env.NODE_ENV === 'production',
+      analytics: process.env.NODE_ENV === 'production',
     },
   },
   /*

@@ -205,7 +205,7 @@ export default {
     },
   },
   mounted() {
-    this.$fireAuth.onAuthStateChanged((user) => {
+    this.$fire.auth.onAuthStateChanged((user) => {
       if (!user) {
         this.stopUserLoading()
         return

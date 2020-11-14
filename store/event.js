@@ -39,9 +39,9 @@ export const actions = {
     }
   },
   async submitSignup({ rootState }, data) {
-    const eventRef = this.$fireStore.collection('events').doc(data.event)
+    const eventRef = this.$fire.firestore.collection('events').doc(data.event)
 
-    await this.$fireStore.runTransaction(async (t) => {
+    await this.$fire.firestore.runTransaction(async (t) => {
       const event = (await t.get(eventRef)).data()
 
       const users = event?.users || []
@@ -68,14 +68,14 @@ export const actions = {
       )
     })
 
-    const signup = await this.$fireStore.collection('signups').add(data)
-    return this.$fireFunc.httpsCallable('addSignup')({
+    const signup = await this.$fire.firestore.collection('signups').add(data)
+    return this.$fire.functions.httpsCallable('addSignup')({
       id: signup.id,
     })
   },
   async submitProject({ state, commit }, data) {
     if (data.image) {
-      await this.$fireStorage
+      await this.$fire.storage
         .ref()
         .child(data.event + '/' + data.repoId + data.user + data.image.name)
         .put(data.image)
@@ -87,11 +87,11 @@ export const actions = {
       data.image = ''
     }
 
-    const submissionRef = await this.$fireStore
+    const submissionRef = await this.$fire.firestore
       .collection('events')
       .doc(data.event)
 
-    await this.$fireStore.runTransaction(async (t) => {
+    await this.$fire.firestore.runTransaction(async (t) => {
       const submission = (await t.get(submissionRef)).data()
 
       await t.set(
@@ -105,15 +105,17 @@ export const actions = {
       )
     })
 
-    const submission = await this.$fireStore.collection('submissions').add(data)
+    const submission = await this.$fire.firestore
+      .collection('submissions')
+      .add(data)
 
-    return this.$fireFunc.httpsCallable('addSubmission')({
+    return this.$fire.functions.httpsCallable('addSubmission')({
       id: submission.id,
     })
   },
 
   async getEventDetails({ state, commit }) {
-    await this.$fireStore
+    await this.$fire.firestore
       .collection('events')
       .doc(state.event)
       .onSnapshot((doc) => {
@@ -121,7 +123,7 @@ export const actions = {
       })
   },
   async getSubmissionsPreview({ state, commit }) {
-    await this.$fireStore
+    await this.$fire.firestore
       .collection('submissions')
       .where('event', '==', state.event)
       .limit(3)
@@ -136,7 +138,7 @@ export const actions = {
       })
   },
   async getSubmissions({ state, commit }) {
-    await this.$fireStore
+    await this.$fire.firestore
       .collection('submissions')
       .where('event', '==', state.event)
       .onSnapshot((submissions) => {
@@ -150,7 +152,7 @@ export const actions = {
       })
   },
   async updateEventUsers(ctx) {
-    const eventData = await this.$fireStore
+    const eventData = await this.$fire.firestore
       .collection('events')
       .where('users', 'array-contains', ctx.rootState.user.data.uid)
       .get()
@@ -168,7 +170,7 @@ export const actions = {
         html_url: ctx.rootState.user.data.html_url,
       }
 
-      this.$fireStore.collection('events').doc(doc.id).update({
+      this.$fire.firestore.collection('events').doc(doc.id).update({
         usersData,
       })
     })

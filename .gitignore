@@ -59,6 +59,7 @@ typings/
 # dotenv environment variables file
 .env
 functions/service-account.json
+functions/service-account-dev.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

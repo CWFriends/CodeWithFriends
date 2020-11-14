@@ -17,9 +17,9 @@ export default {
       logIn: 'user/logIn',
     }),
     signIn() {
-      const provider = new this.$fireAuthObj.GithubAuthProvider()
+      const provider = new this.$fireModule.auth.GithubAuthProvider()
 
-      this.$fireAuth.signInWithPopup(provider).then(({ user, credential }) => {
+      this.$fire.auth.signInWithPopup(provider).then(({ user, credential }) => {
         this.logIn({
           user,
           token: credential.accessToken,

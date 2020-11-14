@@ -38,7 +38,7 @@ export const actions = {
       const userData = JSON.parse(userCache)
       commit('setUser', { uid: user.uid, ...userData })
     } else {
-      const userData = await this.$fireStore
+      const userData = await this.$fire.firestore
         .collection('users')
         .doc(user.uid)
         .get()
@@ -68,7 +68,7 @@ export const actions = {
         dispatch('getSubmissions')
         dispatch('getSignups')
 
-        await this.$fireStore
+        await this.$fire.firestore
           .collection('users')
           .doc(user.uid)
           .set(res.data)
@@ -76,13 +76,13 @@ export const actions = {
             dispatch('logOut')
           })
 
-        await this.$fireFunc.httpsCallable('updateAlgolia')({
+        await this.$fire.functions.httpsCallable('updateAlgolia')({
           id: user.uid,
         })
       })
   },
   async getSubmissions({ commit, state }) {
-    await this.$fireStore
+    await this.$fire.firestore
       .collection('submissions')
       .where('user', '==', state.data.uid)
       .onSnapshot((doc) => {
@@ -96,7 +96,7 @@ export const actions = {
       })
   },
   async getSignups({ commit, state }) {
-    await this.$fireStore
+    await this.$fire.firestore
       .collection('signups')
       .where('user', '==', state.data.uid)
       .onSnapshot((doc) => {
@@ -110,7 +110,7 @@ export const actions = {
       })
   },
   logOut({ commit }) {
-    this.$fireAuth.signOut().then(() => commit('removeUser'))
+    this.$fire.auth.signOut().then(() => commit('removeUser'))
   },
   getRepos({ state, commit }) {
     this.$axios

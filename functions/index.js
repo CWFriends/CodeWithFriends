@@ -1,13 +1,20 @@
 const functions = require('firebase-functions')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 const admin = require('firebase-admin')
-const creds = require('./service-account.json')
+const creds =
+  functions.firebaseConfig().projectId === 'code-with-friends-dev'
+    ? require('./service-account-dev.json')
+    : require('./service-account.json')
 const algoliasearch = require('algoliasearch')
 
 const ALGOLIA_ID = functions.config().algolia.app_id
 const ALGOLIA_ADMIN_KEY = functions.config().algolia.admin_key
 
 const algolia = algoliasearch(ALGOLIA_ID, ALGOLIA_ADMIN_KEY)
+const googleSheetId =
+  functions.firebaseConfig().projectId === 'code-with-friends-dev'
+    ? '1izFPAvb4jcAPxA24v4VbGzJAWIOebQ5R6SwBpSqF6ZM'
+    : '1CI5I1JblyENn1dgDFaLRphD4rwmHzW8oJw8rPhicbpo'
 
 admin.initializeApp()
 
@@ -22,9 +29,7 @@ exports.addSignup = functions.https.onCall(async (data) => {
   signupData.preferredGroup = signupData.preferredGroup.join(', ')
   signupData.timestamp = `=${signupData.timestamp.seconds}/86400+date(1970,1,1)`
 
-  const doc = new GoogleSpreadsheet(
-    '1CI5I1JblyENn1dgDFaLRphD4rwmHzW8oJw8rPhicbpo'
-  )
+  const doc = new GoogleSpreadsheet(googleSheetId)
   await doc.useServiceAccountAuth(creds)
 
   await doc.loadInfo()
@@ -47,9 +52,7 @@ exports.addSubmission = functions.https.onCall(async (data) => {
   submissionData.teamMembers = submissionData.teamMembers.join(', ')
   submissionData.timestamp = `=${submissionData.timestamp.seconds}/86400+date(1970,1,1)`
 
-  const doc = new GoogleSpreadsheet(
-    '1CI5I1JblyENn1dgDFaLRphD4rwmHzW8oJw8rPhicbpo'
-  )
+  const doc = new GoogleSpreadsheet(googleSheetId)
   await doc.useServiceAccountAuth(creds)
 
   await doc.loadInfo()
