@@ -68,10 +68,7 @@ export const actions = {
       )
     })
 
-    const signup = await this.$fire.firestore.collection('signups').add(data)
-    return this.$fire.functions.httpsCallable('addSignup')({
-      id: signup.id,
-    })
+    return await this.$fire.firestore.collection('signups').add(data)
   },
   async submitProject({ state, commit }, data) {
     if (data.image) {
@@ -105,13 +102,7 @@ export const actions = {
       )
     })
 
-    const submission = await this.$fire.firestore
-      .collection('submissions')
-      .add(data)
-
-    return this.$fire.functions.httpsCallable('addSubmission')({
-      id: submission.id,
-    })
+    return await this.$fire.firestore.collection('submissions').add(data)
   },
 
   async getEventDetails({ state, commit }) {

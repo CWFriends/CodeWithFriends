@@ -75,10 +75,6 @@ export const actions = {
           .catch(() => {
             dispatch('logOut')
           })
-
-        await this.$fire.functions.httpsCallable('updateAlgolia')({
-          id: user.uid,
-        })
       })
   },
   async getSubmissions({ commit, state }) {
