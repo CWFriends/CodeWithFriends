@@ -13,8 +13,8 @@
       <v-spacer />
       <div class="d-none d-md-block">
         <v-btn
-          v-for="(page, i) in menus.header"
-          :key="i"
+          v-for="page in menus.header"
+          :key="page.slug"
           color="primary"
           text
           :to="'/' + page.slug"
@@ -127,8 +127,8 @@
           active-class="deep-purple--text text--accent-4"
         >
           <v-list-item
-            v-for="(page, i) in menus.header"
-            :key="i"
+            v-for="page in menus.header"
+            :key="page.slug"
             :to="'/' + page.slug"
             :title="page.title"
           >

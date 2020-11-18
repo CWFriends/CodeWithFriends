@@ -131,8 +131,8 @@
 
               <div v-if="usersData" class="avatar-list">
                 <UserAvatar
-                  v-for="(participant, i) in usersData"
-                  :key="i"
+                  v-for="participant in usersData"
+                  :key="participant.uid"
                   :user="participant"
                 ></UserAvatar>
               </div>
@@ -143,8 +143,8 @@
 
               <v-row>
                 <v-col
-                  v-for="(project, index) in event.submissionsPreview"
-                  :key="index"
+                  v-for="project in event.submissionsPreview"
+                  :key="project.uid"
                   cols="12"
                 >
                   <SubmissionCard :project="project"></SubmissionCard>

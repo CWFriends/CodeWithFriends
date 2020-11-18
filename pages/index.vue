@@ -12,7 +12,7 @@
         <v-col md="5" cols="12">
           <h2 class="text-md-h4 text-h5">Recent News</h2>
           <v-row>
-            <v-col v-for="(item, index) in news" :key="index" cols="12">
+            <v-col v-for="item in news" :key="item.slug" cols="12">
               <NewsCard :news-item="item"></NewsCard>
             </v-col>
           </v-row>

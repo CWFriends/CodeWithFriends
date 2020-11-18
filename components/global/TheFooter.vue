@@ -4,8 +4,8 @@
       <v-row align="center">
         <v-col class="text-sm-right" cols="12" sm="6" order-sm="2">
           <v-btn
-            v-for="(page, i) in menus.footer"
-            :key="i"
+            v-for="page in menus.footer"
+            :key="page.slug"
             color="primary"
             text
             small

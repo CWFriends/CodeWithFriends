@@ -26,8 +26,8 @@
       <v-row align="end">
         <v-col>
           <UserAvatar
-            v-for="(user, i) in teamMembers"
-            :key="i"
+            v-for="user in teamMembers"
+            :key="user.uid"
             :user="user"
             :size="36"
           ></UserAvatar>
