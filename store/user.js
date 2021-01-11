@@ -110,7 +110,7 @@ export const actions = {
   },
   getRepos({ state, commit }) {
     this.$axios
-      .get(state.data.repos_url)
+      .get(state.data.repos_url + '?per_page=100&sort=updated')
       .then((res) => {
         commit('setRepos', res.data)
       })
