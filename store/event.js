@@ -31,6 +31,8 @@ export const actions = {
       await dispatch('getSubmissionsPreview')
     }
 
+    // We only want to get all submissions if we are on the submissions page
+    // Otherwise it's too many calls to the firestore
     if (
       submissions &&
       (state.submissions.length === 0 || event !== state.event)
@@ -41,17 +43,15 @@ export const actions = {
   async submitSignup({ rootState }, data) {
     const eventRef = this.$fire.firestore.collection('events').doc(data.event)
 
+    // Add the user to the event document so that we have less firestore calls to retrieve users
     await this.$fire.firestore.runTransaction(async (t) => {
       const event = (await t.get(eventRef)).data()
 
-      const users = event?.users || []
       const usersData = event?.usersData || []
 
       await t.set(
         eventRef,
         {
-          signupsCount: users.length + 1,
-          users: [...users, data.user],
           usersData: [
             ...usersData,
             {
@@ -84,6 +84,8 @@ export const actions = {
       data.image = ''
     }
 
+    // Keep track of the submissions count so we don't have to calculate it
+    // This reduces the number of calls made to firestore on the event pages
     const submissionRef = await this.$fire.firestore
       .collection('events')
       .doc(data.event)

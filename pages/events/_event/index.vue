@@ -217,13 +217,13 @@ export default {
       return this.event.data?.submissionsCount || 0
     },
     signupsCount() {
-      return this.event.data?.signupsCount || 0
+      return this.event.data?.usersData?.length || 0
     },
     discordUrl() {
       return this.socialMedia.find((item) => item.name === 'Discord').url
     },
     signedUp() {
-      return this.event.data?.users?.includes(this.user.data.uid)
+      return this.usersData?.some((user) => user.uid === this.user.data.uid)
     },
     submitted() {
       return this.user.submissions.some(({ event }) => event === this.page.slug)
