@@ -14,7 +14,7 @@
                 <h3>{{ item.header }}</h3>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <div v-html="html(item.content)"></div>
+                {{ html(item.content) }}
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>

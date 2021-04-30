@@ -114,7 +114,7 @@
         </v-combobox>
         <v-autocomplete
           v-model="teamMembers"
-          :items="event.data.usersData"
+          :items="event.data.usersData.filter((u) => u.uid !== user.data.uid)"
           chips
           label="Team Members"
           item-text="name"

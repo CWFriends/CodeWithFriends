@@ -4,8 +4,8 @@
     <v-container>
       <v-row align="stretch">
         <v-col
-          v-for="(item, index) in newsItems"
-          :key="index"
+          v-for="item in newsItems"
+          :key="item.slug"
           cols="12"
           lg="3"
           md="4"

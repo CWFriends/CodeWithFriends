@@ -9,8 +9,8 @@
     <v-container>
       <v-row align="stretch">
         <v-col
-          v-for="(project, index) in submissions"
-          :key="index"
+          v-for="project in submissions"
+          :key="project.uid"
           cols="12"
           md="4"
           sm="6"

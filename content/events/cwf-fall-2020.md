@@ -6,7 +6,7 @@ meta-image: img/cwf-halloween.png
 signup-date: 2020-09-22T16:30:00.000Z
 submissions-date: 2020-10-23T16:30:00.000Z
 start-date: 2020-10-01T07:00:00.000Z
-end-date: 2020-10-31T06:59:00.000Z
+end-date: 2022-10-31T06:59:00.000Z
 feedback: https://docs.google.com/forms/d/e/1FAIpQLSe5fgYsYYKRs-5fe07dC4JUyUnLD9IAnuVeRxVuPf89vDGXRg/viewform
 schedule:
   - start-date: 2020-09-22T16:30:00.000Z

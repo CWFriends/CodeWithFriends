@@ -4,8 +4,8 @@
     <v-container>
       <v-row align="stretch">
         <v-col
-          v-for="(event, index) in events"
-          :key="index"
+          v-for="event in events"
+          :key="event.slug"
           cols="12"
           lg="3"
           md="4"
